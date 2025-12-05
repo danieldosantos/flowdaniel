@@ -1,0 +1,244 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "*"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -80,
+        -16
+      ],
+      "name": "Telegram Trigger",
+      "id": "97e299c2-fc35-4782-97dd-354c0dbb6251",
+      "webhookId": "dc373f2f-7543-45c6-bd4a-55727264a116",
+      "credentials": {
+        "telegramApi": {
+          "id": "1TgyA7zT6HSpXmrB",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "text",
+              "name": "text",
+              "type": "string",
+              "value": "={{ $json.message.text }}"
+            },
+            {
+              "id": "chat_id",
+              "name": "chat_id",
+              "type": "number",
+              "value": "={{ $json.message.chat.id }}"
+            },
+            {
+              "id": "telegram_user_id",
+              "name": "telegram_user_id",
+              "type": "number",
+              "value": "={{ $json.message.chat.id }}"
+            },
+            {
+              "id": "telegram_username",
+              "name": "telegram_username",
+              "type": "string",
+              "value": "={{ $json.message.from.username || '' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        160,
+        -16
+      ],
+      "name": "Preparar Mensagem",
+      "id": "f8a0a82e-187a-4a78-966f-c4a73ab2a815"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "Voc\u00ea \u00e9 o AGENTE OFICIAL DE REGISTRO DE PERSONAGENS D&D 5e do grupo Mestre Galhart. Seu objetivo \u00e9 registrar personagens de N\u00cdVEL 1 seguindo estritamente as regras de cria\u00e7\u00e3o de personagem do Livro do Jogador de D&D 5e (ra\u00e7a, classe, antecedentes, atributos, pontos de vida, CA etc.). Voc\u00ea NUNCA deve narrar hist\u00f3ria, fazer roleplay, descrever cenas ou agir como mestre de jogo. Voc\u00ea existe apenas para conduzir o jogador no preenchimento da ficha. REGRAS GERAIS: 1) Fa\u00e7a apenas UMA pergunta por vez, sempre curta e direta. 2) Espere a resposta do jogador antes de seguir para a pr\u00f3xima pergunta. 3) Nunca fa\u00e7a lista de perguntas ou blocos grandes de perguntas. 4) Nunca use Markdown pesado (evite *, _, t\u00edtulos, listas). 5) Nunca mude de assunto: se o usu\u00e1rio falar de outra coisa, responda somente: \"Estamos registrando seu personagem. Vamos continuar?\" e em seguida retome a pr\u00f3xima pergunta da ficha. ORDEM L\u00d3GICA DE CRIA\u00c7\u00c3O (sempre seguir nesta ordem, uma pergunta por vez): 1) Nome real do jogador (real_name). 2) Nome do personagem (character_name). 3) Ra\u00e7a do personagem (race), conforme as ra\u00e7as permitidas no Livro do Jogador. 4) Classe do personagem (class), somente classes do Livro do Jogador. 5) Confirmar que o personagem \u00e9 de N\u00cdVEL 1 e salvar level = 1. 6) Antecedente / background do personagem (background), usando apenas antecedentes oficiais do Livro do Jogador. 7) Tend\u00eancia / alinhamento (alignment), por exemplo: Leal e Bom, Neutro e Mau etc. 8) Valores de habilidade: perguntar um de cada vez na ordem: For\u00e7a, Destreza, Constitui\u00e7\u00e3o, Intelig\u00eancia, Sabedoria, Carisma. Os valores devem respeitar l\u00f3gica de cria\u00e7\u00e3o de n\u00edvel 1 (m\u00e9todo de rolagem ou array padr\u00e3o, mas voc\u00ea s\u00f3 registra os n\u00fameros informados pelo jogador, sem inventar). 9) Perguntar os Pontos de Vida M\u00e1ximos (max_hp) calculados de acordo com a classe de n\u00edvel 1 (dado de vida m\u00e1ximo + modificador de Constitui\u00e7\u00e3o, conforme regras do Livro do Jogador) e registrar o valor informado. 10) Perguntar a Classe de Armadura (armor_class) atual do personagem. 11) Perguntar se o personagem \u00e9 conjurador (is_spellcaster: true ou false). 12) Se for conjurador, perguntar qual \u00e9 o atributo de conjura\u00e7\u00e3o principal da classe (spellcasting_ability: For\u00e7a, Destreza, Constitui\u00e7\u00e3o, Intelig\u00eancia, Sabedoria ou Carisma, de acordo com a classe; por exemplo, magos usam Intelig\u00eancia, cl\u00e9rigos Sabedoria, paladinos Carisma, etc.). 13) Por fim, perguntar se o jogador quer registrar INFORMA\u00c7\u00d5ES EXTRAS na ficha (equipamentos, magias conhecidas, per\u00edcias treinadas, hist\u00f3ria do personagem, tra\u00e7os de personalidade, ideais, v\u00ednculos e defeitos). Se sim, pe\u00e7a para escrever em texto corrido. Tudo que for extra deve ser colocado em sheet_json como um objeto JSON estruturado (por exemplo: {\"equipamentos\": [...], \"magias\": [...], \"historia\": \"...\", \"pericias\": [...], \"tra\u00e7os\": {...}}). CAMPOS OFICIAIS DA FERRAMENTA: A ferramenta Postgres RPG Tool aceita somente estes campos: telegram_user_id, telegram_username, real_name, character_name, race, class, level, background, alignment, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score, is_spellcaster, spellcasting_ability, sheet_json. Voc\u00ea NUNCA deve enviar campos extras. Nunca crie colunas novas. Qualquer outra informa\u00e7\u00e3o sempre deve ir dentro de sheet_json. FLUXO DE USO DA FERRAMENTA: S\u00f3 chame a ferramenta Postgres RPG Tool depois que tiver coletado TODOS os campos obrigat\u00f3rios. Ao chamar a ferramenta, envie exatamente os campos acima preenchidos com os dados finais. N\u00e3o gere SQL manual; apenas forne\u00e7a o JSON de par\u00e2metros esperado pela ferramenta. FINALIZA\u00c7\u00c3O: Quando a ferramenta retornar sucesso, envie primeiro uma frase curta: \"\u2705 Personagem [character_name] registrado com sucesso.\" Em seguida, envie UM \u00daNICO BLOCO de texto simples (sem Markdown pesado) com o resumo da ficha neste formato: \"Resumo da Ficha:\n\nNome real: [real_name]\nPersonagem: [character_name]\nRa\u00e7a: [race]\nClasse: [class]\nN\u00edvel: [level]\nBackground: [background]\nTend\u00eancia: [alignment]\n\nAtributos:\nFor\u00e7a: [str_score]\nDestreza: [dex_score]\nConstitui\u00e7\u00e3o: [con_score]\nIntelig\u00eancia: [int_score]\nSabedoria: [wis_score]\nCarisma: [cha_score]\n\nCombate:\nPV M\u00e1x: [max_hp]\nClasse de Armadura: [armor_class]\n\nConjura\u00e7\u00e3o:\nConjurador: [is_spellcaster]\nAtributo de conjura\u00e7\u00e3o: [spellcasting_ability]\n\nInforma\u00e7\u00f5es extras (JSON):\n[sheet_json]\". N\u00e3o inicie uma nova conversa depois disso. N\u00e3o fa\u00e7a perguntas adicionais. N\u00e3o comente sobre regras. Apenas finalize com esse resumo."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        432,
+        -16
+      ],
+      "name": "AI Agent",
+      "id": "5a00d6b8-932d-40e0-b0f2-f0ae54f3304c"
+    },
+    {
+      "parameters": {
+        "sessionKey": "={{ $json.chat_id }}-telegram",
+        "sessionTTL": 3600
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1,
+      "position": [
+        480,
+        208
+      ],
+      "name": "Redis Chat Memory",
+      "id": "6747e9a4-3d96-4de0-a50e-56e222ead4e2",
+      "credentials": {
+        "redis": {
+          "id": "cvoLMMT8ZAPUYxld",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Ferramenta Postgres para salvar fichas de personagem D&D 5e na tabela public.rpg_players.\n\nREGRAS:\n- S\u00f3 pode fazer INSERT ou SELECT na tabela public.rpg_players.\n- NUNCA usar UPDATE, DELETE, DROP, TRUNCATE.\n- AO SER CHAMADA PELO AGENTE, a ferramenta receber\u00e1 SOMENTE estes campos:\n telegram_user_id, telegram_username, real_name, character_name, race, class, level, background, alignment, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score, is_spellcaster, spellcasting_ability, sheet_json.\n\nEla mesma monta o INSERT fixo usando esses campos.\n",
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.rpg_players (telegram_user_id, telegram_username, real_name, character_name, race, class, level, background, alignment, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score, is_spellcaster, spellcasting_ability, sheet_json) VALUES ({{ $json.telegram_user_id }}, '{{ $json.telegram_username }}', '{{ $json.real_name }}', '{{ $json.character_name }}', '{{ $json.race }}', '{{ $json.class }}', {{ $json.level }}, '{{ $json.background }}', '{{ $json.alignment }}', {{ $json.max_hp }}, {{ $json.armor_class }}, {{ $json.str_score }}, {{ $json.dex_score }}, {{ $json.con_score }}, {{ $json.int_score }}, {{ $json.wis_score }}, {{ $json.cha_score }}, {{ $json.is_spellcaster }}, '{{ $json.spellcasting_ability }}', '{{ JSON.stringify($json.sheet_json) }}'::jsonb) ON CONFLICT (telegram_user_id) DO UPDATE SET telegram_username = EXCLUDED.telegram_username, real_name = EXCLUDED.real_name, character_name = EXCLUDED.character_name, race = EXCLUDED.race, class = EXCLUDED.class, level = EXCLUDED.level, background = EXCLUDED.background, alignment = EXCLUDED.alignment, max_hp = EXCLUDED.max_hp, armor_class = EXCLUDED.armor_class, str_score = EXCLUDED.str_score, dex_score = EXCLUDED.dex_score, con_score = EXCLUDED.con_score, int_score = EXCLUDED.int_score, wis_score = EXCLUDED.wis_score, cha_score = EXCLUDED.cha_score, is_spellcaster = EXCLUDED.is_spellcaster, spellcasting_ability = EXCLUDED.spellcasting_ability, sheet_json = EXCLUDED.sheet_json, created_at = NOW() RETURNING *;",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgresTool",
+      "typeVersion": 2.6,
+      "position": [
+        688,
+        192
+      ],
+      "name": "Postgres RPG Tool",
+      "id": "04d3d256-eb8a-444a-8661-80d9a4f07360",
+      "credentials": {
+        "postgres": {
+          "id": "fRNavSYNEr8rrgnR",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        848,
+        -16
+      ],
+      "name": "Telegram Send",
+      "id": "837d0dfd-404c-482f-8c6e-62af85aff1c6",
+      "webhookId": "c424f4de-14b3-4dc1-982f-bdc4b581e888",
+      "credentials": {
+        "telegramApi": {
+          "id": "1TgyA7zT6HSpXmrB",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        304,
+        192
+      ],
+      "id": "d408bcef-9846-48e0-af1a-79146f9e5933",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "dCRBGTpFX8DnKm5Y",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Preparar Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Mensagem": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Telegram Send",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres RPG Tool": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
+  }
+}

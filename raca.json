@@ -1,0 +1,1708 @@
+{
+  "raca": "Anão",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Audazes, robustos e resilientes, os anões são mestres da pedra, do metal e da guerra. Vivem em reinos escavados nas montanhas, forjam armas e armaduras lendárias e mantêm uma memória longa – tanto para honras quanto para agravos.",
+    "aparencia": "Anões medem entre 1,20 m e 1,50 m, mas são largos e compactos, pesando tanto quanto humanos bem mais altos. Possuem pele em tons terrosos (castanho claro, bronzeado, marrom escuro ou tons pálidos avermelhados) e cabelos longos, geralmente negros, castanhos ou grisalhos; anões de pele mais clara podem ter cabelos ruivos. Os machos valorizam profundamente suas barbas, que são cuidadas e trançadas com grande esmero.",
+    "personalidade": "Estáveis, determinados e teimosos, anões respeitam tradição, honra e o peso da palavra dada. Eles guardam rancores por gerações e tendem a enxergar ofensas contra um indivíduo como ofensas contra todo o clã. Ao mesmo tempo, são extremamente leais a aliados que provam sua coragem, mesmo que levem anos (ou décadas) para confiar neles.",
+    "sociedade_e_cultura": "A unidade central da sociedade anã é o clã. Reinos anões se estendem sob as montanhas, com vastas minas, forjas e salões ancestrais. Eles valorizam artesanato, especialmente metalurgia e joalheria. Status de clã e linhagem são fundamentais, e até anões que vivem em terras distantes preservam o orgulho do clã e invocam o nome de seus ancestrais em juramentos. Cidades anãs recebem bem forasteiros de confiança, embora algumas áreas sejam restritas.",
+    "religiao_e_deuses": "Anões reverenciam deuses que personificam trabalho árduo, guerra justa, honra, forja e proteção do clã. Seus cultos enfatizam disciplina, devoção à comunidade e o orgulho nas tradições. Templos muitas vezes ficam próximos a grandes forjas e salões de clã.",
+    "motivações_tipicas": "Anões aventureiros podem buscar riqueza, glória, vingança por ofensas antigas, restauração da honra do clã ou a reconquista de fortes perdidos. Podem também atender ao chamado direto de um deus ou partir em missão para recuperar relíquias ancestrais.",
+    "relacoes_com_outras_racas": {
+      "elfos": "Respeitam a habilidade élfica, mas acham seu comportamento volúvel e imprevisível. Em batalha contra orcs e goblins, no entanto, confiam nos elfos como aliados ferozes contra inimigos em comum.",
+      "halflings": "Consideram halflings gente boa, mas têm dificuldade em levá-los totalmente a sério por falta de grandes impérios, exércitos ou heróis lendários em suas histórias.",
+      "humanos": "Anões veem a vida curta dos humanos como algo triste e impressionante ao mesmo tempo. Admiram a determinação humana em perseguir grandes objetivos em pouco tempo, mesmo que os considerem precipitados."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "A maioria dos anões tende para o alinhamento leal, com forte inclinação ao bem, valorizando ordem, justiça e uma sociedade estruturada. Anões caóticos ou malignos existem, mas costumam estar em desacordo com seu povo.",
+    "ganchos_narrativos": [
+      "Você busca recuperar uma fortaleza ancestral tomada por orcs séculos atrás.",
+      "Foi exilado do seu clã e aventura-se para recuperar sua honra e direito ao nome anão.",
+      "Você jurou vingar um parente ou um clã inteiro massacrado por goblins, orcs ou dragões.",
+      "Foi enviado pelos anciãos para recuperar uma relíquia lendária perdida em um campo de batalha antigo."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "O nome de um anão é concedido pelo ancião do clã, seguindo tradições antigas. Nomes são reutilizados ao longo das gerações e pertencem ao clã, não ao indivíduo. Um anão que desonra seu povo pode ter o nome retirado e ser proibido de usar qualquer nome anão.",
+    "masculinos": [
+      "Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Bruenor", "Dain", "Darrak",
+      "Delg", "Eberk", "Einkil", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak",
+      "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorin",
+      "Tordek", "Traubon", "Travok", "Ulfgar", "Veit", "Vondal"
+    ],
+    "femininos": [
+      "Amber", "Artin", "Audhild", "Bardryn", "Dagnal", "Diesa", "Eldeth", "Falkrunn",
+      "Gunnloda", "Gurdis", "Helja", "Hlin", "Kathra", "Kristryd", "Ilde", "Liftrasa",
+      "Mardred", "Riswynn", "Sannl", "Torbera", "Torgga", "Vistra"
+    ],
+    "clas": [
+      "Balderk", "Battlehammer", "Brawnanvil", "Dankil", "Fireforge", "Frostbeard",
+      "Gorunn", "Holderhek", "Ironfist", "Loderr", "Lutgehr", "Rumnaheim",
+      "Strakeln", "Torunn", "Ungart"
+    ]
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Constituição aumenta em 2.",
+      "modificadores": {
+        "CON": 2
+      }
+    },
+    "idade": {
+      "descricao": "Anões amadurecem na mesma proporção que humanos, mas são considerados jovens até aproximadamente 50 anos. Vivem, em média, cerca de 350 anos e alguns podem ultrapassar 400."
+    },
+    "tendencia": {
+      "descricao": "A maioria dos anões é leal e tende para o bem. Eles acreditam em uma ordem social justa, honestidade e responsabilidade."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "Anões têm entre 1,20 m e 1,50 m de altura e pesam cerca de 75 kg. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "7,5 m",
+      "regras_especiais": "Seu deslocamento não é reduzido ao usar armadura pesada."
+    },
+    "visao_no_escuro": {
+      "alcance": "18 m",
+      "descricao": "Acostumado à vida subterrânea, você enxerga na penumbra a até 18 metros como se fosse luz plena, e no escuro como se fosse penumbra. No escuro, você enxerga apenas em tons de cinza."
+    },
+    "resiliencia_ana": {
+      "descricao": "Você tem vantagem em testes de resistência contra veneno e resistência a dano de veneno."
+    },
+    "treinamento_anao_em_combate": {
+      "descricao": "Você tem proficiência com machado de batalha, machadinha, martelo leve e martelo de guerra.",
+      "armas": [
+        "Machado de batalha",
+        "Machadinha",
+        "Martelo leve",
+        "Martelo de guerra"
+      ]
+    },
+    "treinamento_com_ferramentas": {
+      "descricao": "Você tem proficiência com um dos seguintes tipos de ferramentas de artesão, à sua escolha.",
+      "opcoes": [
+        "Ferramentas de ferreiro",
+        "Ferramentas de cervejeiro",
+        "Ferramentas de pedreiro"
+      ]
+    },
+    "afinidade_com_pedra": {
+      "descricao": "Sempre que você fizer um teste de Inteligência (História) relacionado à origem de trabalho em pedra, você é considerado proficiente na perícia História e adiciona o dobro do seu bônus de proficiência ao teste, em vez do bônus normal."
+    },
+    "idiomas": {
+      "descricao": "Você pode falar, ler e escrever Comum e Anão.",
+      "lista": [
+        "Comum",
+        "Anão"
+      ]
+    },
+    "sub_racas": {
+      "descricao": "Existem diferentes sub-raças de anões. Ao criar um anão, escolha uma das sub-raças abaixo: Anão da Colina ou Anão da Montanha.",
+      "opcoes": {
+        "Anao_da_Colina": {
+          "nome": "Anão da Colina",
+          "descricao_geral": "Anões da colina são mais sábios e resistentes, muitas vezes mais ligados a fortalezas antigas, tradições religiosas e sabedoria prática.",
+          "aumento_valor_habilidade": {
+            "WIS": 1
+          },
+          "traco_especial": {
+            "nome": "Tenacidade Anã",
+            "descricao": "Seu máximo de pontos de vida aumenta em 1, e aumenta em 1 novamente sempre que você sobe um nível."
+          }
+        },
+        "Anao_da_Montanha": {
+          "nome": "Anão da Montanha",
+          "descricao_geral": "Anões da montanha são mais altos (para anões), mais corpulentos e treinados na guerra pesada e na forja. São conhecidos por sua força física e armaduras robustas.",
+          "aumento_valor_habilidade": {
+            "STR": 2
+          },
+          "traco_especial": {
+            "nome": "Treinamento Anão em Armaduras",
+            "descricao": "Você tem proficiência em armaduras leves e médias."
+          }
+        }
+      }
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "anao",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Aplicar automaticamente +2 em Constituição na criação do personagem.",
+      "Permitir escolha de uma sub-raça (Colina ou Montanha), aplicando os bônus extras de habilidade e traços específicos.",
+      "Marcar proficiências de armas e ferramentas no painel de personagem.",
+      "Adicionar condição de Visão no Escuro com alcance de 18 m para efeitos de iluminação no VTT ou sistema.",
+      "Adicionar flag de resistência a dano de veneno e vantagem em testes de resistência contra veneno."
+    ]
+  }
+}
+
+
+{
+  "raca": "Elfo",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Elfos são um povo mágico de graça sobrenatural, vivendo no mundo sem pertencer inteiramente a ele. Preferem lugares de beleza etérea – antigas florestas, cidades cintilantes e torres prateadas – e apreciam profundamente a natureza, a arte, a música, a poesia e a magia.",
+    "aparencia": "Elfos são esbeltos e graciosos, ligeiramente mais baixos que humanos, variando de cerca de 1,50 m a pouco mais de 1,80 m, com corpos delgados pesando em torno de 50 a 72 kg. Suas peles variam de tons humanos comuns até cobre, bronze ou branco-azulado. Cabelos podem ser loiros, negros, ruivos, além de tons verdes ou azuis; olhos são frequentemente marcantes, em cores vivas como dourado, prateado, verde ou azul. Não possuem barba e têm poucos pelos corporais. Preferem roupas elegantes, de cores vivas, e joias simples, porém refinadas.",
+    "personalidade": "Com vidas que podem ultrapassar 700 anos, elfos tendem a enxergar o mundo de forma menos urgente. São curiosos, contemplativos, muitas vezes bem-humorados e ligeiramente distantes. São lentos para fazer amigos ou inimigos, mas também lentos para esquecê-los: pequenos insultos são ignorados com desdém, enquanto ofensas graves podem ser respondidas com vingança cuidadosa. Valorizam liberdade, expressão pessoal e beleza.",
+    "sociedade_e_cultura": "A maioria dos elfos vive em aldeias e cidades escondidas em florestas ancestrais, onde caçam, coletam e cultivam com auxílio de magia, sem devastar o ambiente. São artesãos talentosos, criando roupas, instrumentos e obras de arte finamente decoradas. Contato com estrangeiros é limitado, mas alguns elfos atuam como menestréis, artistas, sábios e tutores em terras humanas.",
+    "religiao_e_deuses": "Elfos reverenciam deuses ligados à natureza, magia, arte, beleza e liberdade. Seus templos costumam ser integrados ao ambiente natural – bosques sagrados, clareiras, salões esculpidos em árvores ou rochas. A espiritualidade é muitas vezes serena e contemplativa, em harmonia com ciclos naturais.",
+    "motivações_tipicas": "Elfos aventureiros geralmente procuram explorar o mundo, exercitar habilidades marciais ou desenvolver poder mágico. Podem lutar por ideais elevados, desafiar governos opressores, proteger florestas e povos ameaçados ou simplesmente saciar a curiosidade acumulada em décadas de estudo e vida longa.",
+    "relacoes_com_outras_racas": {
+      "anoes": "Costumam achar anões sisudos e pouco refinados, mas respeitam sua coragem, lealdade e talento em forja. Reconhecem que, em batalha contra orcs e goblins, é valioso ter um anão ao lado.",
+      "halflings": "Veem halflings como pessoas de gostos simples e corações bondosos. Admiram a resiliência inesperada dos halflings quando a necessidade exige que se mostrem mais duros do que aparentam.",
+      "humanos": "Acham a pressa e a ambição humana um tanto trágicas e fascinantes. Consideram que humanos realizam façanhas impressionantes em pouco tempo, embora lhes falte o refinamento e a paciência élficos."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Elfos, em geral, inclinam-se ao caos, valorizando liberdade, individualidade e expressão pessoal. Tendem a ser bons, protegendo a liberdade dos outros como a sua própria. Drow são a grande exceção: sua sociedade no Subterrâneo é cruel e fortemente inclinada ao mal.",
+    "ganchos_narrativos": [
+      "Você deixou sua floresta natal para explorar o mundo mortal antes de se comprometer com um destino mais permanente.",
+      "Foi enviado por seu povo para investigar uma ameaça que corrompe uma antiga floresta ou cidade élfica.",
+      "Você se encanta pelas culturas de outras raças e percorre o mundo como artista, menestrel ou mago viajante.",
+      "Como drow, você rejeitou a sociedade cruel do Subterrâneo e tenta provar que pode ser diferente do estereótipo da sua raça."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Elfos são considerados crianças até declararem-se adultos, algum tempo após completarem cerca de 100 anos. Durante esse período usam nomes infantis. Ao assumir a idade adulta, escolhem um nome adulto único, muitas vezes inspirado em nomes de ancestrais ou figuras respeitadas. Cada elfo também possui um sobrenome de família, normalmente composto de duas ou mais palavras élficas. Entre humanos, alguns traduzem seus sobrenomes para o Comum.",
+    "infantis": [
+      "Ara", "Bryn", "Del", "Eryn", "Faen", "Innil", "Lael", "Mella",
+      "Naill", "Naeris", "Phann", "Rael", "Rinn", "Sai", "Syllin", "Thia", "Vall"
+    ],
+    "masculinos_adultos": [
+      "Adran", "Aelar", "Aramil", "Arannis", "Aust", "Beiro", "Berrian", "Carric",
+      "Enialis", "Erdan", "Erevan", "Galinndan", "Hadarai", "Heian", "Himo",
+      "Immeral", "Ivellios", "Laucian", "Mindartis", "Paelias", "Peren",
+      "Quarion", "Riardon", "Rolen", "Soveliss", "Thamior", "Tharivol",
+      "Theren", "Varis"
+    ],
+    "femininos_adultos": [
+      "Adrie", "Althaea", "Anastrianna", "Andraste", "Antinua", "Bethrynna",
+      "Birel", "Caelynn", "Drusilia", "Enna", "Felosial", "Ielenia", "Jelenneth",
+      "Keyleth", "Leshanna", "Lia", "Meriele", "Mialee", "Naivara", "Quelenna",
+      "Quillathe", "Sariel", "Shanairra", "Shava", "Silaqui", "Their Astra",
+      "Thia", "Vadania", "Valanthe", "Xanaphia"
+    ],
+    "sobrenomes": [
+      "Amakiir (Joia Florida)",
+      "Amastacia (Flor das Estrelas)",
+      "Galanodel (Sussurro da Lua)",
+      "Holimion (Orvalho dos Diamantes)",
+      "Ilphelkiir (Pétala Preciosa)",
+      "Liadon (Folha de Prata)",
+      "Meliamne (Calcanhar de Carvalho)",
+      "Nailo (Brisa da Noite)",
+      "Siannodel (Córrego Lunar)",
+      "Xiloscient (Pétala de Ouro)"
+    ]
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Destreza aumenta em 2.",
+      "modificadores": {
+        "DEX": 2
+      }
+    },
+    "idade": {
+      "descricao": "Elfos atingem maturidade física em idade semelhante à dos humanos, mas só são considerados adultos após cerca de 100 anos, quando escolhem um nome adulto. Podem viver até aproximadamente 750 anos."
+    },
+    "tendencia": {
+      "descricao": "Elfos amam liberdade, diversidade e expressão pessoal, inclinando-se ao caos e, geralmente, ao bem. Drow, em sua maioria, tendem ao mal em razão de sua cultura no Subterrâneo."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "Elfos medem entre 1,50 m e 1,80 m, com constituição delgada. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "9 m",
+      "regras_especiais": null
+    },
+    "visao_no_escuro": {
+      "alcance": "18 m",
+      "descricao": "Acostumado a florestas crepusculares e ao céu noturno, você enxerga na penumbra a até 18 m como se fosse luz plena e no escuro como se fosse penumbra. No escuro, enxerga apenas em tons de cinza."
+    },
+    "sentidos_aguçados": {
+      "descricao": "Você tem proficiência na perícia Percepção.",
+      "pericias": [
+        "Percepção"
+      ]
+    },
+    "ancestral_feerico": {
+      "descricao": "Você tem vantagem em testes de resistência para evitar ser enfeitiçado, e magias não podem colocá-lo para dormir."
+    },
+    "transe": {
+      "descricao": "Elfos não precisam dormir. Em vez disso, meditam profundamente, permanecendo semiconscientes por 4 horas por dia. Após esse período, você obtém os mesmos benefícios que um humano teria após 8 horas de sono.",
+      "duracao_descanso_equivalente": "4 horas de transe = 8 horas de sono"
+    },
+    "idiomas": {
+      "descricao": "Você pode falar, ler e escrever Comum e Élfico.",
+      "lista": [
+        "Comum",
+        "Élfico"
+      ]
+    },
+    "sub_racas": {
+      "descricao": "Velhas divisões entre os povos élficos criaram três sub-raças principais: alto elfo, elfo da floresta e elfo negro (drow). Escolha uma sub-raça ao criar seu personagem.",
+      "opcoes": {
+        "Alto_Elfo": {
+          "nome": "Alto Elfo",
+          "descricao_geral": "Altos elfos são intelectualmente aguçados e possuem afinidade natural com a magia arcana. Em muitos mundos, parte deles são altivos e reclusos, enquanto outros são mais abertos e convivem bem entre humanos e outras raças.",
+          "aparencia_tipica": "Pode variar conforme o mundo: elfos do sol possuem pele bronzeada e cabelos dourados, cobre ou negros; elfos da lua tendem a pele pálida ou azulada, cabelos brancos prateados, azuis ou tons claros variados, com olhos azuis ou verdes salpicados de dourado.",
+          "aumento_valor_habilidade": {
+            "INT": 1
+          },
+          "tracos_especiais": {
+            "treinamento_elfico_com_armas": {
+              "nome": "Treinamento Élfico com Armas",
+              "descricao": "Você possui proficiência com espada longa, espada curta, arco longo e arco curto.",
+              "armas": [
+                "Espada longa",
+                "Espada curta",
+                "Arco longo",
+                "Arco curto"
+              ]
+            },
+            "truque": {
+              "nome": "Truque",
+              "descricao": "Você conhece um truque, à sua escolha, da lista de magias de mago. Inteligência é a habilidade usada para conjurá-lo.",
+              "origem_lista": "Mago",
+              "habilidade_de_conjuracao": "INT"
+            },
+            "idioma_adicional": {
+              "nome": "Idioma Adicional",
+              "descricao": "Você pode falar, ler e escrever um idioma adicional, à sua escolha."
+            }
+          }
+        },
+        "Elfo_da_Floresta": {
+          "nome": "Elfo da Floresta",
+          "descricao_geral": "Elfos da floresta são reclusos, ágeis e profundamente conectados a bosques ancestrais. Têm instintos aguçados, deslocamento rápido e facilidade em se esconder em ambientes naturais.",
+          "aparencia_tipica": "Pele em tons cobreados, às vezes com nuances esverdeadas. Cabelo geralmente castanho ou negro, ocasionalmente louro ou cor de cobre. Olhos verdes, castanhos ou cor de avelã.",
+          "aumento_valor_habilidade": {
+            "WIS": 1
+          },
+          "tracos_especiais": {
+            "treinamento_elfico_com_armas": {
+              "nome": "Treinamento Élfico com Armas",
+              "descricao": "Você possui proficiência com espada longa, espada curta, arco longo e arco curto.",
+              "armas": [
+                "Espada longa",
+                "Espada curta",
+                "Arco longo",
+                "Arco curto"
+              ]
+            },
+            "pes_ligeiros": {
+              "nome": "Pés Ligeiros",
+              "descricao": "Seu deslocamento base de caminhada aumenta para 10,5 m.",
+              "deslocamento": "10,5 m"
+            },
+            "mascara_da_natureza": {
+              "nome": "Máscara da Natureza",
+              "descricao": "Você pode tentar se esconder mesmo quando está apenas levemente obscurecido por folhagem, chuva forte, neve caindo, névoa ou outro fenômeno natural."
+            }
+          }
+        },
+        "Elfo_Negro_Drow": {
+          "nome": "Elfo Negro (Drow)",
+          "descricao_geral": "Drow são elfos que seguiram a deusa Lolth e foram banidos para o Subterrâneo, onde ergueram cidades sombrias e cruéis. Sua sociedade é rígida, hierárquica e muitas vezes perversa, mas alguns poucos drow fogem desse padrão e buscam redenção ou um novo caminho na superfície.",
+          "aparencia_tipica": "Pele negra semelhante a obsidiana polida, cabelos brancos opacos ou amarelo pálido. Olhos muito pálidos, frequentemente parecendo brancos, mas em tons de lilás, prata, rosa, vermelho ou azul. Costumam ser um pouco menores e mais magros que outros elfos.",
+          "observacao_mestre": "Aventureiros drow são raros e podem não existir em todos os cenários. Confirme com o Mestre se drow estão disponíveis como raça de jogador na sua campanha.",
+          "aumento_valor_habilidade": {
+            "CHA": 1
+          },
+          "tracos_especiais": {
+            "visao_no_escuro_superior": {
+              "nome": "Visão no Escuro Superior",
+              "descricao": "Sua visão no escuro tem alcance de 36 m.",
+              "alcance": "36 m"
+            },
+            "sensibilidade_a_luz_solar": {
+              "nome": "Sensibilidade à Luz Solar",
+              "descricao": "Você possui desvantagem nas jogadas de ataque e em testes de Sabedoria (Percepção) baseados em visão quando você, seu alvo ou o que você tenta perceber estiver sob luz solar direta."
+            },
+            "magia_drow": {
+              "nome": "Magia Drow",
+              "descricao": "Você conhece o truque Globos de Luz. Ao alcançar o 3º nível, pode conjurar Fogo das Fadas uma vez por descanso longo. Ao alcançar o 5º nível, pode conjurar Escuridão uma vez por descanso longo. Carisma é sua habilidade de conjuração para essas magias.",
+              "truques_iniciais": [
+                "Globos de Luz"
+              ],
+              "magias_por_nivel": {
+                "3": [
+                  "Fogo das Fadas (1x/descanso longo)"
+                ],
+                "5": [
+                  "Escuridão (1x/descanso longo)"
+                ]
+              },
+              "habilidade_de_conjuracao": "CHA"
+            },
+            "treinamento_drow_com_armas": {
+              "nome": "Treinamento Drow com Armas",
+              "descricao": "Você possui proficiência com rapieiras, espadas curtas e bestas de mão.",
+              "armas": [
+                "Rapieira",
+                "Espada curta",
+                "Besta de mão"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "elfo",
+      "alto_elfo",
+      "elfo_da_floresta",
+      "drow",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Aplicar automaticamente +2 em Destreza para qualquer personagem da raça elfo.",
+      "Permitir escolha de sub-raça (Alto Elfo, Elfo da Floresta ou Elfo Negro/Drow) com aplicação automática de bônus adicionais e traços específicos.",
+      "Adicionar a proficiência em Percepção na ficha ao selecionar a raça elfo.",
+      "Marcar condição de Transe para cálculo de descansos (4h de descanso equivalente a 8h de sono).",
+      "Adicionar Visão no Escuro (18 m para elfos padrão; 36 m para drow) nas regras de iluminação do VTT ou sistema.",
+      "Para Drow, aplicar automaticamente Sensibilidade à Luz Solar e magias raciais na aba de magias.",
+      "Para Altos Elfos, habilitar escolha de um truque de mago e um idioma adicional durante a criação.",
+      "Para Elfos da Floresta, ajustar deslocamento para 10,5 m e permitir uso de esconderijo leve com Máscara da Natureza."
+    ]
+  }
+}
+
+{
+  "raca": "Halfling",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Halflings são pequeninos sobreviventes em um mundo de criaturas maiores, conhecidos por sua sorte, espírito alegre e incrível capacidade de passar despercebidos. Com cerca de 90 cm de altura, vivem às sombras de impérios e longe dos grandes conflitos, focados em família, comida boa e conforto.",
+    "aparencia": "Halflings medem cerca de 0,90 m de altura e pesam em torno de 20 a 22,5 kg. São robustos, com barriga arredondada e traços amigáveis. A pele varia do bronzeado ao pálido corado; o cabelo costuma ser castanho ou castanho-claro, ondulado. Os olhos são geralmente castanhos ou amendoados. Halflings do sexo masculino podem ter costeletas longas, enquanto barbas são raras e bigodes quase inexistentes. Preferem roupas simples, práticas e confortáveis, em cores claras.",
+    "personalidade": "Em geral, são afáveis, positivos e sociáveis. Valorizam laços familiares, amizade, boa comida e um lar acolhedor muito mais do que ouro, glória ou poder. São curiosos e adoram experimentar coisas novas – especialmente comidas exóticas ou costumes estranhos. Têm grande empatia e detestam ver qualquer ser vivo sofrer.",
+    "sociedade_e_cultura": "A maioria vive em pequenas comunidades rurais ou condados pacíficos, com grandes fazendas e bosques preservados. Não possuem reinos vastos ou impérios; preferem organização simples, guiada por anciãos e tradições familiares. Alguns halflings vivem integrados a comunidades humanas, élficas ou anãs, onde se tornam vizinhos trabalhadores e confiáveis. Outros adotam um estilo de vida nômade, viajando de carroça ou barco.",
+    "religiao_e_deuses": "Halflings geralmente reverenciam deuses ligados à sorte, proteção, lar, comunidade e fartura. A devoção costuma ser discreta e prática, expressa em bênçãos à mesa, gratidão por colheitas e proteção aos amigos, mais do que em grandes templos ou rituais solenes.",
+    "motivações_tipicas": "Mesmo quando se tornam aventureiros, muitos o fazem para proteger sua comunidade, seguir amigos em perigo, fugir de uma ameaça ou simplesmente explorar o mundo grande e cheio de maravilhas. Para um halfling, aventurar-se é muitas vezes uma oportunidade inesperada, uma história que 'aconteceu' mais do que um plano deliberado.",
+    "relacoes_com_outras_racas": {
+      "anoes": "Consideram anões amigos leais, cuja palavra é confiável. Acham que poderiam sorrir um pouco mais, mas respeitam sua firmeza e artesanato.",
+      "elfos": "Veem elfos como belos e graciosos, quase saídos de um sonho. Porém, reconhecem que é difícil saber o que realmente se passa por trás de seus sorrisos enigmáticos.",
+      "humanos": "Os humanos lembram muito os próprios halflings, pelo menos aqueles que vivem no campo – fazendeiros, pastores e gente simples. Admiram a dedicação de barões e soldados que protegem suas terras, pois, ao fazê-lo, também protegem os halflings."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Halflings tendem a ser leais e bons. São ordeiros, tradicionais, apegados à família e comunidade, e possuem um coração bondoso que rejeita opressão e sofrimento alheio.",
+    "ganchos_narrativos": [
+      "Você deixou seu condado para acompanhar um amigo em apuros e acabou se envolvendo em aventuras maiores do que imaginava.",
+      "Sua vila foi ameaçada por monstros, bandidos ou guerra, e você tomou para si a responsabilidade de protegê-la buscando ajuda e poder.",
+      "Sempre foi curioso sobre o mundo além das colinas familiares, então decidiu viajar com mercadores, caravanas ou grupos de aventureiros.",
+      "Você pretende provar que um halfling pode ser tão heroico quanto qualquer humano, anão ou elfo, e quer retornar para casa com histórias incríveis."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Um halfling costuma ter um nome próprio, um nome de família e, às vezes, um apelido. Muitos sobrenomes começaram como apelidos tão adequados que passaram a ser herdados por gerações. A cultura halfling valoriza nomes amistosos e, muitas vezes, bem-humorados.",
+    "masculinos": [
+      "Alton", "Ander", "Cade", "Corrin", "Eldon", "Errich", "Finnan",
+      "Garret", "Lindal", "Lyle", "Merric", "Milo", "Osborn", "Perrin",
+      "Reed", "Roscoe", "Wellby"
+    ],
+    "femininos": [
+      "Andry", "Bree", "Callie", "Cora", "Euphemia", "Jillian", "Kithri",
+      "Lavinia", "Lidda", "Merla", "Nedda", "Paela", "Portia", "Seraphina",
+      "Shaena", "Trym", "Vani", "Verna"
+    ],
+    "sobrenomes": [
+      "Cata-Escovas",
+      "Bom-Barril",
+      "Garrafa Verde",
+      "Alta Colina",
+      "Baixa Colina",
+      "Prato Cheio",
+      "Folha de Chá",
+      "Espinhudo",
+      "Cinto Frouxo",
+      "Galho Caído"
+    ]
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Destreza aumenta em 2.",
+      "modificadores": {
+        "DEX": 2
+      }
+    },
+    "idade": {
+      "descricao": "Um halfling atinge a idade adulta por volta dos 20 anos e pode viver até cerca de 150 anos."
+    },
+    "tendencia": {
+      "descricao": "A maioria é leal e boa. Possuem bom coração, odeiam ver sofrimento e não toleram opressão. São ordeiros e tradicionais, fortemente ligados à comunidade."
+    },
+    "tamanho": {
+      "categoria": "Pequeno",
+      "descricao": "Halflings medem cerca de 0,90 m e pesam aproximadamente 20 kg. Seu tamanho é Pequeno."
+    },
+    "deslocamento": {
+      "caminhada": "7,5 m",
+      "regras_especiais": null
+    },
+    "sortudo": {
+      "nome": "Sortudo",
+      "descricao": "Quando você obtiver um 1 natural em uma jogada de ataque, teste de habilidade ou teste de resistência, você pode rolar novamente o dado e deve usar o novo resultado."
+    },
+    "bravura": {
+      "nome": "Bravura",
+      "descricao": "Você tem vantagem em testes de resistência contra ficar amedrontado."
+    },
+    "agilidade_halfling": {
+      "nome": "Agilidade Halfling",
+      "descricao": "Você pode se mover através do espaço de qualquer criatura que for de um tamanho maior que o seu."
+    },
+    "idiomas": {
+      "descricao": "Você pode falar, ler e escrever Comum e Halfling.",
+      "lista": [
+        "Comum",
+        "Halfling"
+      ],
+      "observacao": "A língua Halfling não é secreta, mas os halflings são relutantes em ensiná-la a estranhos. Eles escrevem pouco, mas possuem uma forte tradição oral."
+    },
+    "sub_racas": {
+      "descricao": "Existem dois tipos principais de halflings: Pés-Leves e Robustos. Ambos são muito próximos em cultura, mas exibem características distintas.",
+      "opcoes": {
+        "Pes_Leves": {
+          "nome": "Pés-Leves",
+          "descricao_geral": "Halflings Pés-Leves são afáveis, discretos e com grande talento para se esconder. São os mais comuns e os mais propensos a viajar e viver misturados a outras raças.",
+          "caracteristicas_culturais": "Costumam ser curiosos e sociáveis, gostam de explorar novos lugares, integrar-se a comunidades diversas e viver em movimento.",
+          "aumento_valor_habilidade": {
+            "CHA": 1
+          },
+          "tracos_especiais": {
+            "furtividade_natural": {
+              "nome": "Furtividade Natural",
+              "descricao": "Você pode tentar se esconder mesmo quando estiver apenas obscurecido pela presença de uma criatura que seja, no mínimo, um tamanho maior que o seu."
+            }
+          }
+        },
+        "Robusto": {
+          "nome": "Robusto",
+          "descricao_geral": "Halflings Robustos são mais resistentes que os demais e possuem certa imunidade a venenos. Alguns dizem que têm 'sangue de anão'. São comuns em regiões mais duras ou ao sul de certos mundos.",
+          "caracteristicas_culturais": "Geralmente mais duros, acostumados a ambientes mais exigentes, sem perder o bom humor e o apego à família e comunidade.",
+          "aumento_valor_habilidade": {
+            "CON": 1
+          },
+          "tracos_especiais": {
+            "resiliencia_dos_robustos": {
+              "nome": "Resiliência dos Robustos",
+              "descricao": "Você tem vantagem em testes de resistência contra veneno e resistência a dano de veneno."
+            }
+          }
+        }
+      }
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "halfling",
+      "pes-leves",
+      "robusto",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Aplicar automaticamente +2 em Destreza a qualquer personagem da raça Halfling.",
+      "Marcar o tamanho como Pequeno, afetando regras de armas pesadas e espaço ocupado.",
+      "Adicionar o traço Sortudo, permitindo rerrolar resultados naturais de 1 em jogadas de ataque, testes de habilidade e testes de resistência.",
+      "Aplicar Bravura (vantagem contra medo) e Agilidade Halfling (movimento através de criaturas maiores).",
+      "Configurar idiomas iniciais como Comum e Halfling.",
+      "Permitir escolha de sub-raça (Pés-Leves ou Robusto) com aplicação automática dos bônus adicionais e traços especiais.",
+      "Para Pés-Leves, habilitar Furtividade Natural na lógica de furtividade do sistema.",
+      "Para Robusto, aplicar vantagem contra veneno e resistência a dano de veneno nos cálculos de combate."
+    ]
+  }
+}
+
+
+{
+  "raca": "Humano",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Humanos são a raça mais jovem entre as comuns, com vida curta se comparada a anões, elfos e dragões. Justamente por isso, costumam ser ambiciosos, adaptáveis e incansáveis, erguendo impérios, viajando, conquistando e inovando em todos os cantos do mundo.",
+    "aparencia": "Não existe um 'humano típico'. Em geral medem entre 1,65 m e 1,90 m, pesando entre 62,5 kg e 125 kg. A cor da pele vai do negro ao muito pálido; cabelos podem ser lisos, ondulados ou crespos, indo do negro ao loiro; homens podem ter pelos faciais ralos ou abundantes. Devido à miscigenação e migração, muitos humanos exibem traços de outras linhagens, como elfos ou orcs.",
+    "personalidade": "Humanos são extremamente variados em moralidade, costumes e ambições. Podem ser altruístas, cruéis, religiosos, pragmáticos, idealistas, gananciosos ou visionários. Em comum, existe uma forte tendência à adaptação, à busca por oportunidades e ao desejo de deixar uma marca no mundo antes que a vida termine.",
+    "sociedade_e_cultura": "Humanos fundam cidades duradouras, reinos extensos e instituições como ordens sagradas, templos, governos, bibliotecas e códigos de lei. Suas sociedades são, em geral, inclusivas – com muitas raças não-humanas vivendo em terras humanas. Tradições são preservadas por registros escritos, estruturas políticas e organizações, mais do que pela memória de indivíduos.",
+    "religiao_e_deuses": "A enorme diversidade cultural humana gera panteões, cultos e crenças muito variados. Em um mesmo continente é comum encontrar deuses da guerra, do comércio, da magia, da morte, da justiça, da tirania, da agricultura e assim por diante. Humanas e humanos podem ser extremamente devotos ou totalmente céticos, mas tendem a institucionalizar a fé por meio de igrejas, ordens religiosas e templos.",
+    "motivações_tipicas": "Humanos aventureiros geralmente são os membros mais ousados de uma raça já ousada. Buscam poder, riqueza, fama, redenção, revolução, conhecimento ou a defesa de uma causa. Mais do que outros povos, eles lutam por ideais, crenças e visões de futuro, e não apenas por território ou clã.",
+    "relacoes_com_outras_racas": {
+      "anoes": "Respeitam os anões como amigos fortes, corajosos e fiéis à palavra, embora critiquem sua ganância por ouro.",
+      "elfos": "Sabem que elfos podem ser perigosos com sua magia e orgulho, mas também reconhecem que é possível aprender muito com eles quando há respeito mútuo.",
+      "halflings": "Valorizam a hospitalidade halfling, suas mesas fartas e boas histórias. Muitos humanos enxergam os halflings como um povo que poderia 'conquistar o mundo' se quisessem, mas que preferem conforto e simplicidade."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Humanos não têm uma tendência predominante. Qualquer alinhamento pode aparecer com facilidade: santos e tiranos, heróis e vilões, visionários e oportunistas.",
+    "ganchos_narrativos": [
+      "Você vem de um reino decadente e busca glória para restaurar o nome de sua família ou de sua nação.",
+      "Você cresceu em uma cidade humana enorme e descobriu que o mundo é muito maior do que as muralhas que o cercavam.",
+      "Você se uniu a uma ordem sagrada, guilda ou instituição, mas decidiu agir fora de suas regras para defender seus próprios ideais.",
+      "Você sente que a vida é curta demais para ser desperdiçada e decidiu se tornar uma lenda antes da velhice."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Humanos não possuem um padrão único de nomes. Cada cultura, região ou etnia humana tem tradições próprias. Alguns pais também usam nomes élficos, anões ou de outras línguas, às vezes com pronúncia alterada. Abaixo estão exemplos étnicos típicos dos Reinos Esquecidos que podem ser usados como inspiração em qualquer mundo.",
+    "etnias_exemplo_faerun": {
+      "Calishita": {
+        "descricao": "Mais baixos e de constituição leve, com pele, olhos e cabelos castanho-escuros. Comuns no sudoeste de Faerûn.",
+        "masculinos": ["Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir"],
+        "femininos": ["Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida"],
+        "sobrenomes": ["Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein"]
+      },
+      "Chondathano": {
+        "descricao": "Povo esguio, de pele morena e cabelos castanhos (quase loiros até quase negros). Dominam as terras centrais em torno do Mar Interior.",
+        "masculinos": ["Darvin", "Dorn", "Evendur", "Gorstag", "Grim", "Helm", "Malark", "Morn", "Randal", "Stedd"],
+        "femininos": ["Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele"],
+        "sobrenomes": ["Amblecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag"]
+      },
+      "Damarano": {
+        "descricao": "Altura e constituição medianas, pele do moreno ao claro; cabelos castanhos ou negros. Comuns no noroeste de Faerûn.",
+        "masculinos": ["Bor", "Fodel", "Glar", "Grigor", "Igan", "Ivor", "Kosef", "Mival", "Orel", "Pavel", "Sergor"],
+        "femininos": ["Alethra", "Kara", "Katernin", "Mara", "Natali", "Olma", "Tana", "Zora"],
+        "sobrenomes": ["Bersk", "Chernin", "Dotsk", "Kulenov", "Marsk", "Nemetsk", "Shemov", "Starag"]
+      },
+      "Illuskano": {
+        "descricao": "Altos, de pele clara, olhos azuis ou cinzentos. Cabelos geralmente negros, mas no extremo noroeste podem ser louros, ruivos ou castanho-claros.",
+        "masculinos": ["Ander", "Blath", "Bran", "Frath", "Geth", "Lander", "Luth", "Malcer", "Stor", "Taman", "Urth"],
+        "femininos": ["Amafrey", "Betha", "Cefrey", "Kethra", "Mara", "Olga", "Silifrey", "Westra"],
+        "sobrenomes": ["Brightwood", "Helder", "Hornraven", "Lackman", "Stormwind", "Windrivver"]
+      },
+      "Mulano": {
+        "descricao": "Altos, magros, pele morena clara, olhos castanhos ou amendoados; cabelos negros ou castanho-escuros. Nobres costumam raspar a cabeça.",
+        "masculinos": ["Aoth", "Bareris", "Ehput-Ki", "Kethoth", "Mumed", "Ramas", "So-Kehur", "Thazar-De", "Urhur"],
+        "femininos": ["Arizima", "Chathi", "Nephis", "Nulara", "Murithi", "Sefris", "Thola", "Umara", "Zolis"],
+        "sobrenomes": ["Ankhalab", "Anskuld", "Fezim", "Hahpet", "Nathandem", "Sepret", "Uuthrakt"]
+      },
+      "Rashemitas": {
+        "descricao": "Baixos, robustos e musculosos, com pele escura, olhos escuros e cabelos negros. Comuns ao leste do Mar Interior.",
+        "masculinos": ["Borivik", "Faurgar", "Jandar", "Kanithar", "Madislak", "Ralmevik", "Shaumar", "Vladislak"],
+        "femininos": ["Fyevarra", "Hulmarra", "Immith", "Imzel", "Navarra", "Shevarra", "Tammith", "Yuldra"],
+        "sobrenomes": ["Chergoba", "Dyernina", "Iltazyara", "Murnyethara", "Stayanoga", "Ulmokina"]
+      },
+      "Shou": {
+        "descricao": "Grupo mais numeroso de Kara-Tur. Pele bronze-amarelada, cabelos negros e olhos escuros. Sobrenome geralmente vem antes do nome.",
+        "masculinos": ["An", "Chen", "Chi", "Fai", "Jiang", "Jun", "Lian", "Long", "Meng", "On", "Shan", "Shui", "Wen"],
+        "femininos": ["Bai", "Chao", "Jia", "Lei", "Mei", "Qiao", "Shui", "Tai"],
+        "sobrenomes": ["Chien", "Huang", "Kao", "Kung", "Lao", "Ling", "Mei", "Pin", "Shin", "Sum", "Tan", "Wan"]
+      },
+      "Tethyriano": {
+        "descricao": "Espalhados pela Costa da Espada. Estatura e peso médios, pele escura; no norte tendem a ser mais altos. Usam, em geral, nomes chondathanos.",
+        "masculinos": [],
+        "femininos": [],
+        "sobrenomes": []
+      },
+      "Turami": {
+        "descricao": "Altos, musculosos, pele escura como mogno, cabelos negros encaracolados e olhos escuros. Nativos da costa sul do Mar Interior.",
+        "masculinos": ["Anton", "Diero", "Marcon", "Pieron", "Rimardo", "Romero", "Salazar", "Umbero"],
+        "femininos": ["Balama", "Dona", "Faila", "Jalana", "Luisa", "Marta", "Quara", "Selise", "Vonda"],
+        "sobrenomes": ["Agosto", "Astorio", "Calabra", "Domine", "Falone", "Marivaldi", "Pisacar", "Ramondo"]
+      }
+    }
+  },
+  "tracos_raciais": {
+    "padrao": {
+      "descricao": "Traços raciais padrão dos humanos.",
+      "aumento_valor_habilidade": {
+        "descricao": "Todos os seus valores de habilidade aumentam em 1.",
+        "modificadores": {
+          "FOR": 1,
+          "DES": 1,
+          "CON": 1,
+          "INT": 1,
+          "SAB": 1,
+          "CAR": 1
+        }
+      },
+      "idade": {
+        "descricao": "Humanos chegam à idade adulta no fim da adolescência e, em geral, vivem menos de 100 anos."
+      },
+      "tendencia": {
+        "descricao": "Não há inclinação natural a qualquer tendência. Entre humanos, é possível encontrar tanto os mais nobres heróis quanto os piores vilões."
+      },
+      "tamanho": {
+        "categoria": "Médio",
+        "descricao": "Podem ter quase 1,50 m ou mais de 1,80 m, com ampla variação de peso. Independentemente da altura, o tamanho é Médio."
+      },
+      "deslocamento": {
+        "caminhada": "9 m",
+        "regras_especiais": null
+      },
+      "idiomas": {
+        "descricao": "Você pode falar, ler e escrever Comum e um idioma adicional, à sua escolha.",
+        "lista": [
+          "Comum",
+          "Outro idioma à escolha"
+        ],
+        "observacao": "Humanos aprendem com facilidade os idiomas dos povos com quem convivem, e adoram misturar xingamentos e expressões de outras línguas em seu discurso."
+      }
+    },
+    "variante": {
+      "descricao": "Traços raciais alternativos de humanos (opcionais), usados em mesas que utilizam a regra de talentos.",
+      "regras": "Substituem o aumento de +1 em todos os atributos dos humanos padrão.",
+      "aumento_valor_habilidade": {
+        "descricao": "Dois valores de habilidade, à sua escolha, aumentam em 1.",
+        "modificadores_exemplo": {
+          "qualquer_1": 1,
+          "qualquer_2": 1
+        }
+      },
+      "pericia": {
+        "nome": "Perícia Adicional",
+        "descricao": "Você ganha proficiência em uma perícia, à sua escolha."
+      },
+      "talento": {
+        "nome": "Talento Inicial",
+        "descricao": "Você adquire um talento de sua escolha, seguindo as regras de talentos da campanha."
+      }
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "humano",
+      "variante",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Criar uma opção de 'Humano Padrão' que aplique automaticamente +1 em todos os seis atributos, tamanho Médio, deslocamento 9 m e idiomas (Comum + 1 à escolha).",
+      "Criar uma opção de 'Humano Variante' que permita escolher dois atributos para +1, uma perícia e um talento no nível 1.",
+      "Permitir que o jogador selecione uma etnia (Calishita, Chondathana, etc.) apenas como rótulo cosmético, afetando nomes sugeridos e aparência, mas não regras, a menos que o Mestre decida o contrário.",
+      "Marcar humanos como 'sem tendência preferencial', liberando qualquer alinhamento na criação de personagem.",
+      "Usar a grande diversidade humana como gancho para ganchos de história regionais: culturas, reinos, impérios, instituições e conflitos políticos."
+    ]
+  }
+}
+
+
+
+{
+  "raca": "Draconato",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Draconatos são humanoides com forte herança dracônica. Altos, imponentes e cobertos por escamas, são vistos como assustadores ou impressionantes pela maioria das outras raças. Vivem guiados por honra, disciplina e lealdade ao clã.",
+    "aparencia": "Draconatos lembram dragões em forma humanoide, sem asas e sem cauda. Costumam medir por volta de 1,95 m e pesar 150 kg ou mais. Possuem escamas pequenas e finas, normalmente em tons de bronze ou latão, mas também podem apresentar matizes escarlate, ferrugem, dourado ou cobre esverdeado. Mãos e pés terminam em garras fortes, com três dedos em cada mão. Em clãs com sangue de um tipo específico de dragão, as escamas podem ser de cores mais puras e intensas (vermelho, verde, azul, branco, preto, ouro, prata, latão, cobre ou bronze).",
+    "personalidade": "Draconatos são intensamente orientados por honra, disciplina e aperfeiçoamento pessoal. O fracasso é profundamente desconfortável para eles, e costumam se esforçar ao extremo antes de desistir. Respeitam competência, firmeza de caráter e dedicação. Podem parecer frios ou rígidos, mas essa postura vem de uma cultura baseada em dever, responsabilidade e reputação.",
+    "sociedade_e_cultura": "O clã é o centro de toda a vida draconata. A honra do clã vem antes até mesmo dos deuses. Cada indivíduo conhece sua posição, deveres e expectativas. A desonra grave pode resultar em expulsão e exílio, tornando o draconato 'sem clã'. A cultura valoriza a maestria em alguma arte, ofício ou disciplina – seja guerra, magia, artesanato ou liderança. Quando precisam de ajuda, primeiro recorrem ao próprio clã, depois a outros clãs draconatos, e só então a outras raças.",
+    "religiao_e_deuses": "A herança dracônica geralmente conecta os draconatos à grande guerra cósmica entre o bem e o mal, frequentemente representada por Bahamut (dragão metálico, ordem e justiça) e Tiamat (dragão cromático, tirania e destruição). Alguns clãs veneram Bahamut como ideal de honra e proteção; outros seguem ou temem Tiamat. Embora respeitem deuses, muitos draconatos ainda consideram o clã mais importante do que qualquer culto.",
+    "motivações_tipicas": "Draconatos aventureiros podem buscar restaurar a honra do clã, provar seu valor, reconquistar um nome perdido, servir como campeão de um ideal (Bahamut, Tiamat, ou outra crença), ou simplesmente testar sua própria excelência em desafios extremos. Exilados sem clã frequentemente se tornam mercenários, andarilhos ou heróis em busca de redenção.",
+    "relacoes_com_outras_racas": {
+      "visao_geral": "Por serem incomuns e de aparência intimidadora, draconatos tendem a ser vistos com cautela, desconfiança ou curiosidade, especialmente em vilas pequenas e regiões isoladas.",
+      "percepcao_comum": "Em áreas rurais, muitos presumem que um draconato é um monstro – sobretudo se suas escamas forem cromáticas. No entanto, desde que não estejam causando destruição direta, a reação costuma ser cautelosa em vez de puro pânico.",
+      "cosmopolitismo": "Em cidades grandes e cosmopolitas, os habitantes estão mais acostumados a raças exóticas, de modo que um draconato muitas vezes passa sem causar tanto alvoroço."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Draconatos tendem aos extremos morais. Muitos escolhem deliberadamente um lado da luta entre o bem e o mal. A maioria tende para o bem e honra, mas aqueles que seguem a tirania e ambição de Tiamat tornam-se vilões temidos.",
+    "ganchos_narrativos": [
+      "Você foi exilado do clã por uma acusação de desonra (justa ou injusta) e agora busca restaurar seu nome.",
+      "Seu clã jurou servir Bahamut, e você foi enviado ao mundo para destruir servos de Tiamat e outros grandes males.",
+      "Seu clã é devoto a Tiamat ou outra entidade sombria, mas você começou a questionar seus métodos e fugiu.",
+      "Você persegue a maestria absoluta em uma técnica de combate, magia ou arte, e aventuras são o campo de prova perfeito.",
+      "Você deve uma dívida de vida a um membro de outra raça que salvou você – e agora honra exige que o acompanhe."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Draconatos recebem um nome pessoal ao nascer, mas colocam o nome do clã antes do nome próprio, como forma de honra. Entre amigos íntimos ou membros do clã, é comum usar um nome de infância ou apelido que remeta a um hábito, evento marcante ou traço de personalidade.",
+    "masculinos": [
+      "Arjhan",
+      "Balasar",
+      "Bharash",
+      "Donaar",
+      "Ghesh",
+      "Heskan",
+      "Kriv",
+      "Medrash",
+      "Mehen",
+      "Nadarr",
+      "Pandjed",
+      "Patrin",
+      "Rhogar",
+      "Shamash",
+      "Shedinn",
+      "Tarhun",
+      "Torinn"
+    ],
+    "femininos": [
+      "Akra",
+      "Biri",
+      "Daar",
+      "Farideh",
+      "Harann",
+      "Flavilar",
+      "Jheri",
+      "Kava",
+      "Korinn",
+      "Mishann",
+      "Nala",
+      "Perra",
+      "Raiann",
+      "Sora",
+      "Surina",
+      "Thava",
+      "Uadjit"
+    ],
+    "infancia_ou_apelidos": [
+      "Climber",
+      "Earbender",
+      "Leaper",
+      "Pious",
+      "Shieldbiter",
+      "Zealous"
+    ],
+    "clas": [
+      "Clethtinthiallor",
+      "Daardendrian",
+      "Delmirev",
+      "Drachedandion",
+      "Fenkenkabradon",
+      "Kepeshkmolik",
+      "Kerrhylon",
+      "Kimbatuul",
+      "Linxakasendalor",
+      "Myastan",
+      "Nemmonis",
+      "Norixius",
+      "Ophinshtalajiir",
+      "Prexijandilin",
+      "Shestendeliath",
+      "Turnuroth",
+      "Verthisathurgiesh",
+      "Yarjerit"
+    ],
+    "exemplos_formato_completo": [
+      "Kepeshkmolik Arjhan",
+      "Norixius Farideh",
+      "Daardendrian Torinn",
+      "Myastan Surina"
+    ]
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Força aumenta em 2 e seu valor de Carisma aumenta em 1.",
+      "modificadores": {
+        "FOR": 2,
+        "CAR": 1
+      }
+    },
+    "idade": {
+      "descricao": "Draconatos crescem rápido. Caminham poucas horas após nascerem, atingem tamanho de uma criança humana de 10 anos aos 3 anos de idade e são considerados adultos aos 15. Vivem, em geral, até cerca de 80 anos."
+    },
+    "tendencia": {
+      "descricao": "Draconatos costumam escolher conscientemente um lado no conflito entre bem e mal. A maioria tende para o bem (honra, lealdade, disciplina), mas aqueles que seguem Tiamat ou forças malignas podem se tornar vilões formidáveis."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "São mais altos e pesados que humanos, normalmente com mais de 1,80 m de altura e mais de 125 kg. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "9 m",
+      "regras_especiais": null
+    },
+    "ancestral_draconico": {
+      "descricao": "Você possui um ancestral dracônico. Escolha um tipo de dragão na tabela a seguir. O tipo de dragão define o tipo de dano da sua arma de sopro e o tipo de dano ao qual você tem resistência.",
+      "tabela": [
+        {
+          "dragao": "Azul",
+          "tipo_dano": "Elétrico",
+          "forma_sopro": "Linha de 1,5 m x 9 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Branco",
+          "tipo_dano": "Frio",
+          "forma_sopro": "Cone de 4,5 m",
+          "teste_resistencia": "CON"
+        },
+        {
+          "dragao": "Bronze",
+          "tipo_dano": "Elétrico",
+          "forma_sopro": "Linha de 1,5 m x 9 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Cobre",
+          "tipo_dano": "Ácido",
+          "forma_sopro": "Linha de 1,5 m x 9 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Latão",
+          "tipo_dano": "Fogo",
+          "forma_sopro": "Linha de 1,5 m x 9 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Negro",
+          "tipo_dano": "Ácido",
+          "forma_sopro": "Linha de 1,5 m x 9 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Ouro",
+          "tipo_dano": "Fogo",
+          "forma_sopro": "Cone de 4,5 m",
+          "teste_resistencia": "DES"
+        },
+        {
+          "dragao": "Prata",
+          "tipo_dano": "Frio",
+          "forma_sopro": "Cone de 4,5 m",
+          "teste_resistencia": "CON"
+        },
+        {
+          "dragao": "Verde",
+          "tipo_dano": "Veneno",
+          "forma_sopro": "Cone de 4,5 m",
+          "teste_resistencia": "CON"
+        },
+        {
+          "dragao": "Vermelho",
+          "tipo_dano": "Fogo",
+          "forma_sopro": "Cone de 4,5 m",
+          "teste_resistencia": "DES"
+        }
+      ]
+    },
+    "arma_de_sopro": {
+      "nome": "Arma de Sopro",
+      "descricao": "Você pode usar uma ação para exalar energia destrutiva. Seu ancestral dracônico determina o tipo de dano, o formato da área e o tipo de teste de resistência afetado.",
+      "regras": {
+        "area": "Linha de 1,5 m x 9 m OU cone de 4,5 m, conforme o ancestral dracônico.",
+        "cd_resistencia": "8 + seu modificador de Constituição + seu bônus de proficiência",
+        "dano_por_nivel": [
+          { "nivel": 1, "dano": "2d6" },
+          { "nivel": 6, "dano": "3d6" },
+          { "nivel": 11, "dano": "4d6" },
+          { "nivel": 16, "dano": "5d6" }
+        ],
+        "aplicacao_dano": "Criatura sofre dano completo num fracasso no teste de resistência e metade do dano num sucesso.",
+        "recarga": "Após usar a arma de sopro, você deve completar um descanso curto ou longo para utilizá-la novamente."
+      }
+    },
+    "resistencia_a_dano": {
+      "descricao": "Você possui resistência ao tipo de dano associado ao seu ancestral dracônico (fogo, frio, elétrico, ácido, veneno etc.)."
+    },
+    "idiomas": {
+      "descricao": "Você pode falar, ler e escrever Comum e Dracônico.",
+      "lista": [
+        "Comum",
+        "Dracônico"
+      ],
+      "observacao": "O Dracônico é uma das línguas mais antigas do mundo e é amplamente utilizado no estudo de magia. Sua sonoridade é áspera, cheia de consoantes fortes e sílabas firmes."
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "draconato",
+      "draconic",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Na tela de criação de personagem, permitir escolher a raça Draconato, com campos obrigatórios para selecionar o Ancestral Dracônico.",
+      "Aplicar automaticamente os modificadores de atributo: +2 FOR e +1 CAR.",
+      "Gerar a arma de sopro com base no ancestral escolhido, preenchendo tipo de dano, forma (linha ou cone), atributo do teste (DES ou CON) e calculando a CD pela fórmula.",
+      "Escalar o dano da arma de sopro com o nível de personagem (2d6, 3d6, 4d6, 5d6) e controlar o uso por descanso curto/longo.",
+      "Aplicar resistência ao tipo de dano do ancestral dracônico no cálculo defensivo.",
+      "Permitir inserir o nome completo no padrão 'Nome do Clã + Nome Pessoal' e opcionalmente salvar também o apelido de infância.",
+      "Marcar Draconatos como raça 'incomum', para poder usar isso em ganchos narrativos (reação de aldeias pequenas, preconceito, curiosidade, etc.)."
+    ]
+  }
+}
+
+
+
+{
+  "raca": "Gnomo",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Gnomos são criaturas pequenas, curiosas e incrivelmente vivas. Eles enxergam a vida como um grande laboratório de experiências, piadas, invenções e descobertas. Vivem séculos e ainda assim agem como se não houvesse tempo suficiente para experimentar tudo que o mundo oferece.",
+    "aparencia": "Um gnomo típico mede por volta de 0,90 m, chegando até cerca de 1,20 m, e pesa entre 20 e 23 kg. Têm pele morena ou bronzeada, rostos marcados por sorrisos largos, narizes grandes e expressivos, olhos brilhantes e cheios de curiosidade. O cabelo tende a ser claro e arrepiado ou espetado, refletindo bem o temperamento inquieto. Gnomos machos costumam manter a barba bem aparada, às vezes com bigodes estilizados. As roupas em tons terrosos geralmente são decoradas com bordados, padrões coloridos ou pequenas joias e enfeites.",
+    "personalidade": "Gnomos são extrovertidos, falantes, curiosos e quase sempre otimistas. Falam rápido, pensam mais rápido ainda, e se empolgam com ideias, teorias e possibilidades. Adoram trocadilhos, pegadinhas inofensivas, truques e humor físico. Apesar disso, não são fúteis: quando se dedicam a algo sério (um experimento, um mecanismo, uma pesquisa), trabalham com foco enorme e perseverança, encarando falhas como parte natural do processo.",
+    "sociedade_e_cultura": "Comunidades gnômicas costumam ser movimentadas, barulhentas e cheias de oficinas, ferramentas, fumaça de experimentos, pequenas explosões e muitas risadas. Vivem em tocas e casas escavadas em colinas florestais ou regiões montanhosas, bem disfarçadas por construções inteligentes e pequenas ilusões. Suas casas são aconchegantes, bem iluminadas e cheias de bugigangas, protótipos e mecanismos estranhos. Muitos gnomos trabalham como engenheiros, lapidários, artífices, sabichões, inventores, alquimistas ou engenhoqueiros. Eles prezam a criatividade, a curiosidade e o aprendizado contínuo.",
+    "religiao_e_deuses": "Gnomos tendem a cultuar deuses ligados à invenção, conhecimento, truques, natureza ou artesanato, dependendo da sub-raça e da cultura local. Em geral, encaram a religião com um tom leve e festivo: celebrações são cheias de música, piadas e truques. Ainda assim, gnomos sérios e religiosos existem, dedicando suas longas vidas a catalogar o mundo, estudar magia ou aperfeiçoar alguma arte sagrada.",
+    "motivações_tipicas": "Gnomos se aventuram por curiosidade, sede de conhecimento, vontade de ver o mundo, desejo de testar invenções em situações extremas ou para ajudar amigos e comunidades. Alguns veem a aventura como um ‘experimento de campo’ em larga escala. Outros, amantes de gemas e itens raros, buscam tesouros como forma rápida (embora perigosa) de enriquecer – e de ter boas histórias para contar.",
+    "relacoes_com_outras_racas": {
+      "visao_geral": "Gnomos costumam ser amigáveis, curiosos e pouco preconceituosos. Gostam de praticamente qualquer um que tope ouvir suas ideias, rir de suas piadas ou dividir uma boa conversa.",
+      "anao": "Costumam respeitar o trabalho firme e a perícia dos anões em metal e pedra, embora a seriedade anã possa ser motivo de piadas. Parcerias entre engenhoqueiros gnomos e ferreiros anões produzem algumas das melhores criações do mundo.",
+      "elfo": "Admiram a graça e a magia élfica e gostam de trocar histórias, música e truques de ilusão. Elfos podem achar os gnomos um pouco ‘barulhentos demais’, mas em geral a relação é boa.",
+      "halfling": "Gnomos e halflings se dão muito bem: ambos apreciam conforto, boa comida e vida tranquila, mas gnomos costumam ser mais inquietos. Halflings veem gnomos como vizinhos excêntricos, porém adoráveis.",
+      "humano": "Humanos são fascinantes para gnomos porque fazem muito em pouco tempo. Gnomos gostam de ser tutores, artesãos ou conselheiros em famílias humanas, acompanhando várias gerações.",
+      "nota_sobre_outros": "É raro um gnomo ser genuinamente hostil sem um bom motivo. Quando se ofendem seriamente, podem ser surpreendentemente rancorosos e vingativos, mas isso é exceção, não regra."
+    },
+    "nota_sobre_subraca_incomum": {
+      "gnomos_das_profundezas": "Os svirfneblin (gnomos das profundezas) vivem no Subterrâneo. Ao contrário dos drow e duergar, não são intrinsecamente malignos, mas o ambiente duro os tornou mais sérios e fechados. Em regra oficial, suas características aparecem em suplementos específicos e podem ser tratadas como uma sub-raça extra opcional no sistema."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Gnomos tendem ao bem, valorizando alegria, amizade, criatividade e curiosidade. Em termos de ordem/caos, muitos pendem para o caos (engenhoqueiros, bardos, andarilhos), enquanto outros – pesquisadores, artífices, estudiosos – podem ser mais ordeiros. Mesmo quando trapaceiam, em geral é para pregar peças inofensivas, não para causar mal real.",
+    "ganchos_narrativos": [
+      "Você deixou sua comunidade porque ouviu falar de uma ruína antiga repleta de mecanismos e enigmas mágicos, e precisa ver com seus próprios olhos.",
+      "Uma invenção sua causou um ‘acidente épico’ na vila, e agora você decidiu sair pelo mundo tanto para estudar mais quanto para dar um tempo até o pessoal esquecer.",
+      "Você é tutor de uma família humana importante, mas um de seus pupilos se viu envolvido em algo perigoso, e você resolveu acompanhar o grupo para protegê-lo e observar o mundo.",
+      "Você está em busca de uma gema lendária ou artefato raro que é mencionado em velhos catálogos gnômicos – metade da motivação é a descoberta, a outra metade é poder contar a história depois.",
+      "Sua comunidade gnômica desapareceu ou foi forçada a se esconder após um desastre, e você busca aliados, conhecimento ou recursos para salvá-la."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Gnomos adoram nomes. Normalmente recebem nomes do pai, da mãe, de anciãos, de tios e de praticamente qualquer parente próximo, além de acumularem apelidos ao longo da vida. Entre outros povos (que não lidam bem com tantos nomes), um gnomo geralmente usa três: um nome pessoal, o nome do clã e um apelido. Ao escolher esses três, ele tende a selecionar a combinação que acha mais engraçada ou marcante.",
+    "masculinos": [
+      "Alston",
+      "Alvyn",
+      "Boddynock",
+      "Brocc",
+      "Burgell",
+      "Dimble",
+      "Eldon",
+      "Erky",
+      "Fonkin",
+      "Frug",
+      "Gerbo",
+      "Gimble",
+      "Glim",
+      "Jebeddo",
+      "Kellen",
+      "Namfoodle",
+      "Orryn",
+      "Roondar",
+      "Seebo",
+      "Sindri",
+      "Warryn",
+      "Wrenn",
+      "Zook"
+    ],
+    "femininos": [
+      "Bimpnottin",
+      "Breena",
+      "Caramip",
+      "Carlin",
+      "Donella",
+      "Duvamil",
+      "Ella",
+      "Ellyjobell",
+      "Ellywick",
+      "Lilli",
+      "Loopmottin",
+      "Lorilla",
+      "Mardnab",
+      "Nissa",
+      "Nyx",
+      "Oda",
+      "Orla",
+      "Roywyn",
+      "Shamil",
+      "Tana",
+      "Waywocket",
+      "Zanna"
+    ],
+    "clas": [
+      "Beren",
+      "Daergel",
+      "Folkor",
+      "Garrick",
+      "Nackle",
+      "Murnig",
+      "Ningel",
+      "Raulnor",
+      "Scheppen",
+      "Timbers",
+      "Turen"
+    ],
+    "apelidos": [
+      "Beberrão",
+      "Pó de Coração",
+      "Texugo",
+      "Manto",
+      "Tranca-Dupla",
+      "Bate-Carteira",
+      "Fnipper",
+      "Ku",
+      "Nim",
+      "Um Sapato",
+      "Pústula",
+      "Gema Faiscante",
+      "Pato Desajeitado"
+    ],
+    "exemplos_formato_completo": [
+      "Folkor Burgell \"Bate-Carteira\"",
+      "Daergel Nissa \"Gema Faiscante\"",
+      "Nackle Alston \"Tranca-Dupla\"",
+      "Timbers Roywyn \"Pó de Coração\""
+    ]
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Inteligência aumenta em 2.",
+      "modificadores": {
+        "INT": 2
+      }
+    },
+    "idade": {
+      "descricao": "Gnomos amadurecem na mesma taxa que humanos, mas são considerados adultos por volta dos 40 anos. Podem viver entre 350 e 500 anos."
+    },
+    "tendencia": {
+      "descricao": "Gnomos tendem a ser bons. Os mais ordeiros são estudiosos, artesãos, engenheiros e pesquisadores. Os mais caóticos são menestréis, engenhoqueiros errantes e joalheiros excêntricos. Até mesmo os trapaceiros costumam ser mais brincalhões do que cruéis."
+    },
+    "tamanho": {
+      "categoria": "Pequeno",
+      "descricao": "Gnomos têm entre 0,90 m e 1,20 m de altura, com peso médio em torno de 20 kg. Seu tamanho é Pequeno."
+    },
+    "deslocamento": {
+      "caminhada": "7.5 m",
+      "regras_especiais": null
+    },
+    "visao_no_escuro": {
+      "nome": "Visão no Escuro",
+      "descricao": "Acostumado à vida subterrânea, você tem visão superior em escuridão e penumbra.",
+      "regras": {
+        "alcance": "18 m",
+        "penumbra": "Você enxerga na penumbra como se fosse luz plena.",
+        "escuridao": "Você enxerga na escuridão como se fosse penumbra.",
+        "cores": "Você não distingue cores na escuridão, apenas tons de cinza."
+      }
+    },
+    "esperteza_gnomica": {
+      "nome": "Esperteza Gnômica",
+      "descricao": "Você possui vantagem em todos os testes de resistência de Inteligência, Sabedoria e Carisma contra magia.",
+      "regras": {
+        "vantagem_em": [
+          "Testes de resistência de INT contra magia",
+          "Testes de resistência de SAB contra magia",
+          "Testes de resistência de CAR contra magia"
+        ]
+      }
+    },
+    "idiomas": {
+      "descricao": "Você sabe falar, ler e escrever Comum e Gnômico.",
+      "lista": [
+        "Comum",
+        "Gnômico"
+      ],
+      "observacao": "O Gnômico usa o alfabeto Anão e é famoso por textos longos, detalhados e catálogos exaustivos de conhecimento natural, técnico e mágico."
+    },
+    "sub_racas": {
+      "gnomo_da_floresta": {
+        "nome": "Gnomo da Floresta",
+        "descricao": "Gnomos da floresta são reservados e bem adaptados à vida em bosques densos. Usam ilusões, truques e furtividade natural para esconder suas comunidades. São amigáveis com elfos, criaturas feéricas bondosas e pequenos animais da floresta.",
+        "aumento_valor_habilidade": {
+          "descricao": "Seu valor de Destreza aumenta em 1.",
+          "modificadores": {
+            "DES": 1
+          }
+        },
+        "tracos_adicionais": {
+          "ilusionista_nato": {
+            "nome": "Ilusionista Nato",
+            "descricao": "Você conhece o truque ilusão menor.",
+            "regras": {
+              "magia": "ilusão menor",
+              "atributo_de_conjuracao": "INT"
+            }
+          },
+          "falar_com_bestas_pequenas": {
+            "nome": "Falar com Bestas Pequenas",
+            "descricao": "Através de sons e gestos, você pode se comunicar com bestas Pequenas ou menores.",
+            "regras": {
+              "tipo_comunicacao": "Ideias simples (emoções, intenções básicas, perigos, necessidades imediatas).",
+              "alvo": "Bestas Pequenas ou menores."
+            }
+          }
+        }
+      },
+      "gnomo_das_rochas": {
+        "nome": "Gnomo das Rochas",
+        "descricao": "Gnomos das rochas são os gnomos mais comuns nos mundos de D&D. São resistentes, inventivos e profundamente ligados à engenharia, alquimia e mecanismos complexos. Muitas das famosas criações gnômicas vêm dessa sub-raça.",
+        "aumento_valor_habilidade": {
+          "descricao": "Seu valor de Constituição aumenta em 1.",
+          "modificadores": {
+            "CON": 1
+          }
+        },
+        "tracos_adicionais": {
+          "conhecimento_de_artifice": {
+            "nome": "Conhecimento de Artífice",
+            "descricao": "Você tem talento especial para lembrar e analisar itens mágicos, objetos alquímicos e mecanismos.",
+            "regras": {
+              "efeito": "Ao fazer um teste de INT (História) relacionado a itens mágicos, objetos alquímicos ou mecanismos tecnológicos, você pode adicionar o dobro do seu bônus de proficiência ao teste."
+            }
+          },
+          "engenhoqueiro": {
+            "nome": "Engenhoqueiro",
+            "descricao": "Você constrói pequenos mecanismos movidos a engenhocas e criatividade gnômica.",
+            "regras_gerais": {
+              "proficiência": "Ferramentas de engenhoqueiro (ferramentas de artesão específicas).",
+              "construcao": {
+                "tempo": "1 hora por mecanismo",
+                "custo_materiais": "10 po por mecanismo",
+                "tamanho": "Miúdo",
+                "atributos": {
+                  "CA": 5,
+                  "PV": 1
+                },
+                "duracao": "24 horas (ou até ser reparado por mais 1 hora) ou até você desmantelá-lo usando uma ação."
+              },
+              "limite": "Você pode ter até 3 mecanismos ativos ao mesmo tempo."
+            },
+            "tipos_de_mecanismo": [
+              {
+                "tipo": "Brinquedo Mecânico",
+                "descricao": "Um brinquedo mecânico em forma de animal, monstro ou pessoa (sapo, rato, pássaro, dragão, soldado, etc).",
+                "efeito": "Quando colocado no chão, move-se 1,5 m por turno em direção aleatória e faz sons apropriados à criatura que representa."
+              },
+              {
+                "tipo": "Isqueiro Mecânico",
+                "descricao": "Um mecanismo que produz uma pequena chama.",
+                "efeito": "Você pode usar sua ação para acender uma vela, tocha ou fogueira com a chama."
+              },
+              {
+                "tipo": "Caixa de Música",
+                "descricao": "Uma pequena caixa que toca uma música.",
+                "efeito": "Quando aberta, toca uma canção em volume moderado até terminar ou até ser fechada."
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "gnomo",
+      "gnome",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Na criação de personagem, permitir escolher a raça Gnomo e, em seguida, selecionar a sub-raça: Gnomo da Floresta ou Gnomo das Rochas.",
+      "Aplicar automaticamente +2 INT ao escolher Gnomo, e depois +1 DES (Gnomo da Floresta) ou +1 CON (Gnomo das Rochas).",
+      "Marcar o personagem como tamanho Pequeno, afetando empunhadura de armas pesadas e eventuais regras de espaço/alcance.",
+      "Configurar deslocamento base como 7,5 m.",
+      "Adicionar automaticamente Visão no Escuro (18 m) e Esperteza Gnômica (vantagem em testes de resistência de INT, SAB e CAR contra magia).",
+      "Controlar idiomas iniciais como Comum + Gnômico, com possibilidade de idiomas adicionais de acordo com classe/antecedente.",
+      "Para Gnomo da Floresta: adicionar o truque ilusão menor à lista de magias conhecidas (com atributo de conjuração INT) e registrar a habilidade de Falar com Bestas Pequenas como recurso narrativo (sem testes, salvo decisão do Mestre).",
+      "Para Gnomo das Rochas: implementar Conhecimento de Artífice alterando a fórmula de testes de INT (História) apropriados, e adicionar Engenhoqueiro como um recurso que permite registrar até 3 mecanismos ativos, com tipo e descrição.",
+      "Permitir armazenamento de múltiplos nomes (pessoal, clã, apelido) e exibir um nome ‘curto’ padrão em interfaces mais compactas.",
+      "Tratar gnomos como raça ‘amigável e curiosa’ para ganchos de roleplay no sistema (eventos aleatórios, reações de NPCs, bônus em interações sociais em certos contextos, se o sistema tiver esse nível de detalhe)."
+    ],
+    "notas_homebrew": [
+      "Caso queira incluir Gnomos das Profundezas (svirfneblin), crie uma terceira sub-raça com foco em furtividade, camuflagem em pedra e resistência típica do Subterrâneo, seguindo suplementos oficiais.",
+      "Você pode expor Esperteza Gnômica no sistema como um modificador genérico de ‘vantagem contra magia em testes de resistência de atributos mentais’, facilitando reuso em outras raças/classe/features que façam algo semelhante."
+    ]
+  }
+}
+
+{
+  "raca": "Meio-Elfo",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Meio-elfos são filhos de dois mundos: humano e élfico. Muitos dizem que eles reúnem o melhor de ambos – a curiosidade e ambição humanas, somadas à sensibilidade, amor à natureza e apuro artístico dos elfos. Ao mesmo tempo, raramente se sentem totalmente pertencentes a qualquer um dos dois povos.",
+    "aparencia": "Fisicamente, os meio-elfos ficam exatamente entre humanos e elfos. Não são tão esbeltos e etéreos quanto os elfos, nem tão largos ou robustos quanto muitos humanos. Medem entre 1,50 m e 1,80 m e pesam entre 50 kg e 90 kg. Podem ter pelos faciais e às vezes deixam barba crescer para reforçar ou esconder sua origem. A coloração da pele, cabelos e traços é extremamente variada, combinando características humanas e élficas; no entanto, é comum herdarem os olhos marcantes de seu progenitor élfico.",
+    "personalidade": "A personalidade de um meio-elfo costuma ser marcada por contraste: inquietos demais para o ritmo lento dos elfos, mas longevos e contemplativos demais para a maioria dos humanos. Muitos desenvolvem forte independência, senso de liberdade e resistência a autoridades rígidas. Podem ser extrovertidos, carismáticos e diplomáticos – acostumados a navegar em culturas diferentes – ou, ao contrário, tornar-se reservados e desconfiados após uma vida de preconceito e rejeição.",
+    "sociedade_e_cultura": "Meio-elfos não possuem nações próprias. Em geral, crescem em comunidades humanas ou élficas, sempre ligeiramente deslocados. Em grandes cidades onde humanos e elfos convivem, meio-elfos podem ser numerosos o bastante para formar pequenos bairros e núcleos sociais. Eles tendem a gravitar uns para os outros por empatia – só outro meio-elfo entende completamente o que é viver entre dois mundos. Em regiões onde são raros, podem passar anos sem encontrar outro membro da própria raça.",
+    "religiao_e_deuses": "A fé dos meio-elfos, em geral, reflete o ambiente em que cresceram. Criados entre humanos, costumam seguir os deuses humanos de guerra, comércio, civilização ou conhecimento. Criados entre elfos, tendem a cultuar divindades élficas ligadas à natureza, arte, magia ou liberdade. Alguns desenvolvem uma espiritualidade própria, híbrida, misturando rituais humanos e élficos ou mesmo rejeitando religiões organizadas em favor de uma fé mais pessoal.",
+    "motivações_tipicas": "Muitos meio-elfos se aventuram para fugir do sentimento de não pertencimento e construir seu próprio lugar no mundo. Outros seguem a curiosidade élfica por viagens e a ambição humana por feitos grandiosos, buscando fama, glória ou respostas sobre sua identidade. Também podem ser puxados para a aventura por trabalhos diplomáticos, missões como intérpretes entre culturas, ou ainda por rejeição, exílio e conflitos familiares.",
+    "relacoes_com_outras_racas": {
+      "visao_geral": "Por transitarem entre culturas, meio-elfos aprendem cedo a ler pessoas, amenizar conflitos e achar pontos em comum. Isso não impede que sofram preconceito de ambos os lados, mas os torna excelentes mediadores e negociadores.",
+      "anao": "Anões podem ver meio-elfos com um misto de curiosidade e cautela. Respeitam sua tenacidade e coragem, mas podem desconfiar de sua ‘inconstância’ ou herança élfica. Relações duradouras de amizade com anões são possíveis quando o meio-elfo prova lealdade.",
+      "elfo": "Elfos enxergam meio-elfos como parentes próximos, porém ‘apressados’ e efêmeros. Ao mesmo tempo, alguns os consideram impuros ou fora de lugar nas cortes élficas. Os mais sábios enxergam nos meio-elfos pontes valiosas com o mundo humano.",
+      "halfling": "Halflings costumam se dar bem com meio-elfos, que apreciam sua leveza, otimismo e hospitalidade. Em comunidades rurais e vilas pacíficas, meio-elfos frequentemente são recebidos como viajantes bem-vindos.",
+      "humano": "Entre humanos, meio-elfos podem ser vistos como exóticos, nobres, estranhos ou até suspeitos – depende da cultura local. Sua aparência incomum pode abrir portas sociais, mas também erguer barreiras. Ainda assim, cidades humanas costumam ser os locais onde eles têm mais facilidade para se estabelecer.",
+      "nota_social": "Como negociadores natos, meio-elfos costumam ser bons líderes de grupos mistos, porta-vozes de companhias de aventureiros ou contatos diplomáticos entre cidades, guildas e reinos."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Meio-elfos herdam a veia caótica dos elfos: prezam liberdade, expressão pessoal e pouca paciência com regras rígidas ou hierarquias autoritárias. Eles podem ser bondosos, neutros ou até mais egoístas, mas o traço marcante é a aversão a controle e a vontade de definir o próprio caminho.",
+    "ganchos_narrativos": [
+      "Você cresceu em uma corte élfica, mas nunca foi realmente aceito. Cansado de séculos de condescendência, decidiu partir para o mundo humano e provar que pode ser herói por conta própria.",
+      "Filho de um nobre humano e de uma amante élfica, você foi mantido em segredo e agora vaga pelo mundo em busca de um lugar onde não seja uma vergonha de família.",
+      "Você atua como mensageiro e diplomata entre uma cidade humana e uma comunidade élfica, até que um conflito ameaça explodir e você precisa equilibrar lealdades divididas.",
+      "Criado como um andarilho nas florestas, você aprendeu a sobreviver longe das cidades. A aventura é apenas uma extensão natural dessa vida livre.",
+      "Você ouviu falar de outros meio-elfos que formaram uma pequena comunidade em uma cidade distante, e decidiu viajar até lá para descobrir se, finalmente, poderá chamar algum lugar de lar."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Meio-elfos utilizam tanto nomes humanos quanto élficos. Como forma de marcar sua identidade híbrida, muitos escolhem deliberadamente o tipo de nome que contrasta com o ambiente em que cresceram: meio-elfos criados entre humanos escolhem nomes élficos; os criados entre elfos escolhem nomes humanos. Em configurações mais cosmopolitas, podem mesclar sobrenomes humanos com nomes próprios élficos ou vice-versa.",
+    "masculinos_exemplos": [
+      "Tanis",
+      "Arannis",
+      "Darin",
+      "Varis",
+      "Theren",
+      "Rowan",
+      "Erevan",
+      "Morn",
+      "Peren",
+      "Lander"
+    ],
+    "femininos_exemplos": [
+      "Liriel",
+      "Althaea",
+      "Mira",
+      "Sariel",
+      "Keyleth",
+      "Elia",
+      "Naivara",
+      "Rowena",
+      "Meriele",
+      "Shava"
+    ],
+    "sobrenomes_exemplos": [
+      "Galanodel",
+      "Amastacia",
+      "Brightwood",
+      "Evenwood",
+      "Liadon",
+      "Windrivver",
+      "Nailo",
+      "Greycastle"
+    ],
+    "observacao": "Você pode usar qualquer combinação de nomes humanos (de etnias humanas da sua ambientação) e sobrenomes élficos (ou o inverso). O importante é que o nome reflita a mistura cultural do personagem."
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Carisma aumenta em 2 e outros dois valores de habilidade, à sua escolha, aumentam em 1.",
+      "modificadores": {
+        "CAR": 2,
+        "outros_dois_a_escolha": 1
+      },
+      "observacao": "No sistema, você deve permitir que o jogador selecione dois atributos diferentes (exceto CAR, se quiser seguir RAW estritamente) para receberem +1 cada."
+    },
+    "idade": {
+      "descricao": "Meio-elfos atingem a maturidade física e social por volta dos 20 anos, como os humanos. No entanto, vivem muito mais, comumente chegando a 180 anos.",
+      "faixa_aproximada": "20–180 anos"
+    },
+    "tendencia": {
+      "descricao": "Meio-elfos tendem ao caos. Valorizam liberdade, expressão pessoal e resistem a serem controlados. Podem ser bons, neutros ou até inclinados ao egoísmo, mas raramente são rigidamente ordeiros."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "Meio-elfos têm altura semelhante à dos humanos, variando entre 1,50 m e 1,80 m. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "9 m",
+      "regras_especiais": null
+    },
+    "visao_no_escuro": {
+      "nome": "Visão no Escuro",
+      "descricao": "Graças ao seu sangue élfico, você enxerga melhor em ambientes de pouca luz.",
+      "regras": {
+        "alcance": "18 m",
+        "penumbra": "Você enxerga na penumbra como se fosse luz plena.",
+        "escuridao": "Você enxerga na escuridão como se fosse penumbra.",
+        "cores": "Você não distingue cores na escuridão, apenas tons de cinza."
+      }
+    },
+    "ancestral_feerico": {
+      "nome": "Ancestral Feérico",
+      "descricao": "Seu sangue élfico lhe concede resistência a certos efeitos mentais.",
+      "regras": {
+        "vantagem_em": [
+          "Testes de resistência para resistir a ser enfeitiçado (encantamento)."
+        ],
+        "imunidades": [
+          "Magia não pode colocá-lo para dormir (efeitos de sono mágicos)."
+        ]
+      }
+    },
+    "versatilidade_em_pericia": {
+      "nome": "Versatilidade em Perícia",
+      "descricao": "Você é naturalmente adaptável e aprende a lidar com diferentes ambientes sociais.",
+      "regras": {
+        "efeito": "Você ganha proficiência em duas perícias, à sua escolha.",
+        "observacao": "No sistema, exiba uma lista de perícias disponíveis e permita escolher duas quando a raça Meio-Elfo for selecionada."
+      }
+    },
+    "idiomas": {
+      "descricao": "Você sabe falar, ler e escrever Comum, Élfico e um idioma adicional à sua escolha.",
+      "lista_base": [
+        "Comum",
+        "Élfico"
+      ],
+      "idiomas_adicionais": 1,
+      "observacao": "O idioma adicional costuma refletir o ambiente em que o meio-elfo cresceu (por exemplo: idioma de um povo vizinho, de um império onde morou, ou de mercadores com quem conviveu)."
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "meio-elfo",
+      "half-elf",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Na criação de personagem, ao escolher a raça Meio-Elfo, aplicar automaticamente +2 em Carisma.",
+      "Após aplicar o bônus de Carisma, abrir uma interface para o jogador selecionar dois outros atributos (FOR, DES, CON, INT, SAB ou até CAR, se a mesa permitir variação) para receberem +1 cada.",
+      "Configurar o personagem como tamanho Médio, com deslocamento base de 9 m.",
+      "Aplicar Visão no Escuro com alcance de 18 m, com as mesmas regras de outros elfos.",
+      "Adicionar o traço Ancestral Feérico: vantagem em testes de resistência contra ser enfeitiçado e imunidade a efeitos mágicos que imponham sono.",
+      "Na etapa de perícias, além das perícias concedidas por classe e antecedente, permitir a escolha de mais duas perícias quaisquer (Versatilidade em Perícia).",
+      "Definir idiomas iniciais como: Comum + Élfico + 1 idioma adicional à escolha do jogador.",
+      "Na ficha, indicar ‘Origem Mista’ ou ‘Herdeiro de Dois Mundos’ como rótulo de roleplay, para facilitar ganchos narrativos e reações de NPCs.",
+      "Caso o sistema tenha eventos sociais ou testes de diplomacia, considerar bônus situacionais (ou apenas ganchos narrativos) quando o meio-elfo age como mediador entre culturas diferentes."
+    ],
+    "notas_homebrew": [
+      "Você pode criar variações culturais de meio-elfos (por exemplo: meio-elfos da floresta, da cidade, dos mares), adicionando proficiências específicas de armas, ferramentas ou perícias, sem alterar os traços centrais da raça.",
+      "Se quiser tornar meio-elfos ainda mais ‘diplomáticos’ no seu cenário, é possível adicionar um pequeno bônus em testes de Carisma (Persuasão) quando atuarem como mediadores entre duas culturas diferentes.",
+      "Para campanhas focadas em conflito entre elfos e humanos, o Mestre pode usar o histórico de origem do meio-elfo para gerar eventos de preconceito, favoritismo, conflitos familiares e dilemas de lealdade."
+    ]
+  }
+}
+
+
+{
+  "raca": "Meio-Orc",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Meio-orcs são frutos da união entre humanos e orcs, carregando em si força bruta, ferocidade e instinto de batalha dos orcs, temperados pela resiliência, ambição e certa disciplina dos humanos. Vivem entre a brutalidade tribal e o preconceito das terras civilizadas, sempre lutando por um lugar onde sejam mais do que apenas ‘monstros’.",
+    "aparencia": "Meio-orcs são grandes, musculosos e intimidadores. Têm pele acinzentada (do cinza claro ao verde-acinzentado), testas largas, mandíbulas salientes, presas ou dentes proeminentes e corpos robustos. Medem entre 1,80 m e 2,10 m, pesando geralmente entre 90 kg e 125 kg. Cicatrizes são extremamente comuns: marcas de batalha podem ser símbolos de orgulho, enquanto cicatrizes de chibata ou queimaduras podem denunciar escravidão ou vergonha. Mesmo vivendo em cidades humanas, um meio-orc costuma carregar essas marcas no corpo.",
+    "personalidade": "A herança orc faz com que meio-orcs sintam emoções de forma intensa. A raiva ferve rápido, insultos são como facadas e a tristeza pode derrubá-los profundamente. Em contrapartida, quando riem, riem alto; quando festejam, o fazem com toda a alma. Tendem a agir antes de pensar, preferindo resolver problemas com força e presença física. Aqueles que aprendem autocontrole conseguem canalizar essa fúria para a batalha, proteção de aliados ou objetivos pessoais.",
+    "sociedade_e_cultura": "A maioria dos meio-orcs cresce em tribos orcs, onde sua força e ferocidade são mais importantes do que a pureza do sangue. Se forem fracos, morrem cedo. Se forem fortes, podem subir na hierarquia, às vezes até liderar tribos inteiras. Quando vivem entre humanos, normalmente habitam os bairros mais pobres, favelas e regiões violentas, trabalhando como guarda-costas, mercenários, gladiadores ou mão de obra pesada. Em ambos os ambientes, precisam provar constantemente seu valor.",
+    "religiao_e_deuses": "Gruumsh, o deus caolho dos orcs, costuma assombrar os sonhos e o imaginário dos meio-orcs, mesmo daqueles que não desejam segui-lo. Alguns o veneram abertamente e exaltam seu nome em combate; outros vivem em conflito interno, lutando para se afastar da influência maligna. Em ambientes humanos, meio-orcs podem aderir a deuses da guerra, redenção, força ou liberdade, buscando escapar do caminho de destruição previsto por Gruumsh.",
+    "motivações_tipicas": "Muitos meio-orcs se aventuram por necessidade: fugir de tribos brutais, escapar de preconceitos, ganhar a vida como mercenários ou provar que não são monstros. Outros são atraídos pelo combate em si, vendo na vida de aventureiro uma oportunidade constante de testar sua força. Alguns buscam redenção, tentando quebrar o ciclo de ódio que herdaram; outros, ao contrário, abraçam totalmente sua natureza feroz e tornam-se temidos guerreiros e vilões.",
+    "relacoes_com_outras_racas": {
+      "visao_geral": "Meio-orcs costumam ser vistos com desconfiança, medo ou desprezo. Eles aprendem a sobreviver através de intimidação, lealdade feroz ou tentando provar que podem ser mais do que sua aparência sugere.",
+      "anao": "Anões geralmente apreciam força, coragem e honestidade direta – três qualidades que muitos meio-orcs têm de sobra. Ainda assim, podem desconfiar da herança orc, sobretudo se suas terras já sofreram ataques de tribos orcs.",
+      "elfo": "Elfos tendem a desconfiar profundamente dos orcs, o que se reflete também no tratamento aos meio-orcs. Mesmo assim, alguns elfos mais sábios enxergam neles indivíduos capazes de romper com a brutalidade de Gruumsh.",
+      "halfling": "Halflings podem sentir medo inicial, mas muitas vezes são os primeiros a perceber bondade genuína sob a aparência assustadora. Meio-orcs que protegem vilas halflings podem se tornar heróis locais.",
+      "humano": "Humanos são, em geral, os mais abertos a aceitar meio-orcs – especialmente em regiões fronteiriças e cidades violentas onde força é valorizada. Ainda assim, preconceito e estereótipos são muito comuns, e um meio-orc precisa provar repetidamente que é confiável."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Meio-orcs tendem ao caos e raramente são naturalmente voltados ao bem. A violência, a impulsividade e a influência de Gruumsh os puxam para escolhas brutais, porém nada impede que um meio-orc lute contra isso. Interpretar um meio-orc é explorar o conflito entre fúria e autocontrole, brutalidade e honra, destino e escolha.",
+    "ganchos_narrativos": [
+      "Você foi criado em uma tribo orc, mas presenciou atrocidades que o fizeram questionar a fé em Gruumsh. Fugiu para as terras humanas em busca de um novo caminho.",
+      "Filho de um general humano e de uma prisioneira orc, você nunca foi plenamente aceito na corte. Agora, luta para provar seu valor no campo de batalha e além dele.",
+      "Acusado injustamente de um crime por causa de sua aparência, você virou aventureiro para encontrar os verdadeiros culpados e limpar seu nome.",
+      "Era o campeão de um poço de gladiadores, mas decidiu usar sua força para proteger os fracos em vez de diverti-los com sangue.",
+      "Você ainda escuta a voz de Gruumsh em seus sonhos, incitando ódio e destruição. Aventurar-se é a forma que encontrou de escolher, a cada batalha, se cede à fúria ou a domina."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Meio-orcs recebem nomes conforme o povo entre os quais foram criados. Criados em tribos orcs, carregam nomes duros e guturais típicos dos orcs. Criados entre humanos, recebem nomes humanos – mas muitos adotam posteriormente nomes orcs para parecerem mais temíveis ou reafirmarem sua origem. Da mesma forma, meio-orcs urbanos podem mesclar nomes humanos com sobrenomes ou apelidos inspirados em façanhas de batalha.",
+    "masculinos_orc_exemplos": [
+      "Dench",
+      "Feng",
+      "Gell",
+      "Henk",
+      "Holg",
+      "Imsh",
+      "Keth",
+      "Krusk",
+      "Mhurren",
+      "Ront",
+      "Shump",
+      "Thokk"
+    ],
+    "femininos_orc_exemplos": [
+      "Baggi",
+      "Emen",
+      "Engong",
+      "Kansif",
+      "Myev",
+      "Neega",
+      "Ovak",
+      "Ownka",
+      "Shautha",
+      "Sutha",
+      "Vola",
+      "Volen",
+      "Yevelda"
+    ],
+    "humanos_exemplos": [
+      "Bor",
+      "Diero",
+      "Kara",
+      "Natali",
+      "Marlon",
+      "Ronan",
+      "Elaine",
+      "Tessa"
+    ],
+    "observacao": "Em fichas, você pode permitir que o jogador escolha livremente entre listas de nomes humanos da sua ambientação e nomes orcs. Apelidos baseados em cicatrizes, feitos ou reputação também combinam muito com meio-orcs (por exemplo: ‘Quebra-Torres’, ‘Cicatriz de Ferro’, ‘Punho de Pedra’)."
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Força aumenta em 2 e seu valor de Constituição aumenta em 1.",
+      "modificadores": {
+        "FOR": 2,
+        "CON": 1
+      }
+    },
+    "idade": {
+      "descricao": "Meio-orcs amadurecem um pouco antes dos humanos, atingindo a idade adulta aos 14 anos. Envelhecem mais rápido e raramente passam dos 75 anos.",
+      "faixa_aproximada": "14–75 anos"
+    },
+    "tendencia": {
+      "descricao": "Meio-orcs têm tendência natural ao caos, graças ao sangue orc. Não são fortemente inclinados ao bem. Criados entre orcs e confortáveis com essa cultura tendem ao mal; aqueles que buscam outro estilo de vida podem ser neutros ou raros exemplos de genuína bondade."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "Meio-orcs são maiores e mais largos que humanos, variando entre 1,80 m e 2,10 m de altura. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "9 m",
+      "regras_especiais": null
+    },
+    "visao_no_escuro": {
+      "nome": "Visão no Escuro",
+      "descricao": "O sangue orc permite que você enxergue melhor em condições de pouca luz.",
+      "regras": {
+        "alcance": "18 m",
+        "penumbra": "Você enxerga na penumbra como se fosse luz plena.",
+        "escuridao": "Você enxerga na escuridão como se fosse penumbra.",
+        "cores": "Você não distingue cores na escuridão, apenas tons de cinza."
+      }
+    },
+    "ameacador": {
+      "nome": "Ameaçador",
+      "descricao": "Sua presença intimidadora faz com que outros pensem duas vezes antes de enfrentá-lo.",
+      "regras": {
+        "efeito": "Você adquire proficiência na perícia Intimidação."
+      }
+    },
+    "resistencia_implacavel": {
+      "nome": "Resistência Implacável",
+      "descricao": "Você se recusa a cair facilmente. Sua tenacidade o mantém de pé quando outros tombariam.",
+      "regras": {
+        "efeito": "Quando você é reduzido a 0 pontos de vida, mas não é morto imediatamente, você pode ficar com 1 ponto de vida em vez disso.",
+        "recarga": "Você não pode usar esta característica novamente até completar um descanso longo."
+      }
+    },
+    "ataques_selvagens": {
+      "nome": "Ataques Selvagens",
+      "descricao": "Sua brutalidade torna seus golpes críticos ainda mais devastadores.",
+      "regras": {
+        "efeito": "Quando você obtém um acerto crítico com um ataque corpo-a-corpo com arma, você pode rolar um dos dados de dano da arma mais uma vez e adicionar o resultado ao dano extra do acerto crítico."
+      }
+    },
+    "idiomas": {
+      "descricao": "Você sabe falar, ler e escrever Comum e Orc.",
+      "lista_base": [
+        "Comum",
+        "Orc"
+      ],
+      "observacao": "O Orc é um idioma duro, cheio de consoantes fortes e rugidos. Ele não possui alfabeto próprio, utilizando o alfabeto Anão para registro escrito."
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "meio-orc",
+      "half-orc",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Na criação de personagem, ao selecionar a raça Meio-Orc, aplicar automaticamente +2 em FOR e +1 em CON.",
+      "Definir o personagem como tamanho Médio, com deslocamento base de 9 m.",
+      "Conceder Visão no Escuro com alcance de 18 m, com as mesmas regras de outros povos com visão no escuro.",
+      "Adicionar automaticamente proficiência em Intimidação (traço Ameaçador). Se o sistema já tiver um gerenciador de perícias, marcar Intimidação como ‘fixa’ pela raça.",
+      "Implementar Resistência Implacável como gatilho quando o personagem for reduzido a 0 PV: oferecer opção de ficar com 1 PV se a habilidade estiver disponível. Marcar como ‘usada’ até o próximo descanso longo.",
+      "Implementar Ataques Selvagens como uma regra adicional para ataques críticos corpo-a-corpo: ao confirmar um crítico, rolar um dado adicional de dano da arma e somar ao dano extra.",
+      "Definir idiomas iniciais: Comum + Orc. Opcionalmente, permitir idiomas adicionais através de antecedente, classe ou talentos.",
+      "Na interface de roleplay/NPCs, considerar reações sociais diferenciadas a meio-orcs em vilas humanas (preconceito, medo, respeito pela força) e em tribos orcs (teste de força e lealdade)."
+    ],
+    "notas_homebrew": [
+      "Para campanhas que focam em redenção, o Mestre pode oferecer backgrounds específicos de meio-orc (Exilado da Tribo, Gladiador Libertado, Filho de Guerra, etc.) com proficiências adicionais em perícias sociais ou de sobrevivência.",
+      "Se quiser enfatizar ainda mais a ferocidade, é possível adicionar um pequeno bônus situacional em testes de Força relacionados a quebrar portas, escapar de contenções ou intimidar, quando o meio-orc estiver ferido (por exemplo, com menos da metade dos PV).",
+      "Em cenários onde o ódio aos orcs é muito forte, o Mestre pode usar a raça como gancho para tramas sobre preconceito, preconceitos internos do grupo, dilemas morais e a luta do personagem para ser reconhecido como indivíduo, não como estereótipo."
+    ]
+  }
+}
+{
+  "raca": "Tiefling",
+  "categoria": "Raça Jogável",
+  "fonte": "D&D 5ª Edição – Livro do Jogador (adaptado PT-BR)",
+  "descricao_geral": {
+    "visao_geral": "Tieflings são descendentes de humanos marcados por um pacto ou influência infernal ancestral. Ainda lembram humanos em traços básicos, mas sua herança dos Nove Infernos é impossível de esconder: chifres, cauda, olhos incomuns e aura perturbadora fazem com que sejam temidos, desconfiados ou usados como bodes expiatórios.",
+    "aparencia": "Tieflings parecem humanos demonizados. Possuem grandes chifres de variados formatos (curvos como carneiros, longos como gazelas ou espiralados como antílopes), uma cauda fina de 1,20 a 1,50 m que se enrosca ou chicoteia quando estão irritados, caninos afiados e olhos de cor sólida – preto, vermelho, branco, prateado ou dourado – sem pupilas visíveis. Os tons de pele vão desde as cores humanas até tons avermelhados profundos. O cabelo costuma ser escuro (preto, castanho), mas é comum encontrar vermelho, azul ou roxo, sempre escorrendo por entre os chifres.",
+    "personalidade": "Por viverem cercados de desconfiança e preconceito, tieflings desenvolvem cascas emocionais diferentes: alguns respondem com sarcasmo e bravata, outros com charme afiado, outros com frieza calculada e alguns abraçam a imagem de ‘monstro’ que o mundo lhes impõe. Em comum, possuem forte senso de identidade e uma tendência a não depender de ninguém, pois aprenderam cedo que o mundo não é gentil com eles. Quando alguém conquista sua confiança, porém, sua lealdade pode ser profunda e duradoura.",
+    "sociedade_e_cultura": "Tieflings não possuem uma terra natal ou nação própria. Vivem em pequenas minorias espalhadas por cidades e vilas humanas, geralmente em bairros pobres, favelas e lugares perigosos. Muitos acabam se envolvendo com crime, contrabando ou trapaças por falta de oportunidades reais, o que reforça o estereótipo negativo sobre eles. Alguns enclaves mistos abrigam comunidades onde tieflings se apoiam mutuamente, tentando construir uma cultura própria, seja abraçando sua herança infernal, seja tentando provar que podem ser melhores que a fama que os persegue.",
+    "religiao_e_deuses": "Alguns tieflings reverenciam divindades ligadas à rebeldia, liberdade, segredos ou até mesmo deuses dos Infernos e Arquidiabos, adotando sua herança infernal. Outros seguem deuses do bem, buscando provar que não são definidos pelo sangue que carregam. Muitos são cínicos em relação ao divino, por sentirem que nasceram ‘marcados’ sem escolha, e encaram religião mais como ferramenta social do que como fé genuína.",
+    "motivações_tipicas": "As motivações de um tiefling costumam girar em torno de identidade, aceitação e poder: provar que podem ser algo além do ‘filho do diabo’, desafiar o destino traçado por sua linhagem, vingar-se de uma sociedade que os rejeitou, descobrir a fonte exata de sua herança infernal ou simplesmente usar sua natureza temida para sobreviver – como mercenários, feiticeiros, vigaristas ou líderes carismáticos.",
+    "relacoes_com_outras_racas": {
+      "visao_geral": "A maioria das pessoas presume que a herança infernal de um tiefling significa corrupção moral. Isso gera um ciclo de preconceito: eles são temidos, observados e acusados com facilidade – e muitos acabam cedendo à imagem que os outros projetam.",
+      "anao": "Anões podem desconfiar da origem infernal, mas respeitam disciplina, trabalho duro e honestidade direta. Um tiefling que provar sua confiabilidade pode ser aceito como aliado, mesmo que nunca totalmente como ‘igual’.",
+      "elfo": "Elfos enxergam os Nove Infernos como forças perigosas e desestabilizadoras. Alguns elfos mais velhos olham tieflings com mistura de curiosidade, piedade e cautela, reconhecendo neles vítimas de pactos antigos, não apenas ‘vilões’.",
+      "halfling": "Halflings tendem a julgar mais pelos atos do que pela aparência. Um tiefling que demonstra gentileza e respeito pela comunidade pode ser acolhido – ainda que as crianças halflings contem histórias assustadoras sobre seus chifres à noite.",
+      "humano": "Humanos são paradoxais: podem odiar tieflings como presságios de desgraça, mas também são os mais propensos a fazer pactos, usar seus talentos mágicos e até segui-los como líderes carismáticos. Em cidades humanas, um tiefling pode ser tanto um pária quanto um chefe de guilda, nobre decadente ou sacerdote misterioso."
+    }
+  },
+  "orientacoes_interpretacao": {
+    "tendencias_comuns": "Tieflings não nascem maus, mas o preconceito, a desconfiança e sua conexão com os Infernos frequentemente os empurram para caminhos sombrios. A maioria tende ao caos, valorizando a liberdade pessoal e repelindo autoridades que já os julgaram antes. Interpretar um tiefling é explorar o atrito entre ‘o que o mundo acha que você é’ e ‘quem você decide ser’.",
+    "ganchos_narrativos": [
+      "Desde criança, você foi tratado como presságio de desgraça e culpado por qualquer problema da vila. Aventurar-se é sua forma de fugir dessa sombra e criar uma reputação própria.",
+      "Seu sangue é ligado a um arquidiabo específico, e você começou a ter sonhos, sussurros ou marcas mágicas desse poder. Você busca esse patrono para confrontá-lo, servi-lo ou romper o laço.",
+      "Você adotou um nome de virtude (como Esperança ou Glória) e se recusa a agir de forma que contradiga esse ideal – mesmo quando todos esperam que você seja cruel.",
+      "Um culto infernal quer usá-lo como símbolo, profecia ou recipiente. Aventure-se é a única forma de escapar desse destino – ou de controlá-lo a seu favor.",
+      "Depois de anos usando sua aparência assustadora para intimidar e enganar, você se cansou da vida de vigarista. Agora, tenta ser um herói… mas o mundo insiste em ver chifres antes de ver suas ações."
+    ]
+  },
+  "nomes": {
+    "regras_e_costumes": "Tieflings costumam usar três tipos de nomes: nomes da cultura onde nasceram (humanos, élficos, etc.), nomes infernais herdados e nomes-conceito (‘nomes honrados’) escolhidos por si mesmos. Esses nomes-conceito refletem ideais, sentimentos ou destinos – e o tiefling pode tentar honrá-los ou, ironicamente, contradizê-los.",
+    "infernais_masculinos": [
+      "Akmenos",
+      "Amnon",
+      "Barakas",
+      "Damakos",
+      "Ekemon",
+      "Iados",
+      "Kairon",
+      "Leucis",
+      "Melech",
+      "Mordai",
+      "Morthos",
+      "Pelaios",
+      "Skamos",
+      "Therai"
+    ],
+    "infernais_femininos": [
+      "Akta",
+      "Anakis",
+      "Bryseis",
+      "Criella",
+      "Damaia",
+      "Ea",
+      "Kallista",
+      "Lerissa",
+      "Makaria",
+      "Nemeia",
+      "Orianna",
+      "Phelaia",
+      "Rieta"
+    ],
+    "nomes_honrados_exemplos": [
+      "Abertura",
+      "Arte",
+      "Carniça",
+      "Canção",
+      "Crença",
+      "Desespero",
+      "Excelência",
+      "Esperança",
+      "Glória",
+      "Ideal",
+      "Ímpeto",
+      "Música",
+      "Nada",
+      "Poesia",
+      "Medo",
+      "Missão",
+      "Penoso",
+      "Reverência",
+      "Mágoa",
+      "Temeridade",
+      "Tormenta"
+    ],
+    "observacao": "Muitos tieflings escolhem um nome-conceito na adolescência como uma declaração de quem desejam ser. Alguns seguem fielmente esse ideal; outros o tratam como piada cruel do destino."
+  },
+  "tracos_raciais": {
+    "aumento_valor_habilidade": {
+      "descricao": "Seu valor de Inteligência aumenta em 1 e seu valor de Carisma aumenta em 2.",
+      "modificadores": {
+        "INT": 1,
+        "CAR": 2
+      }
+    },
+    "idade": {
+      "descricao": "Tieflings amadurecem na mesma época que humanos, por volta do fim da adolescência, mas costumam viver um pouco mais.",
+      "faixa_aproximada": "18–90 anos (em média)"
+    },
+    "tendencia": {
+      "descricao": "Tieflings não têm tendência inata ao mal, mas muitos acabam abraçando-o por revolta, sobrevivência ou influência infernal. Independentemente disso, valorizam a liberdade pessoal e tendem ao caos."
+    },
+    "tamanho": {
+      "categoria": "Médio",
+      "descricao": "Tieflings possuem altura e compleição semelhantes à dos humanos. Seu tamanho é Médio."
+    },
+    "deslocamento": {
+      "caminhada": "9 m",
+      "regras_especiais": null
+    },
+    "visao_no_escuro": {
+      "nome": "Visão no Escuro",
+      "descricao": "Sua herança infernal lhe permite enxergar melhor em ambientes sombrios.",
+      "regras": {
+        "alcance": "18 m",
+        "penumbra": "Você enxerga na penumbra como se fosse luz plena.",
+        "escuridao": "Você enxerga na escuridão como se fosse penumbra.",
+        "cores": "Você não distingue cores na escuridão, apenas tons de cinza."
+      }
+    },
+    "resistencia_infernal": {
+      "nome": "Resistência Infernal",
+      "descricao": "O fogo dos Nove Infernos corre em suas veias, tornando-o mais resistente às chamas.",
+      "regras": {
+        "efeito": "Você possui resistência a dano de fogo (você sofre metade do dano de fogo)."
+      }
+    },
+    "legado_infernal": {
+      "nome": "Legado Infernal",
+      "descricao": "Sua linhagem infernal lhe concede acesso inato a magias ligadas aos Nove Infernos.",
+      "regras": {
+        "truque_inicial": "Você conhece o truque taumaturgia.",
+        "nivel_3": "Ao alcançar o 3º nível, você pode conjurar repreensão infernal como magia de 2º nível uma vez com este traço.",
+        "nivel_5": "Ao alcançar o 5º nível, você pode conjurar escuridão uma vez com este traço.",
+        "recarga": "Você precisa terminar um descanso longo para conjurar essas magias novamente através deste traço.",
+        "habilidade_de_conjuracao": "Carisma é sua habilidade de conjuração para essas magias."
+      }
+    },
+    "idiomas": {
+      "descricao": "Você sabe falar, ler e escrever Comum e Infernal.",
+      "lista_base": [
+        "Comum",
+        "Infernal"
+      ],
+      "observacao": "O Infernal é um idioma duro, composto de sílabas cortantes e ressonantes, tradicionalmente escrito com um alfabeto angular e elaborado usado por diabos, cultistas e estudiosos de magia sombria."
+    }
+  },
+  "estrutura_para_sistema": {
+    "tags_sugeridas": [
+      "raca",
+      "tiefling",
+      "infernal",
+      "fantasia",
+      "dnd5e"
+    ],
+    "sugestoes_de_uso_em_sistema": [
+      "Na criação de personagem, ao selecionar a raça Tiefling, aplicar automaticamente +2 em CAR e +1 em INT.",
+      "Definir o personagem como tamanho Médio, com deslocamento base de 9 m.",
+      "Adicionar Visão no Escuro (18 m) com mesmas regras de outras raças com visão no escuro.",
+      "Aplicar Resistência Infernal: reduzir à metade qualquer dano de fogo sofrido (após outros modificadores).",
+      "Implementar o Legado Infernal como um pacote de magias raciais: taumaturgia desde o nível 1, repreensão infernal (2º nível) a partir do 3º nível, escuridão a partir do 5º nível, cada uma 1x por descanso longo via traço racial.",
+      "Marcar Carisma como habilidade de conjuração dessas magias raciais, independentemente da classe.",
+      "Definir idiomas iniciais: Comum + Infernal. Idiomas adicionais podem vir de antecedentes, classe ou talentos.",
+      "Em interfaces de roleplay/NPC, considerar que tieflings recebem mais testes sociais modificados por preconceito (vantagem/desvantagem narrativa), dependendo do cenário e da cultura local."
+    ],
+    "notas_homebrew": [
+      "Em campanhas com foco forte em Inferno/Nove Infernos, o Mestre pode permitir variações de Tiefling vinculadas a arquidiabos específicos, alterando lista de magias raciais (como variantes de Mordenkainen ou SCAG). Esse JSON pode receber um campo extra ‘sub-linhagem infernal’.",
+      "Se quiser enfatizar o conflito interno, pode-se adicionar uma mecânica narrativa de ‘tentação infernal’, onde o tiefling recebe pequenos bônus temporários ao aceitar condições ou ofertas malignas – com consequências de longo prazo.",
+      "Para campanhas mais heroicas, o Mestre pode oferecer um talento único de tiefling que represente ‘redenção da linhagem’, trocando parte de poderes infernais por bênçãos divinas ou de outro plano."
+    ]
+  }
+}
+

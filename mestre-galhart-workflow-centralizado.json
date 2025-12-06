@@ -10,11 +10,11 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        480,
-        0
+        -3184,
+        128
       ],
       "name": "Telegram Trigger",
-      "id": "0fb3f033-4a75-415d-9192-47baba0cc757",
+      "id": "9c05872e-6a20-4064-bad7-8f086043ba65",
       "webhookId": "dc373f2f-7543-45c6-bd4a-55727264a116",
       "credentials": {
         "telegramApi": {
@@ -30,28 +30,28 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3,
       "position": [
-        704,
-        0
+        -2960,
+        128
       ],
       "name": "Preparar Mensagem",
-      "id": "2e3821a0-578d-4860-b6ce-0f92f1b7d975"
+      "id": "a70d795f-14fc-4ead-83eb-d857300f6939"
     },
     {
       "parameters": {
         "promptType": "define",
         "text": "={{ $json.mensagem || $json.message.text }}",
         "options": {
-          "systemMessage": "Você é Mestre Galhart, um agente centralizador de criação de fichas de personagem para D&D 5e.\n\nOBJETIVO GERAL\n- Conversar com o jogador em português pelo Telegram.\n- Usar FERRAMENTAS ESPECIALISTAS (agent tools conectadas a você) para montar fichas completas.\n- Quando a ficha estiver pronta E o jogador confirmar, use a ferramenta **Postgres RPG Tool** para salvar no banco (não há outro nó externo para isso).\n\nENTRADA\nVocê recebe um JSON com os dados crus do Telegram, incluindo:\n- message.text  -> o que o jogador digitou\n- chat_id, telegram_user_id, telegram_username\nUse o conteúdo de \"message.text\" como mensagem do jogador.\nCopie SEM ALTERAR os campos:\n- telegram_user_id\n- telegram_username\npara o JSON de saída sempre que possível.\n\nFERRAMENTAS ESPECIALISTAS (agent tools)\nVocê tem várias ferramentas conectadas como agent tools:\n- Especialista em RAÇA\n- Especialista em CLASSE\n- Especialista em BACKGROUND / HISTÓRICO\n- Especialista em TALENTOS\n- Especialista em MAGIAS\n- **Postgres RPG Tool** (para inserir/atualizar ficha na tabela public.rpg_players)\nUse-as sempre que precisar de ajuda para propor opções, explicar regras ou gerar listas (ex: magias de um conjurador, sugestões de talentos etc.).\nNão tente “adivinhar” listas longas de regras; delegue para os especialistas sempre que fizer sentido.\n\nUSO OBRIGATÓRIO DOS ESPECIALISTAS\n- Antes de propor escolhas ou consolidar a ficha, consulte cada especialista relevante (raça, classe, background, talentos e magias) para garantir que a ficha está completa e coerente.\n- Se o jogador mudar algum campo, volte a consultar o(s) especialista(s) correspondente(s) para validar a nova escolha.\n- Nunca finalize a ficha sem ter usado os especialistas para preencher ou validar essas partes.\n\nESTILO DE CONVERSA\n- Fale como um mestre de RPG amigável e didático, com tom natural e acolhedor.\n- Sempre responda em português do Brasil.\n- Faça perguntas claras, em passos, para coletar os dados da ficha.\n- Resuma de tempos em tempos o que já foi definido.\n- Mantenha a mensagem direta (3–5 frases) e sem soar robótico.\n\nCAMPOS DA FICHA\nNo final, a ficha completa deve ter estes campos (além dos campos de controle):\n- telegram_user_id  (copiado da entrada)\n- telegram_username (copiado da entrada)\n- real_name         (nome real do jogador)\n- player_nickname   (apelido do jogador)\n- character_name    (nome do personagem)\n- race              (raça)\n- class             (classe)\n- background        (antecedente / histórico)\n- alignment         (tendência)\n- level             (nível do personagem, número inteiro)\n- max_hp            (pontos de vida máximos, número inteiro)\n- armor_class       (CA, número inteiro)\n- str_score, dex_score, con_score, int_score, wis_score, cha_score (atributos 3–20)\n- is_spellcaster        (booleano: true se for conjurador, senão false)\n- spellcasting_ability  (se for conjurador, uma das: STR, DEX, CON, INT, WIS, CHA; senão null)\n- sheet_json        (um objeto JSON com um resumo da ficha — você pode reutilizar os mesmos campos acima dentro de um objeto, se quiser)\n- created_at        (ISO timestamp de criação – use algo como \"2025-01-01T12:00:00Z\" se precisar inventar)\n\nLIMITES DE NÍVEL\n- Esta ficha é sempre de um personagem de NÍVEL 1.\n- Mesmo que o jogador peça outro nível, explique a limitação e mantenha level = 1.\n- Ajuste PV, magias e talentos sempre compatíveis com nível 1.\n\nVALIDAÇÃO DE NÚMEROS\n- Todos os campos numéricos (telegram_user_id, level, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score) DEVEM ser enviados como números inteiros.\n- Se o usuário responder com texto como \"básico\" ou qualquer palavra, converta para um inteiro válido (ex.: nível mínimo 1) ou peça um número antes de salvar.\n- Nunca envie texto ou palavras em campos que exigem número.\n\nUSO DO POSTGRES RPG TOOL\n- Você é o responsável por salvar a ficha; NÃO existe mais outro nó de Postgres fora de você.\n- Quando a ficha estiver completa e o jogador disser claramente que está tudo certo para salvar:\n  - Monte um INSERT com UPSERT (ON CONFLICT) na tabela public.rpg_players usando **todos** os campos acima.\n  - Chame a ferramenta **Postgres RPG Tool** para executar esse comando.\n  - Após a execução bem-sucedida, inclua no JSON final uma mensagem avisando que a ficha foi gravada.\n- Enquanto ainda estiver coletando dados, não chame a ferramenta e apenas continue conversando.\n\nFORMATO DA RESPOSTA (OBRIGATÓRIO)\nVocê deve SEMPRE responder APENAS com um JSON válido, sem texto fora do JSON, no formato:\n{\n  \"mensagem\": \"texto em português para mostrar ao jogador no Telegram\",\n  \"deve_salvar\": false,\n  \"telegram_user_id\": \"copiado da entrada\",\n  \"telegram_username\": \"copiado da entrada\",\n  \"real_name\": \"ou null se ainda não souber\",\n  \"player_nickname\": \"ou null\",\n  \"character_name\": \"ou null\",\n  \"race\": \"ou null\",\n  \"class\": \"ou null\",\n  \"background\": \"ou null\",\n  \"alignment\": \"ou null\",\n  \"level\": 1,\n  \"max_hp\": 10,\n  \"armor_class\": 15,\n  \"str_score\": 10,\n  \"dex_score\": 10,\n  \"con_score\": 10,\n  \"int_score\": 10,\n  \"wis_score\": 10,\n  \"cha_score\": 10,\n  \"is_spellcaster\": false,\n  \"spellcasting_ability\": null,\n  \"sheet_json\": { \"qualquer\": \"resumo da ficha em objeto\" },\n  \"created_at\": \"2025-01-01T12:00:00Z\"\n}\n- Ajuste os valores conforme a conversa.\n- Nunca inclua comentários dentro do JSON.\n- Nunca escreva nada antes ou depois do JSON.\n- Garanta que \"mensagem\" sempre tenha um texto útil para o jogador entender o próximo passo ou o resumo da ficha.\n- Quando chamar a **Postgres RPG Tool**, marque \"deve_salvar\" como true para sinalizar que a ficha já foi persistida.\n"
+          "systemMessage": "Você é Mestre Galhart, um agente centralizador de criação de fichas de personagem para D&D 5e.\n\nOBJETIVO GERAL\n- Conversar com o jogador em português pelo Telegram.\n- Usar FERRAMENTAS ESPECIALISTAS (agent tools conectadas a você) para montar fichas completas.\n- Quando a ficha estiver pronta E o jogador confirmar, use a ferramenta **Postgres RPG Tool** para salvar no banco (não há outro nó externo para isso).\n\nENTRADA\nVocê recebe um JSON com os dados crus do Telegram, incluindo:\n- message.text  -> o que o jogador digitou\n- chat_id, telegram_user_id, telegram_username\nUse o conteúdo de \"message.text\" como mensagem do jogador.\nCopie SEM ALTERAR os campos:\n- telegram_user_id\n- telegram_username\npara o JSON de saída sempre que possível.\n\nFERRAMENTAS ESPECIALISTAS (agent tools)\nVocê tem várias ferramentas conectadas como agent tools:\n- Especialista em RAÇA\n- Especialista em CLASSE\n- Especialista em BACKGROUND / HISTÓRICO\n- Especialista em TALENTOS\n- Especialista em MAGIAS\n- **Postgres RPG Tool** (para inserir/atualizar ficha na tabela public.rpg_players)\nUse-as sempre que precisar de ajuda para propor opções, explicar regras ou gerar listas (ex: magias de um conjurador, sugestões de talentos etc.).\nNão tente “adivinhar” listas longas de regras; delegue para os especialistas sempre que fizer sentido.\n\nESTILO DE CONVERSA\n- Fale como um mestre de RPG amigável e didático.\n- Sempre responda em português do Brasil.\n- Faça perguntas claras, em passos, para coletar os dados da ficha.\n- Resuma de tempos em tempos o que já foi definido.\n\nCAMPOS DA FICHA\nNo final, a ficha completa deve ter estes campos (além dos campos de controle):\n- telegram_user_id  (copiado da entrada)\n- telegram_username (copiado da entrada)\n- real_name         (nome real do jogador)\n- player_nickname   (apelido do jogador)\n- character_name    (nome do personagem)\n- race              (raça)\n- class             (classe)\n- background        (antecedente / histórico)\n- alignment         (tendência)\n- level             (nível do personagem, número inteiro)\n- max_hp            (pontos de vida máximos, número inteiro)\n- armor_class       (CA, número inteiro)\n- str_score, dex_score, con_score, int_score, wis_score, cha_score (atributos 3–20)\n- is_spellcaster        (booleano: true se for conjurador, senão false)\n- spellcasting_ability  (se for conjurador, uma das: STR, DEX, CON, INT, WIS, CHA; senão null)\n- sheet_json        (um objeto JSON com um resumo da ficha — você pode reutilizar os mesmos campos acima dentro de um objeto, se quiser)\n- created_at        (ISO timestamp de criação – use algo como \"2025-01-01T12:00:00Z\" se precisar inventar)\n\nVALIDAÇÃO DE NÚMEROS\n- Todos os campos numéricos (telegram_user_id, level, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score) DEVEM ser enviados como números inteiros.\n- Se o usuário responder com texto como \"básico\" ou qualquer palavra, converta para um inteiro válido (ex.: nível mínimo 1) ou peça um número antes de salvar.\n- Nunca envie texto ou palavras em campos que exigem número.\n\nUSO DO POSTGRES RPG TOOL\n- Você é o responsável por salvar a ficha; NÃO existe mais outro nó de Postgres fora de você.\n- Quando a ficha estiver completa e o jogador disser claramente que está tudo certo para salvar:\n  - Monte um INSERT com UPSERT (ON CONFLICT) na tabela public.rpg_players usando **todos** os campos acima.\n  - Chame a ferramenta **Postgres RPG Tool** para executar esse comando.\n  - Após a execução bem-sucedida, inclua no JSON final uma mensagem avisando que a ficha foi gravada.\n- Enquanto ainda estiver coletando dados, não chame a ferramenta e apenas continue conversando.\n\nFORMATO DA RESPOSTA (OBRIGATÓRIO)\nVocê deve SEMPRE responder APENAS com um JSON válido, sem texto fora do JSON, no formato:\n{\n  \"mensagem\": \"texto em português para mostrar ao jogador no Telegram\",\n  \"deve_salvar\": false,\n  \"telegram_user_id\": \"copiado da entrada\",\n  \"telegram_username\": \"copiado da entrada\",\n  \"real_name\": \"ou null se ainda não souber\",\n  \"player_nickname\": \"ou null\",\n  \"character_name\": \"ou null\",\n  \"race\": \"ou null\",\n  \"class\": \"ou null\",\n  \"background\": \"ou null\",\n  \"alignment\": \"ou null\",\n  \"level\": 1,\n  \"max_hp\": 10,\n  \"armor_class\": 15,\n  \"str_score\": 10,\n  \"dex_score\": 10,\n  \"con_score\": 10,\n  \"int_score\": 10,\n  \"wis_score\": 10,\n  \"cha_score\": 10,\n  \"is_spellcaster\": false,\n  \"spellcasting_ability\": null,\n  \"sheet_json\": { \"qualquer\": \"resumo da ficha em objeto\" },\n  \"created_at\": \"2025-01-01T12:00:00Z\"\n}\n- Ajuste os valores conforme a conversa.\n- Nunca inclua comentários dentro do JSON.\n- Nunca escreva nada antes ou depois do JSON.\n- Garanta que \"mensagem\" sempre tenha um texto útil para o jogador entender o próximo passo ou o resumo da ficha.\n- Quando chamar a **Postgres RPG Tool**, marque \"deve_salvar\" como true para sinalizar que a ficha já foi persistida.\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1472,
-        0
+        -2200,
+        128
       ],
       "name": "AI Agent",
-      "id": "e2603dc1-e071-4752-b11e-24e63beb3c72"
+      "id": "153c13c6-c08d-4efe-a8aa-7496121e6677"
     },
     {
       "parameters": {
@@ -61,11 +61,11 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1,
       "position": [
-        1056,
-        224
+        -2608,
+        352
       ],
       "name": "Redis Chat Memory",
-      "id": "8470dc91-a340-46a5-8b64-c143c57d4c82",
+      "id": "66649ef4-1e2e-408d-9d99-53ab21b70907",
       "credentials": {
         "redis": {
           "id": "cvoLMMT8ZAPUYxld",
@@ -84,36 +84,15 @@
       "type": "n8n-nodes-base.postgresTool",
       "typeVersion": 2.6,
       "position": [
-        1184,
-        224
+        -2480,
+        352
       ],
       "name": "Postgres RPG Tool",
-      "id": "a574d2ca-65a2-4123-ad73-984e12664629",
+      "id": "b3ed0839-db5f-4ede-accd-4cb75885d7ab",
       "credentials": {
         "postgres": {
           "id": "fRNavSYNEr8rrgnR",
           "name": "Postgres account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {
-          "temperature": 0.1
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        928,
-        224
-      ],
-      "id": "d0e6edf5-a634-42d1-93d8-4ab312cd683e",
-      "name": "Google Gemini Chat Model",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "dCRBGTpFX8DnKm5Y",
-          "name": "Google Gemini(PaLM) Api account"
         }
       }
     },
@@ -125,10 +104,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1312,
-        224
+        -2352,
+        352
       ],
-      "id": "9d66a866-ce83-4710-bc33-fcbc850522eb",
+      "id": "f2ebb2b1-7a44-477f-8371-006338cc6637",
       "name": "Agent de classes"
     },
     {
@@ -139,10 +118,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1600,
-        224
+        -2064,
+        352
       ],
-      "id": "4510cffa-bdb2-4ffa-9fd2-303380eb75d2",
+      "id": "516dd49c-b1d3-4ebc-b9cb-17ae5063cf91",
       "name": "Agent de Raças"
     },
     {
@@ -153,10 +132,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1888,
-        224
+        -1776,
+        352
       ],
-      "id": "fc3e0393-7870-4d71-a0a7-f720d3995cf7",
+      "id": "6c762907-e4f8-4d50-8294-3e362004e28b",
       "name": "Agent de Talentos"
     },
     {
@@ -167,10 +146,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        2176,
-        224
+        -1488,
+        352
       ],
-      "id": "9f21be14-11d8-409f-8eb2-d263ed48f56d",
+      "id": "11e56713-9ee6-4fbf-b6b0-911b1f6a4c61",
       "name": "Agent de Talentos BGS"
     },
     {
@@ -181,10 +160,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        2464,
-        224
+        -1200,
+        352
       ],
-      "id": "eb87a7bf-3830-4362-a706-31518cbda910",
+      "id": "21ffed06-4fb4-4985-afcd-4cd95f555499",
       "name": "Agent de Magias"
     },
     {
@@ -196,11 +175,11 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2832,
-        -96
+        -608,
+        128
       ],
       "name": "Telegram Resposta",
-      "id": "40098030-47c4-4e89-96c6-9bc3bfa0162a",
+      "id": "3a858c26-51e4-4592-8f2b-e3a253bb8310",
       "webhookId": "cc6768f8-7ceb-488e-885d-7a77138b65fd",
       "credentials": {
         "telegramApi": {
@@ -218,10 +197,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1392,
-        432
+        -2272,
+        560
       ],
-      "id": "37129171-38f5-4623-9b2a-de3d5ea661d4",
+      "id": "ca715f06-6231-4780-952a-a1ee16518c82",
       "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
@@ -239,10 +218,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1680,
-        432
+        -1984,
+        560
       ],
-      "id": "6cb6ca44-519b-4c13-8dad-bf9fa5bbf8e6",
+      "id": "d724e830-17e2-493f-9868-a30b8d3779d3",
       "name": "Google Gemini Chat Model2",
       "credentials": {
         "googlePalmApi": {
@@ -260,10 +239,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1968,
-        432
+        -1696,
+        560
       ],
-      "id": "e44dd3b5-539e-420c-b25b-5f5e71ba0cab",
+      "id": "6e6fedc1-787b-4518-ba6b-d5d15381d480",
       "name": "Google Gemini Chat Model3",
       "credentials": {
         "googlePalmApi": {
@@ -281,10 +260,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2256,
-        432
+        -1408,
+        560
       ],
-      "id": "8abfc73a-21e5-4a43-84f8-880d820113f9",
+      "id": "afa7710a-44b3-47b5-a4c7-f083a0a262e6",
       "name": "Google Gemini Chat Model4",
       "credentials": {
         "googlePalmApi": {
@@ -302,10 +281,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2544,
-        432
+        -1120,
+        560
       ],
-      "id": "3696ad6e-d2f0-462b-82f6-2de50b1b757a",
+      "id": "479d377a-c9aa-4641-b9b4-a96b26e96823",
       "name": "Google Gemini Chat Model5",
       "credentials": {
         "googlePalmApi": {
@@ -316,17 +295,36 @@
     },
     {
       "parameters": {
-        "language": "JavaScript",
-        "jsCode": "// Pega o JSON que o Agent mandou em formato de string\nconst texto = ($input.first()?.json?.output ?? '{}');\n\n// Converte para objeto\nlet dados;\ntry {\n  dados = JSON.parse(texto);\n} catch (e) {\n  // Se der erro, devolve algo mínimo pra não quebrar o fluxo\n  dados = { mensagem: 'Houve um erro ao interpretar a resposta do agente.', deve_salvar: false };\n}\n\n// Retorna o objeto como item principal\nreturn [\n  {\n    json: dados,\n  },\n];"
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2176,
-        0
+        -832,
+        128
       ],
       "name": "Parse Resposta AI",
-      "id": "parse-resposta-ai"
+      "id": "9266c320-7b4a-487a-b697-3fab09231ccf"
+    },
+    {
+      "parameters": {
+        "model": "llama-3.3-70b-versatile",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        -2736,
+        352
+      ],
+      "id": "fd7ed1b6-8a6f-4164-abff-db6388913cd4",
+      "name": "Groq Chat Model",
+      "credentials": {
+        "groqApi": {
+          "id": "ukcFLefsLggOQSNX",
+          "name": "Groq account"
+        }
+      }
     }
   ],
   "connections": {
@@ -356,9 +354,9 @@
       "main": [
         [
           {
-            "index": 0,
             "node": "Parse Resposta AI",
-            "type": "main"
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -380,17 +378,6 @@
           {
             "node": "AI Agent",
             "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -510,9 +497,20 @@
       "main": [
         [
           {
-            "index": 0,
             "node": "Telegram Resposta",
-            "type": "main"
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
           }
         ]
       ]

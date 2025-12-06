@@ -562,7 +562,7 @@
           "boolean": [
             {
               "value1": "={{ $json.deve_salvar }}",
-              "value2": true
+              "operation": "isTrue"
             }
           ]
         }
@@ -579,7 +579,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO public.rpg_players (\n  telegram_user_id,\n  telegram_username,\n  real_name,\n  player_nickname,\n  character_name,\n  race,\n  class,\n  background,\n  alignment,\n  level,\n  max_hp,\n  armor_class,\n  str_score,\n  dex_score,\n  con_score,\n  int_score,\n  wis_score,\n  cha_score,\n  is_spellcaster,\n  spellcasting_ability,\n  sheet_json,\n  created_at\n) VALUES (\n  {{ $json.deve_salvar }},\n  '{{ $json.telegram_username || \"\" }}',\n  '{{ $json.real_name || \"\" }}',\n  '{{ $json.player_nickname || \"\" }}',\n  '{{ $json.character_name || \"\" }}',\n  '{{ $json.race || \"\" }}',\n  '{{ $json.class || \"\" }}',\n  '{{ $json.background || \"\" }}',\n  '{{ $json.alignment || \"\" }}',\n  {{ $json.level || 0 }},\n  {{ $json.max_hp || 0 }},\n  {{ $json.armor_class || 0 }},\n  {{ $json.str_score || 0 }},\n  {{ $json.dex_score || 0 }},\n  {{ $json.con_score || 0 }},\n  {{ $json.int_score || 0 }},\n  {{ $json.wis_score || 0 }},\n  {{ $json.cha_score || 0 }},\n  {{ $json.is_spellcaster ? 'TRUE' : 'FALSE' }},\n  '{{ $json.spellcasting_ability || \"\" }}',\n  '{{ JSON.stringify($json.sheet_json || {}) }}'::jsonb,\n  '{{ $json.created_at || new Date().toISOString() }}'::timestamptz\n)\nON CONFLICT (telegram_user_id) DO UPDATE SET\n  telegram_username = EXCLUDED.telegram_username,\n  real_name = EXCLUDED.real_name,\n  player_nickname = EXCLUDED.player_nickname,\n  character_name = EXCLUDED.character_name,\n  race = EXCLUDED.race,\n  class = EXCLUDED.class,\n  background = EXCLUDED.background,\n  alignment = EXCLUDED.alignment,\n  level = EXCLUDED.level,\n  max_hp = EXCLUDED.max_hp,\n  armor_class = EXCLUDED.armor_class,\n  str_score = EXCLUDED.str_score,\n  dex_score = EXCLUDED.dex_score,\n  con_score = EXCLUDED.con_score,\n  int_score = EXCLUDED.int_score,\n  wis_score = EXCLUDED.wis_score,\n  cha_score = EXCLUDED.cha_score,\n  is_spellcaster = EXCLUDED.is_spellcaster,\n  spellcasting_ability = EXCLUDED.spellcasting_ability,\n  sheet_json = EXCLUDED.sheet_json,\n  created_at = EXCLUDED.created_at\nRETURNING *;",
+        "query": "INSERT INTO public.rpg_players (\n  telegram_user_id,\n  telegram_username,\n  real_name,\n  player_nickname,\n  character_name,\n  race,\n  class,\n  background,\n  alignment,\n  level,\n  max_hp,\n  armor_class,\n  str_score,\n  dex_score,\n  con_score,\n  int_score,\n  wis_score,\n  cha_score,\n  is_spellcaster,\n  spellcasting_ability,\n  sheet_json,\n  created_at\n) VALUES (\n  {{ $json.telegram_user_id || 0 }},\n  '{{ $json.telegram_username || \"\" }}',\n  '{{ $json.real_name || \"\" }}',\n  '{{ $json.player_nickname || \"\" }}',\n  '{{ $json.character_name || \"\" }}',\n  '{{ $json.race || \"\" }}',\n  '{{ $json.class || \"\" }}',\n  '{{ $json.background || \"\" }}',\n  '{{ $json.alignment || \"\" }}',\n  {{ $json.level || 1 }},\n  {{ $json.max_hp || 0 }},\n  {{ $json.armor_class || 0 }},\n  {{ $json.str_score || 0 }},\n  {{ $json.dex_score || 0 }},\n  {{ $json.con_score || 0 }},\n  {{ $json.int_score || 0 }},\n  {{ $json.wis_score || 0 }},\n  {{ $json.cha_score || 0 }},\n  {{ $json.is_spellcaster ? 'TRUE' : 'FALSE' }},\n  '{{ $json.spellcasting_ability || \"\" }}',\n  '{{ JSON.stringify($json.sheet_json || {}) }}'::jsonb,\n  '{{ $json.created_at || new Date().toISOString() }}'::timestamptz\n)\nON CONFLICT (telegram_user_id) DO UPDATE SET\n  telegram_username     = EXCLUDED.telegram_username,\n  real_name             = EXCLUDED.real_name,\n  player_nickname       = EXCLUDED.player_nickname,\n  character_name        = EXCLUDED.character_name,\n  race                  = EXCLUDED.race,\n  class                 = EXCLUDED.class,\n  background            = EXCLUDED.background,\n  alignment             = EXCLUDED.alignment,\n  level                 = EXCLUDED.level,\n  max_hp                = EXCLUDED.max_hp,\n  armor_class           = EXCLUDED.armor_class,\n  str_score             = EXCLUDED.str_score,\n  dex_score             = EXCLUDED.dex_score,\n  con_score             = EXCLUDED.con_score,\n  int_score             = EXCLUDED.int_score,\n  wis_score             = EXCLUDED.wis_score,\n  cha_score             = EXCLUDED.cha_score,\n  is_spellcaster        = EXCLUDED.is_spellcaster,\n  spellcasting_ability  = EXCLUDED.spellcasting_ability,\n  sheet_json            = EXCLUDED.sheet_json,\n  created_at            = EXCLUDED.created_at\nRETURNING *;",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.postgres",
@@ -596,6 +596,20 @@
           "name": "Postgres account"
         }
       }
+    },
+    {
+      "parameters": {
+        "language": "JavaScript",
+        "jsCode": "// Pega o JSON que o Agent mandou em formato de string\nconst texto = $json.output || '{}' ;\n\n// Converte para objeto\nlet dados;\ntry {\n  dados = JSON.parse(texto);\n} catch (e) {\n  // Se der erro, devolve algo mínimo pra não quebrar o fluxo\n  dados = { mensagem: 'Houve um erro ao interpretar a resposta do agente.', deve_salvar: false };\n}\n\n// Retorna o objeto como item principal\nreturn [\n  {\n    json: dados,\n  },\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2176,
+        0
+      ],
+      "name": "Parse Resposta AI",
+      "id": "parse-resposta-ai"
     }
   ],
   "connections": {
@@ -625,14 +639,9 @@
       "main": [
         [
           {
-            "node": "Telegram Resposta",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Deve salvar?",
-            "type": "main",
-            "index": 0
+            "index": 0,
+            "node": "Parse Resposta AI",
+            "type": "main"
           }
         ]
       ]
@@ -790,6 +799,22 @@
           }
         ],
         []
+      ]
+    },
+    "Parse Resposta AI": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Telegram Resposta",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "Deve salvar?",
+            "type": "main"
+          }
+        ]
       ]
     }
   },

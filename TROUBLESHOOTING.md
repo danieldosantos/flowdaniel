@@ -27,3 +27,9 @@ Use these checks when the flow para de responder mesmo com credenciais aparentem
 - Mesmo que as credenciais estejam válidas, alterar o token do bot ou regenerar a URL pública exige reativar o workflow para registrar o novo webhook no Telegram.
 
 Documentar o que aconteceu (mensagem, horário, nós com falha) ajuda a isolar a causa rapidamente caso o problema volte a ocorrer.
+
+## 7) Interpretar a saída do Postgres PG Tool
+- Quando o node retorna linhas como `0\nid:1\ntelegram_user_id:...`, significa que a consulta foi executada com sucesso e está exibindo a linha **0** do resultado (índice base 0). Os campos seguintes são as colunas da tabela.
+- Para confirmar que não há erro de sintaxe, procure mensagens de erro destacadas em vermelho no painel "Output"; se não houver, a query está correta.
+- Se precisar de mais linhas, ajuste a consulta para limitar ou ordenar conforme necessário (ex.: `ORDER BY created_at DESC LIMIT 5`).
+- Caso espere colunas adicionais, confira se a tabela tem os campos certos com `SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'rpg_players';`.

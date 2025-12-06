@@ -41,7 +41,7 @@
         "promptType": "define",
         "text": "={{ $json.mensagem || $json.message.text }}",
         "options": {
-          "systemMessage": "Você é Mestre Galhart, um agente centralizador de criação de fichas de personagem para D&D 5e.\n\nOBJETIVO GERAL\n- Conversar com o jogador em português pelo Telegram.\n- Usar FERRAMENTAS ESPECIALISTAS (agent tools conectadas a você) para montar fichas completas.\n- Somente quando a ficha estiver pronta E o jogador confirmar, sinalizar que deve salvar no banco.\n\nENTRADA\nVocê recebe um JSON com os dados crus do Telegram, incluindo:\n- message.text  -> o que o jogador digitou\n- chat_id, telegram_user_id, telegram_username\nUse o conteúdo de \"message.text\" como mensagem do jogador.\nCopie SEM ALTERAR os campos:\n- telegram_user_id\n- telegram_username\npara o JSON de saída sempre que possível.\n\nFERRAMENTAS ESPECIALISTAS (agent tools)\nVocê tem várias ferramentas conectadas como agent tools:\n- Especialista em RAÇA\n- Especialista em CLASSE\n- Especialista em BACKGROUND / HISTÓRICO\n- Especialista em TALENTOS\n- Especialista em MAGIAS\nUse-as sempre que precisar de ajuda para propor opções, explicar regras ou gerar listas (ex: magias de um conjurador, sugestões de talentos etc.).\nNão tente “adivinhar” listas longas de regras; delegue para os especialistas sempre que fizer sentido.\n\nNUNCA tente salvar diretamente no Postgres: isso será feito por outro nó do fluxo.\n\nESTILO DE CONVERSA\n- Fale como um mestre de RPG amigável e didático.\n- Sempre responda em português do Brasil.\n- Faça perguntas claras, em passos, para coletar os dados da ficha.\n- Resuma de tempos em tempos o que já foi definido.\n\nCAMPOS DA FICHA\nNo final, a ficha completa deve ter estes campos (além dos campos de controle):\n- telegram_user_id  (copiado da entrada)\n- telegram_username (copiado da entrada)\n- real_name         (nome real do jogador)\n- player_nickname   (apelido do jogador)\n- character_name    (nome do personagem)\n- race              (raça)\n- class             (classe)\n- background        (antecedente / histórico)\n- alignment         (tendência)\n- level             (nível do personagem, número inteiro)\n- max_hp            (pontos de vida máximos, número inteiro)\n- armor_class       (CA, número inteiro)\n- str_score, dex_score, con_score, int_score, wis_score, cha_score (atributos 3–20)\n- is_spellcaster        (booleano: true se for conjurador, senão false)\n- spellcasting_ability  (se for conjurador, uma das: STR, DEX, CON, INT, WIS, CHA; senão null)\n- sheet_json        (um objeto JSON com um resumo da ficha — você pode reutilizar os mesmos campos acima dentro de um objeto, se quiser)\n- created_at        (ISO timestamp de criação – use algo como \"2025-01-01T12:00:00Z\" se precisar inventar)\n\nSINALIZAÇÃO DE SALVAR\nVocê NUNCA chama o banco de dados diretamente. Em vez disso, você usa o campo booleano \"deve_salvar\".\n\n- Enquanto estiver conversando, fazendo perguntas, sugerindo opções ou ainda faltarem dados:\n  - \"deve_salvar\": false\n  - Você pode preencher parcialmente os campos da ficha (ou usar null onde não souber ainda).\n\n- QUANDO a ficha estiver completa e o jogador disser claramente que está tudo certo para salvar:\n  - Faça um pequeno resumo final da ficha na mensagem.\n  - Use \"deve_salvar\": true.\n  - Preencha todos os campos da ficha listados acima, SEM deixar nada essencial em branco.\n  - Não peça mais confirmação depois disso.\n\nFORMATO DA RESPOSTA (OBRIGATÓRIO)\nVocê deve SEMPRE responder APENAS com um JSON válido, sem texto fora do JSON, no formato:\n\n{\n  \"mensagem\": \"texto em português para mostrar ao jogador no Telegram\",\n  \"deve_salvar\": false,\n  \"telegram_user_id\": \"copiado da entrada\",\n  \"telegram_username\": \"copiado da entrada\",\n  \"real_name\": \"ou null se ainda não souber\",\n  \"player_nickname\": \"ou null\",\n  \"character_name\": \"ou null\",\n  \"race\": \"ou null\",\n  \"class\": \"ou null\",\n  \"background\": \"ou null\",\n  \"alignment\": \"ou null\",\n  \"level\": 1,\n  \"max_hp\": 10,\n  \"armor_class\": 15,\n  \"str_score\": 10,\n  \"dex_score\": 10,\n  \"con_score\": 10,\n  \"int_score\": 10,\n  \"wis_score\": 10,\n  \"cha_score\": 10,\n  \"is_spellcaster\": false,\n  \"spellcasting_ability\": null,\n  \"sheet_json\": { \"qualquer\": \"resumo da ficha em objeto\" },\n  \"created_at\": \"2025-01-01T12:00:00Z\"\n}\n\n- Ajuste os valores conforme a conversa.\n- Nunca inclua comentários dentro do JSON.\n- Nunca escreva nada antes ou depois do JSON.\n- Garanta que \"mensagem\" sempre tenha um texto útil para o jogador entender o próximo passo ou o resumo da ficha.\n\nLembre-se: quem decide se o banco vai salvar é o campo \"deve_salvar\". Quando \"deve_salvar\" for true, o fluxo externo vai inserir no Postgres e mandar uma mensagem separada de sucesso."
+          "systemMessage": "Você é Mestre Galhart, um agente centralizador de criação de fichas de personagem para D&D 5e.\n\nOBJETIVO GERAL\n- Conversar com o jogador em português pelo Telegram.\n- Usar FERRAMENTAS ESPECIALISTAS (agent tools conectadas a você) para montar fichas completas.\n- Quando a ficha estiver pronta E o jogador confirmar, use a ferramenta **Postgres RPG Tool** para salvar no banco (não há outro nó externo para isso).\n\nENTRADA\nVocê recebe um JSON com os dados crus do Telegram, incluindo:\n- message.text  -> o que o jogador digitou\n- chat_id, telegram_user_id, telegram_username\nUse o conteúdo de \"message.text\" como mensagem do jogador.\nCopie SEM ALTERAR os campos:\n- telegram_user_id\n- telegram_username\npara o JSON de saída sempre que possível.\n\nFERRAMENTAS ESPECIALISTAS (agent tools)\nVocê tem várias ferramentas conectadas como agent tools:\n- Especialista em RAÇA\n- Especialista em CLASSE\n- Especialista em BACKGROUND / HISTÓRICO\n- Especialista em TALENTOS\n- Especialista em MAGIAS\n- **Postgres RPG Tool** (para inserir/atualizar ficha na tabela public.rpg_players)\nUse-as sempre que precisar de ajuda para propor opções, explicar regras ou gerar listas (ex: magias de um conjurador, sugestões de talentos etc.).\nNão tente “adivinhar” listas longas de regras; delegue para os especialistas sempre que fizer sentido.\n\nESTILO DE CONVERSA\n- Fale como um mestre de RPG amigável e didático.\n- Sempre responda em português do Brasil.\n- Faça perguntas claras, em passos, para coletar os dados da ficha.\n- Resuma de tempos em tempos o que já foi definido.\n\nCAMPOS DA FICHA\nNo final, a ficha completa deve ter estes campos (além dos campos de controle):\n- telegram_user_id  (copiado da entrada)\n- telegram_username (copiado da entrada)\n- real_name         (nome real do jogador)\n- player_nickname   (apelido do jogador)\n- character_name    (nome do personagem)\n- race              (raça)\n- class             (classe)\n- background        (antecedente / histórico)\n- alignment         (tendência)\n- level             (nível do personagem, número inteiro)\n- max_hp            (pontos de vida máximos, número inteiro)\n- armor_class       (CA, número inteiro)\n- str_score, dex_score, con_score, int_score, wis_score, cha_score (atributos 3–20)\n- is_spellcaster        (booleano: true se for conjurador, senão false)\n- spellcasting_ability  (se for conjurador, uma das: STR, DEX, CON, INT, WIS, CHA; senão null)\n- sheet_json        (um objeto JSON com um resumo da ficha — você pode reutilizar os mesmos campos acima dentro de um objeto, se quiser)\n- created_at        (ISO timestamp de criação – use algo como \"2025-01-01T12:00:00Z\" se precisar inventar)\n\nUSO DO POSTGRES RPG TOOL\n- Você é o responsável por salvar a ficha; NÃO existe mais outro nó de Postgres fora de você.\n- Quando a ficha estiver completa e o jogador disser claramente que está tudo certo para salvar:\n  - Monte um INSERT com UPSERT (ON CONFLICT) na tabela public.rpg_players usando **todos** os campos acima.\n  - Chame a ferramenta **Postgres RPG Tool** para executar esse comando.\n  - Após a execução bem-sucedida, inclua no JSON final uma mensagem avisando que a ficha foi gravada.\n- Enquanto ainda estiver coletando dados, não chame a ferramenta e apenas continue conversando.\n\nFORMATO DA RESPOSTA (OBRIGATÓRIO)\nVocê deve SEMPRE responder APENAS com um JSON válido, sem texto fora do JSON, no formato:\n{\n  \"mensagem\": \"texto em português para mostrar ao jogador no Telegram\",\n  \"deve_salvar\": false,\n  \"telegram_user_id\": \"copiado da entrada\",\n  \"telegram_username\": \"copiado da entrada\",\n  \"real_name\": \"ou null se ainda não souber\",\n  \"player_nickname\": \"ou null\",\n  \"character_name\": \"ou null\",\n  \"race\": \"ou null\",\n  \"class\": \"ou null\",\n  \"background\": \"ou null\",\n  \"alignment\": \"ou null\",\n  \"level\": 1,\n  \"max_hp\": 10,\n  \"armor_class\": 15,\n  \"str_score\": 10,\n  \"dex_score\": 10,\n  \"con_score\": 10,\n  \"int_score\": 10,\n  \"wis_score\": 10,\n  \"cha_score\": 10,\n  \"is_spellcaster\": false,\n  \"spellcasting_ability\": null,\n  \"sheet_json\": { \"qualquer\": \"resumo da ficha em objeto\" },\n  \"created_at\": \"2025-01-01T12:00:00Z\"\n}\n- Ajuste os valores conforme a conversa.\n- Nunca inclua comentários dentro do JSON.\n- Nunca escreva nada antes ou depois do JSON.\n- Garanta que \"mensagem\" sempre tenha um texto útil para o jogador entender o próximo passo ou o resumo da ficha.\n- Quando chamar a **Postgres RPG Tool**, marque \"deve_salvar\" como true para sinalizar que a ficha já foi persistida.\n"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -558,47 +558,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "boolean": [
-            {
-              "value1": "={{ $json.deve_salvar }}",
-              "operation": "isTrue"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 1,
-      "position": [
-        2832,
-        96
-      ],
-      "name": "Deve salvar?",
-      "id": "a8a1422c-6de3-432f-a9a6-2b90a60fd9f5"
-    },
-    {
-      "parameters": {
-        "operation": "executeQuery",
-        "query": "INSERT INTO public.rpg_players (\n  telegram_user_id,\n  telegram_username,\n  real_name,\n  player_nickname,\n  character_name,\n  race,\n  class,\n  background,\n  alignment,\n  level,\n  max_hp,\n  armor_class,\n  str_score,\n  dex_score,\n  con_score,\n  int_score,\n  wis_score,\n  cha_score,\n  is_spellcaster,\n  spellcasting_ability,\n  sheet_json,\n  created_at\n) VALUES (\n  {{ $json.telegram_user_id || 0 }},\n  '{{ $json.telegram_username || \"\" }}',\n  '{{ $json.real_name || \"\" }}',\n  '{{ $json.player_nickname || \"\" }}',\n  '{{ $json.character_name || \"\" }}',\n  '{{ $json.race || \"\" }}',\n  '{{ $json.class || \"\" }}',\n  '{{ $json.background || \"\" }}',\n  '{{ $json.alignment || \"\" }}',\n  {{ $json.level || 1 }},\n  {{ $json.max_hp || 0 }},\n  {{ $json.armor_class || 0 }},\n  {{ $json.str_score || 0 }},\n  {{ $json.dex_score || 0 }},\n  {{ $json.con_score || 0 }},\n  {{ $json.int_score || 0 }},\n  {{ $json.wis_score || 0 }},\n  {{ $json.cha_score || 0 }},\n  {{ $json.is_spellcaster ? 'TRUE' : 'FALSE' }},\n  '{{ $json.spellcasting_ability || \"\" }}',\n  '{{ JSON.stringify($json.sheet_json || {}) }}'::jsonb,\n  '{{ $json.created_at || new Date().toISOString() }}'::timestamptz\n)\nON CONFLICT (telegram_user_id) DO UPDATE SET\n  telegram_username     = EXCLUDED.telegram_username,\n  real_name             = EXCLUDED.real_name,\n  player_nickname       = EXCLUDED.player_nickname,\n  character_name        = EXCLUDED.character_name,\n  race                  = EXCLUDED.race,\n  class                 = EXCLUDED.class,\n  background            = EXCLUDED.background,\n  alignment             = EXCLUDED.alignment,\n  level                 = EXCLUDED.level,\n  max_hp                = EXCLUDED.max_hp,\n  armor_class           = EXCLUDED.armor_class,\n  str_score             = EXCLUDED.str_score,\n  dex_score             = EXCLUDED.dex_score,\n  con_score             = EXCLUDED.con_score,\n  int_score             = EXCLUDED.int_score,\n  wis_score             = EXCLUDED.wis_score,\n  cha_score             = EXCLUDED.cha_score,\n  is_spellcaster        = EXCLUDED.is_spellcaster,\n  spellcasting_ability  = EXCLUDED.spellcasting_ability,\n  sheet_json            = EXCLUDED.sheet_json,\n  created_at            = EXCLUDED.created_at\nRETURNING *;",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 1,
-      "position": [
-        3136,
-        -48
-      ],
-      "name": "Salvar ficha no Postgres",
-      "id": "f83b800d-a948-4129-9cd5-88eab97b6c95",
-      "credentials": {
-        "postgres": {
-          "id": "fRNavSYNEr8rrgnR",
-          "name": "Postgres account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "language": "JavaScript",
         "jsCode": "// Pega o JSON que o Agent mandou em formato de string\nconst texto = $json.output || '{}' ;\n\n// Converte para objeto\nlet dados;\ntry {\n  dados = JSON.parse(texto);\n} catch (e) {\n  // Se der erro, devolve algo mínimo pra não quebrar o fluxo\n  dados = { mensagem: 'Houve um erro ao interpretar a resposta do agente.', deve_salvar: false };\n}\n\n// Retorna o objeto como item principal\nreturn [\n  {\n    json: dados,\n  },\n];"
       },
@@ -789,29 +748,12 @@
         ]
       ]
     },
-    "Deve salvar?": {
-      "main": [
-        [
-          {
-            "node": "Salvar ficha no Postgres",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        []
-      ]
-    },
     "Parse Resposta AI": {
       "main": [
         [
           {
             "index": 0,
             "node": "Telegram Resposta",
-            "type": "main"
-          },
-          {
-            "index": 0,
-            "node": "Deve salvar?",
             "type": "main"
           }
         ]

@@ -555,6 +555,47 @@
           "name": "Google Gemini(PaLM) Api account"
         }
       }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.deve_salvar }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1056,
+        192
+      ],
+      "name": "Deve salvar?",
+      "id": "be73d4dc-10f0-42d1-a78f-c76a8085042b"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "INSERT INTO public.rpg_players (telegram_user_id, telegram_username, real_name, player_nickname, character_name, race, class, background, alignment, level, max_hp, armor_class, str_score, dex_score, con_score, int_score, wis_score, cha_score, is_spellcaster, spellcasting_ability, sheet_json, created_at) VALUES (={ $json.telegram_user_id }, ={ $json.telegram_username }, ={ $json.real_name }, ={ $json.player_nickname }, ={ $json.character_name }, ={ $json.race }, ={ $json.class }, ={ $json.background }, ={ $json.alignment }, ={ $json.level }, ={ $json.max_hp }, ={ $json.armor_class }, ={ $json.str_score }, ={ $json.dex_score }, ={ $json.con_score }, ={ $json.int_score }, ={ $json.wis_score }, ={ $json.cha_score }, ={ $json.is_spellcaster }, ={ $json.spellcasting_ability }, ={ $json.sheet_json }, ={ $json.created_at }) ON CONFLICT (telegram_user_id) DO UPDATE SET telegram_username=EXCLUDED.telegram_username, real_name=EXCLUDED.real_name, player_nickname=EXCLUDED.player_nickname, character_name=EXCLUDED.character_name, race=EXCLUDED.race, class=EXCLUDED.class, background=EXCLUDED.background, alignment=EXCLUDED.alignment, level=EXCLUDED.level, max_hp=EXCLUDED.max_hp, armor_class=EXCLUDED.armor_class, str_score=EXCLUDED.str_score, dex_score=EXCLUDED.dex_score, con_score=EXCLUDED.con_score, int_score=EXCLUDED.int_score, wis_score=EXCLUDED.wis_score, cha_score=EXCLUDED.cha_score, is_spellcaster=EXCLUDED.is_spellcaster, spellcasting_ability=EXCLUDED.spellcasting_ability, sheet_json=EXCLUDED.sheet_json, created_at=EXCLUDED.created_at RETURNING *;",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [
+        1456,
+        224
+      ],
+      "name": "Salvar ficha no Postgres",
+      "id": "f7db59a5-728c-44b7-8f61-0ea02fe85eb8",
+      "credentials": {
+        "postgres": {
+          "id": "fRNavSYNEr8rrgnR",
+          "name": "Postgres account"
+        }
+      }
     }
   ],
   "connections": {
@@ -585,6 +626,11 @@
         [
           {
             "node": "Telegram Resposta",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Deve salvar?",
             "type": "main",
             "index": 0
           }
@@ -732,6 +778,18 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Deve salvar?": {
+      "main": [
+        [
+          {
+            "node": "Salvar ficha no Postgres",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
       ]
     }
   },

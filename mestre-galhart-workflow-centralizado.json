@@ -559,7 +559,7 @@
     {
       "parameters": {
         "language": "JavaScript",
-        "jsCode": "// Pega o JSON que o Agent mandou em formato de string\nconst texto = $json.output || '{}' ;\n\n// Converte para objeto\nlet dados;\ntry {\n  dados = JSON.parse(texto);\n} catch (e) {\n  // Se der erro, devolve algo mínimo pra não quebrar o fluxo\n  dados = { mensagem: 'Houve um erro ao interpretar a resposta do agente.', deve_salvar: false };\n}\n\n// Retorna o objeto como item principal\nreturn [\n  {\n    json: dados,\n  },\n];"
+        "jsCode": "// Pega o JSON que o Agent mandou em formato de string\nconst texto = ($input.first()?.json?.output ?? '{}');\n\n// Converte para objeto\nlet dados;\ntry {\n  dados = JSON.parse(texto);\n} catch (e) {\n  // Se der erro, devolve algo mínimo pra não quebrar o fluxo\n  dados = { mensagem: 'Houve um erro ao interpretar a resposta do agente.', deve_salvar: false };\n}\n\n// Retorna o objeto como item principal\nreturn [\n  {\n    json: dados,\n  },\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,

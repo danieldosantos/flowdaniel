@@ -797,5 +797,8 @@
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
-  }
+  },
+  "name": "mestre-galhart-workflow-centralizado",
+  "active": true,
+  "settings": {}
 }

@@ -10,16 +10,16 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -496,
+        480,
         0
       ],
       "name": "Telegram Trigger",
-      "id": "320bdd6a-30f6-44f6-8da9-96502fdd09f1",
+      "id": "0fb3f033-4a75-415d-9192-47baba0cc757",
       "webhookId": "dc373f2f-7543-45c6-bd4a-55727264a116",
       "credentials": {
         "telegramApi": {
-          "id": "1TgyA7zT6HSpXmrB",
-          "name": "Telegram account"
+          "id": "askTXtvLFG4zh9rq",
+          "name": "Telegram account 2"
         }
       }
     },
@@ -30,16 +30,16 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3,
       "position": [
-        -272,
+        704,
         0
       ],
       "name": "Preparar Mensagem",
-      "id": "b98bea87-6c39-4de5-a5f9-2bfc03785630"
+      "id": "2e3821a0-578d-4860-b6ce-0f92f1b7d975"
     },
     {
       "parameters": {
         "promptType": "define",
-        "text": "={{ $json.message.text }}",
+        "text": "={{ $json.mensagem || $json.message.text }}",
         "options": {
           "systemMessage": "Você é Mestre Galhart, um agente centralizador de criação de fichas de personagem para D&D 5e.\n\nOBJETIVO GERAL\n- Conversar com o jogador em português pelo Telegram.\n- Usar FERRAMENTAS ESPECIALISTAS (agent tools conectadas a você) para montar fichas completas.\n- Somente quando a ficha estiver pronta E o jogador confirmar, sinalizar que deve salvar no banco.\n\nENTRADA\nVocê recebe um JSON com os dados crus do Telegram, incluindo:\n- message.text  -> o que o jogador digitou\n- chat_id, telegram_user_id, telegram_username\nUse o conteúdo de \"message.text\" como mensagem do jogador.\nCopie SEM ALTERAR os campos:\n- telegram_user_id\n- telegram_username\npara o JSON de saída sempre que possível.\n\nFERRAMENTAS ESPECIALISTAS (agent tools)\nVocê tem várias ferramentas conectadas como agent tools:\n- Especialista em RAÇA\n- Especialista em CLASSE\n- Especialista em BACKGROUND / HISTÓRICO\n- Especialista em TALENTOS\n- Especialista em MAGIAS\nUse-as sempre que precisar de ajuda para propor opções, explicar regras ou gerar listas (ex: magias de um conjurador, sugestões de talentos etc.).\nNão tente “adivinhar” listas longas de regras; delegue para os especialistas sempre que fizer sentido.\n\nNUNCA tente salvar diretamente no Postgres: isso será feito por outro nó do fluxo.\n\nESTILO DE CONVERSA\n- Fale como um mestre de RPG amigável e didático.\n- Sempre responda em português do Brasil.\n- Faça perguntas claras, em passos, para coletar os dados da ficha.\n- Resuma de tempos em tempos o que já foi definido.\n\nCAMPOS DA FICHA\nNo final, a ficha completa deve ter estes campos (além dos campos de controle):\n- telegram_user_id  (copiado da entrada)\n- telegram_username (copiado da entrada)\n- real_name         (nome real do jogador)\n- player_nickname   (apelido do jogador)\n- character_name    (nome do personagem)\n- race              (raça)\n- class             (classe)\n- background        (antecedente / histórico)\n- alignment         (tendência)\n- level             (nível do personagem, número inteiro)\n- max_hp            (pontos de vida máximos, número inteiro)\n- armor_class       (CA, número inteiro)\n- str_score, dex_score, con_score, int_score, wis_score, cha_score (atributos 3–20)\n- is_spellcaster        (booleano: true se for conjurador, senão false)\n- spellcasting_ability  (se for conjurador, uma das: STR, DEX, CON, INT, WIS, CHA; senão null)\n- sheet_json        (um objeto JSON com um resumo da ficha — você pode reutilizar os mesmos campos acima dentro de um objeto, se quiser)\n- created_at        (ISO timestamp de criação – use algo como \"2025-01-01T12:00:00Z\" se precisar inventar)\n\nSINALIZAÇÃO DE SALVAR\nVocê NUNCA chama o banco de dados diretamente. Em vez disso, você usa o campo booleano \"deve_salvar\".\n\n- Enquanto estiver conversando, fazendo perguntas, sugerindo opções ou ainda faltarem dados:\n  - \"deve_salvar\": false\n  - Você pode preencher parcialmente os campos da ficha (ou usar null onde não souber ainda).\n\n- QUANDO a ficha estiver completa e o jogador disser claramente que está tudo certo para salvar:\n  - Faça um pequeno resumo final da ficha na mensagem.\n  - Use \"deve_salvar\": true.\n  - Preencha todos os campos da ficha listados acima, SEM deixar nada essencial em branco.\n  - Não peça mais confirmação depois disso.\n\nFORMATO DA RESPOSTA (OBRIGATÓRIO)\nVocê deve SEMPRE responder APENAS com um JSON válido, sem texto fora do JSON, no formato:\n\n{\n  \"mensagem\": \"texto em português para mostrar ao jogador no Telegram\",\n  \"deve_salvar\": false,\n  \"telegram_user_id\": \"copiado da entrada\",\n  \"telegram_username\": \"copiado da entrada\",\n  \"real_name\": \"ou null se ainda não souber\",\n  \"player_nickname\": \"ou null\",\n  \"character_name\": \"ou null\",\n  \"race\": \"ou null\",\n  \"class\": \"ou null\",\n  \"background\": \"ou null\",\n  \"alignment\": \"ou null\",\n  \"level\": 1,\n  \"max_hp\": 10,\n  \"armor_class\": 15,\n  \"str_score\": 10,\n  \"dex_score\": 10,\n  \"con_score\": 10,\n  \"int_score\": 10,\n  \"wis_score\": 10,\n  \"cha_score\": 10,\n  \"is_spellcaster\": false,\n  \"spellcasting_ability\": null,\n  \"sheet_json\": { \"qualquer\": \"resumo da ficha em objeto\" },\n  \"created_at\": \"2025-01-01T12:00:00Z\"\n}\n\n- Ajuste os valores conforme a conversa.\n- Nunca inclua comentários dentro do JSON.\n- Nunca escreva nada antes ou depois do JSON.\n- Garanta que \"mensagem\" sempre tenha um texto útil para o jogador entender o próximo passo ou o resumo da ficha.\n\nLembre-se: quem decide se o banco vai salvar é o campo \"deve_salvar\". Quando \"deve_salvar\" for true, o fluxo externo vai inserir no Postgres e mandar uma mensagem separada de sucesso."
         }
@@ -47,11 +47,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        648,
+        1464,
         0
       ],
       "name": "AI Agent",
-      "id": "0ac5c8c0-7e41-483f-afd5-32c1cf3387b6"
+      "id": "e2603dc1-e071-4752-b11e-24e63beb3c72"
     },
     {
       "parameters": {
@@ -61,11 +61,11 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1,
       "position": [
-        80,
+        1056,
         224
       ],
       "name": "Redis Chat Memory",
-      "id": "87319313-f0c2-4a4f-997d-9ab97d81cadf",
+      "id": "8470dc91-a340-46a5-8b64-c143c57d4c82",
       "credentials": {
         "redis": {
           "id": "cvoLMMT8ZAPUYxld",
@@ -326,11 +326,11 @@
       "type": "n8n-nodes-base.postgresTool",
       "typeVersion": 2.6,
       "position": [
-        1648,
+        1184,
         224
       ],
       "name": "Postgres RPG Tool",
-      "id": "e0665548-e747-4a8d-9137-2c0cdd6342d8",
+      "id": "a574d2ca-65a2-4123-ad73-984e12664629",
       "credentials": {
         "postgres": {
           "id": "fRNavSYNEr8rrgnR",
@@ -347,10 +347,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -48,
+        928,
         224
       ],
-      "id": "8f967207-9e99-47aa-ad8c-ebcf5dfdc6e7",
+      "id": "d0e6edf5-a634-42d1-93d8-4ab312cd683e",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
@@ -367,10 +367,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        208,
+        1312,
         224
       ],
-      "id": "372b3b81-c0fd-4fa7-b8f7-b775b02a3a38",
+      "id": "9d66a866-ce83-4710-bc33-fcbc850522eb",
       "name": "Agent de classes"
     },
     {
@@ -381,10 +381,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        496,
+        1600,
         224
       ],
-      "id": "927d5287-21ce-4609-91ac-c7112d64b0db",
+      "id": "4510cffa-bdb2-4ffa-9fd2-303380eb75d2",
       "name": "Agent de Raças"
     },
     {
@@ -395,10 +395,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        784,
+        1888,
         224
       ],
-      "id": "4ed3b4c0-e176-4f84-b369-0bb20bdf66cc",
+      "id": "fc3e0393-7870-4d71-a0a7-f720d3995cf7",
       "name": "Agent de Talentos"
     },
     {
@@ -409,10 +409,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1072,
+        2176,
         224
       ],
-      "id": "158f9d3a-57f8-4767-ba45-73165c4d487c",
+      "id": "9f21be14-11d8-409f-8eb2-d263ed48f56d",
       "name": "Agent de Talentos BGS"
     },
     {
@@ -423,10 +423,10 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        1360,
+        2464,
         224
       ],
-      "id": "c4638e6c-f7f1-4b6a-b654-fae1459fe2ca",
+      "id": "eb87a7bf-3830-4362-a706-31518cbda910",
       "name": "Agent de Magias"
     },
     {
@@ -438,16 +438,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1856,
-        0
+        2832,
+        -96
       ],
       "name": "Telegram Resposta",
-      "id": "60a1c6f3-179c-450d-960a-6e2d3023591e",
+      "id": "40098030-47c4-4e89-96c6-9bc3bfa0162a",
       "webhookId": "cc6768f8-7ceb-488e-885d-7a77138b65fd",
       "credentials": {
         "telegramApi": {
-          "id": "1TgyA7zT6HSpXmrB",
-          "name": "Telegram account"
+          "id": "askTXtvLFG4zh9rq",
+          "name": "Telegram account 2"
         }
       }
     },
@@ -460,10 +460,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        288,
+        1392,
         432
       ],
-      "id": "6b0f5c32-c155-4c39-ac9c-484f14d73b9b",
+      "id": "37129171-38f5-4623-9b2a-de3d5ea661d4",
       "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
@@ -481,10 +481,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        576,
+        1680,
         432
       ],
-      "id": "804110eb-3ef2-4294-bf67-2e47987d87af",
+      "id": "6cb6ca44-519b-4c13-8dad-bf9fa5bbf8e6",
       "name": "Google Gemini Chat Model2",
       "credentials": {
         "googlePalmApi": {
@@ -502,10 +502,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        864,
+        1968,
         432
       ],
-      "id": "52b52487-4adb-4fc3-8da6-f0b364a3408a",
+      "id": "e44dd3b5-539e-420c-b25b-5f5e71ba0cab",
       "name": "Google Gemini Chat Model3",
       "credentials": {
         "googlePalmApi": {
@@ -523,10 +523,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1152,
+        2256,
         432
       ],
-      "id": "04a98db3-55aa-4595-b69e-07b6e7d3b986",
+      "id": "8abfc73a-21e5-4a43-84f8-880d820113f9",
       "name": "Google Gemini Chat Model4",
       "credentials": {
         "googlePalmApi": {
@@ -544,10 +544,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1440,
+        2544,
         432
       ],
-      "id": "135fbd76-ba29-4634-ba71-4a230c94d92e",
+      "id": "3696ad6e-d2f0-462b-82f6-2de50b1b757a",
       "name": "Google Gemini Chat Model5",
       "credentials": {
         "googlePalmApi": {
@@ -570,11 +570,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        1056,
-        192
+        2832,
+        96
       ],
       "name": "Deve salvar?",
-      "id": "be73d4dc-10f0-42d1-a78f-c76a8085042b"
+      "id": "a8a1422c-6de3-432f-a9a6-2b90a60fd9f5"
     },
     {
       "parameters": {
@@ -585,11 +585,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 1,
       "position": [
-        1456,
-        224
+        3056,
+        96
       ],
       "name": "Salvar ficha no Postgres",
-      "id": "f7db59a5-728c-44b7-8f61-0ea02fe85eb8",
+      "id": "f83b800d-a948-4129-9cd5-88eab97b6c95",
       "credentials": {
         "postgres": {
           "id": "fRNavSYNEr8rrgnR",
@@ -788,8 +788,7 @@
             "type": "main",
             "index": 0
           }
-        ],
-        []
+        ]
       ]
     }
   },
@@ -797,8 +796,5 @@
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
-  },
-  "name": "mestre-galhart-workflow-centralizado",
-  "active": true,
-  "settings": {}
+  }
 }

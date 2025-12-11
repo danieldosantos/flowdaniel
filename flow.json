@@ -371,7 +371,7 @@
     },
     {
       "parameters": {
-        "functionCode": "const full = $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.';\nconst MAX = 3500;\nconst text = String(full);\nconst chunks = [];\nfor (let i = 0; i < text.length; i += MAX) {\n  chunks.push(text.slice(i, i + MAX));\n}\nconst chatId = $node['Telegram Trigger'].json.message.chat.id;\n\nreturn chunks.map(chunk => ({\n  json: {\n    chat_id: chatId,\n    text: chunk,\n    deve_salvar: $json.deve_salvar || false,\n    file_name: $json.file_name || null,\n    current_health: $json.current_health || 0,\n    max_health: $json.max_health || 0,\n    current_temp_hp: $json.current_temp_hp || 0,\n    armor_bonus: $json.armor_bonus || 0,\n    shield_bonus: $json.shield_bonus || 0,\n    base_speed: $json.base_speed || 30,\n    ability_scores_raw: $json.ability_scores_raw || '',\n    class_data_raw: $json.class_data_raw || '',\n    weapon_list_raw: $json.weapon_list_raw || '',\n    note_list_raw: $json.note_list_raw || '',\n    character_json: $json.character_json || {},\n    raw_xml: $json.raw_xml || ''\n  }\n}));"
+        "functionCode": "const full = $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.';\nconst MAX = 3500;\nconst text = String(full);\nconst chunks = [];\nfor (let i = 0; i < text.length; i += MAX) {\n  chunks.push(text.slice(i, i + MAX));\n}\n\nconst chatId = $node['Telegram Trigger'].json.message.chat.id;\nconst deveSalvar = $json.deve_salvar === true;\n\nconst basePayload = {\n  chat_id: chatId,\n  deve_salvar: deveSalvar,\n  file_name: $json.file_name || null,\n  current_health: Number($json.current_health || 0),\n  max_health: Number($json.max_health || 0),\n  current_temp_hp: Number($json.current_temp_hp || 0),\n  armor_bonus: Number($json.armor_bonus || 0),\n  shield_bonus: Number($json.shield_bonus || 0),\n  base_speed: Number($json.base_speed || 30),\n  ability_scores_raw: $json.ability_scores_raw || '',\n  class_data_raw: $json.class_data_raw || '',\n  weapon_list_raw: $json.weapon_list_raw || '',\n  note_list_raw: $json.note_list_raw || '',\n  character_json: $json.character_json || {},\n  raw_xml: $json.raw_xml || ''\n};\n\nconst hasCharacter = basePayload.character_json && Object.keys(basePayload.character_json).length > 0;\nconst requiredStrings = ['file_name', 'ability_scores_raw', 'class_data_raw'];\nconst hasRequiredStrings = requiredStrings.every((key) => {\n  const value = basePayload[key];\n  return typeof value === 'string' ? value.trim().length > 0 : Boolean(value);\n});\nconst readyToSave = deveSalvar && hasCharacter && hasRequiredStrings;\n\nif (deveSalvar && !readyToSave) {\n  basePayload.validation_error = 'Faltam dados essenciais da ficha (nome, atributos, classe ou detalhes). Confirme todas as etapas antes de salvar.';\n}\n\nbasePayload.pronto_para_salvar = readyToSave;\n\nreturn chunks.map((chunk) => ({\n  json: {\n    ...basePayload,\n    text: chunk\n  }\n}));"
       },
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
@@ -601,7 +601,7 @@
         "conditions": {
           "boolean": [
             {
-              "value1": "={{ $json.deve_salvar === true }}",
+              "value1": "={{ $json.pronto_para_salvar === true }}",
               "operation": "equal",
               "value2": true
             }

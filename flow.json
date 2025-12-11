@@ -12,12 +12,12 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -384,
-        2316
+        -512,
+        320
       ],
       "name": "Telegram Trigger",
       "webhookId": "dc373f2f-7543-45a4-55727264a116",
-      "id": "63c3dba8-7c06-4d58-aa2f-728b8c233be9",
+      "id": "4425090c-bf73-4c2c-aa92-96628cb7d98e",
       "credentials": {
         "telegramApi": {
           "id": "askTXtvLFG4zh9rq",
@@ -39,11 +39,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        -160,
-        2316
+        -288,
+        320
       ],
       "name": "IF Tem Arquivo?",
-      "id": "2a8e6fc6-bff7-4f78-b1d7-b1ee4cd00a22"
+      "id": "26637674-acab-40e3-80ec-814b1cf648bf"
     },
     {
       "parameters": {
@@ -52,11 +52,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        128,
-        2000
+        0,
+        0
       ],
       "name": "Ler Arquivo XML do JSON",
-      "id": "147580ed-f0b5-452d-baa1-edf50b0dfde2"
+      "id": "4bdd3d03-c456-4305-9075-1e236fb53c65"
     },
     {
       "parameters": {
@@ -66,11 +66,11 @@
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        416,
-        2000
+        288,
+        0
       ],
       "name": "XML -> JSON",
-      "id": "42a33338-9570-439d-8e9c-4538a9c5d809"
+      "id": "756d6f44-173c-40c1-8c85-59702e504008"
     },
     {
       "parameters": {
@@ -79,11 +79,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        704,
-        2000
+        576,
+        0
       ],
       "name": "Montar Ficha para DB",
-      "id": "29fb98c6-d49b-46d4-8ed6-b7a7500e8f3f"
+      "id": "39d8a7cb-f40c-4ca2-b595-614f571810d9"
     },
     {
       "parameters": {
@@ -94,11 +94,11 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 1,
       "position": [
-        992,
-        2000
+        864,
+        0
       ],
       "name": "Salvar Ficha no PostgreSQL",
-      "id": "14d2324d-2847-421d-8917-c650a80a3190",
+      "id": "23c77e46-1791-48c7-b5aa-430ffb6f0c75",
       "credentials": {
         "postgres": {
           "id": "fRNavSYNEr8rrgnR",
@@ -115,12 +115,12 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1216,
-        2000
+        1088,
+        0
       ],
       "name": "Telegram Resposta",
       "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
-      "id": "cb4aaff3-e8cd-48ad-9bf4-451cf4256af4",
+      "id": "b64fc19f-cdd8-4338-ade4-275c74cccf32",
       "credentials": {
         "telegramApi": {
           "id": "askTXtvLFG4zh9rq",
@@ -139,11 +139,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        64,
-        2464
+        -64,
+        464
       ],
       "name": "AI Agent (Mestre Galhart)",
-      "id": "01f94515-acd0-4b75-b760-99b9e00b4e6c"
+      "id": "3e61a755-15ca-46ea-bf9e-cb8ec335ab3b"
     },
     {
       "parameters": {
@@ -154,12 +154,12 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1216,
-        2464
+        1088,
+        464
       ],
       "name": "Telegram Resposta (Agent)",
       "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
-      "id": "75e79c7b-2ce8-476a-86ad-303d2cb6a0ed",
+      "id": "2853dba0-c49b-4f6e-addc-4f3418827b13",
       "credentials": {
         "telegramApi": {
           "id": "askTXtvLFG4zh9rq",
@@ -175,11 +175,11 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1,
       "position": [
-        200,
-        2688
+        80,
+        688
       ],
       "name": "Redis Chat Memory1",
-      "id": "89117c68-8217-49f7-abd0-99185a795fd3",
+      "id": "49c6b5ba-3d8b-4283-991a-cfc8b4f30bfe",
       "credentials": {
         "redis": {
           "id": "cvoLMMT8ZAPUYxld",
@@ -197,11 +197,11 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
       "typeVersion": 1,
       "position": [
-        72,
-        2688
+        -64,
+        688
       ],
       "name": "Mistral Cloud Chat Model",
-      "id": "f843a226-cca1-436b-a5ae-281f5318a2ad",
+      "id": "b08d1d1f-c028-4ede-bffc-4cde204cc74c",
       "credentials": {
         "mistralCloudApi": {
           "id": "gCxgoj2wgWPqDYqC",
@@ -216,24 +216,79 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        992,
-        2244
+        864,
+        256
       ],
       "name": "Dividir Mensagem",
-      "id": "7649a5c6-8a01-47ee-81e7-b0012f78cfa4"
+      "id": "75756ef0-511f-485d-850b-df2780ccb952"
     },
     {
       "parameters": {
+        "promptType": "={{ $json.output }}",
+        "text": "",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        640,
-        2340
+        512,
+        352
       ],
       "name": "RPG Characters (INSERT)",
-      "id": "56b93dc3-1b55-480a-815d-e8ff4cc1d7e2"
+      "id": "e46c2a68-fc95-4b40-933f-9454761a8873"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        528,
+        576
+      ],
+      "id": "f2b80724-2463-454c-b374-1bc556bec744",
+      "name": "Mistral Cloud Chat Model1",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "gCxgoj2wgWPqDYqC",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": "rpg_characters",
+        "columns": "telegram_user_id,telegram_username,file_name,current_health,max_health,current_temp_hp,armor_bonus,shield_bonus,base_speed,ability_scores_raw,class_data_raw,weapon_list_raw,note_list_raw,character_json,raw_xml",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [
+        864,
+        448
+      ],
+      "name": "Salvar Ficha no PostgreSQL1",
+      "id": "f63d35b7-2b5e-4be5-95e4-d0cfa6e56d75",
+      "credentials": {
+        "postgres": {
+          "id": "fRNavSYNEr8rrgnR",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "const full = $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.';\nconst MAX = 3500;\nconst text = String(full);\nconst chunks = [];\nfor (let i = 0; i < text.length; i += MAX) {\n  chunks.push(text.slice(i, i + MAX));\n}\n\nconst chatId = $node['Telegram Trigger'].json.message.chat.id;\nconst deveSalvar = $json.deve_salvar === true;\n\nconst basePayload = {\n  chat_id: chatId,\n  deve_salvar: deveSalvar,\n  file_name: $json.file_name || null,\n  current_health: Number($json.current_health || 0),\n  max_health: Number($json.max_health || 0),\n  current_temp_hp: Number($json.current_temp_hp || 0),\n  armor_bonus: Number($json.armor_bonus || 0),\n  shield_bonus: Number($json.shield_bonus || 0),\n  base_speed: Number($json.base_speed || 30),\n  ability_scores_raw: $json.ability_scores_raw || '',\n  class_data_raw: $json.class_data_raw || '',\n  weapon_list_raw: $json.weapon_list_raw || '',\n  note_list_raw: $json.note_list_raw || '',\n  character_json: $json.character_json || {},\n  raw_xml: $json.raw_xml || ''\n};\n\nconst hasCharacter = basePayload.character_json && Object.keys(basePayload.character_json).length > 0;\nconst requiredStrings = ['file_name', 'ability_scores_raw', 'class_data_raw'];\nconst hasRequiredStrings = requiredStrings.every((key) => {\n  const value = basePayload[key];\n  return typeof value === 'string' ? value.trim().length > 0 : Boolean(value);\n});\nconst readyToSave = deveSalvar && hasCharacter && hasRequiredStrings;\n\nif (deveSalvar && !readyToSave) {\n  basePayload.validation_error = 'Faltam dados essenciais da ficha (nome, atributos, classe ou detalhes). Confirme todas as etapas antes de salvar.';\n}\n\nbasePayload.pronto_para_salvar = readyToSave;\n\nreturn chunks.map((chunk) => ({\n  json: {\n    ...basePayload,\n    text: chunk\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        848,
+        640
+      ],
+      "name": "Dividir Mensagem1",
+      "id": "998ba5b6-de08-4745-8150-305a8395e4c6"
     },
     {
       "parameters": {
@@ -249,81 +304,31 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        416,
-        2464
+        288,
+        464
       ],
       "name": "IF Deve Salvar?",
-      "id": "27114372-54e5-46ef-93b8-ddb599a51539"
+      "id": "ca766a2a-c4b7-4a63-9ecf-7b5152913ed0"
     },
     {
       "parameters": {
-        "options": {}
+        "sessionKey": "={{ ($json.message?.from?.id || $json.chat_id) + '-telegram' }}",
+        "sessionTTL": 600
       },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1,
       "position": [
-        648,
-        2564
+        640,
+        736
       ],
-      "id": "7fc73027-db15-483b-8680-5d8d9c1c08b0",
-      "name": "Mistral Cloud Chat Model1",
-      "credentials": {
-        "mistralCloudApi": {
-          "id": "gCxgoj2wgWPqDYqC",
-          "name": "Mistral Cloud account"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.5,
-      "position": [
-        776,
-        2564
-      ],
-      "id": "da0d5ab4-45a1-40e9-a051-d0d2cafff5fe",
       "name": "Redis Chat Memory",
+      "id": "4284efd8-bc42-486a-af8b-7109a225853f",
       "credentials": {
         "redis": {
           "id": "cvoLMMT8ZAPUYxld",
           "name": "Redis account"
         }
       }
-    },
-    {
-      "parameters": {
-        "table": "rpg_characters",
-        "columns": "telegram_user_id,telegram_username,file_name,current_health,max_health,current_temp_hp,armor_bonus,shield_bonus,base_speed,ability_scores_raw,class_data_raw,weapon_list_raw,note_list_raw,character_json,raw_xml",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 1,
-      "position": [
-        992,
-        2436
-      ],
-      "name": "Salvar Ficha no PostgreSQL1",
-      "id": "6dd04d63-e0d8-414f-897c-72d12b40da69",
-      "credentials": {
-        "postgres": {
-          "id": "fRNavSYNEr8rrgnR",
-          "name": "Postgres account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "functionCode": "const full = $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.';\nconst MAX = 3500;\nconst text = String(full);\nconst chunks = [];\nfor (let i = 0; i < text.length; i += MAX) {\n  chunks.push(text.slice(i, i + MAX));\n}\n\nconst chatId = $node['Telegram Trigger'].json.message.chat.id;\nconst deveSalvar = $json.deve_salvar === true;\n\nconst basePayload = {\n  chat_id: chatId,\n  deve_salvar: deveSalvar,\n  file_name: $json.file_name || null,\n  current_health: Number($json.current_health || 0),\n  max_health: Number($json.max_health || 0),\n  current_temp_hp: Number($json.current_temp_hp || 0),\n  armor_bonus: Number($json.armor_bonus || 0),\n  shield_bonus: Number($json.shield_bonus || 0),\n  base_speed: Number($json.base_speed || 30),\n  ability_scores_raw: $json.ability_scores_raw || '',\n  class_data_raw: $json.class_data_raw || '',\n  weapon_list_raw: $json.weapon_list_raw || '',\n  note_list_raw: $json.note_list_raw || '',\n  character_json: $json.character_json || {},\n  raw_xml: $json.raw_xml || ''\n};\n\nconst hasCharacter = basePayload.character_json && Object.keys(basePayload.character_json).length > 0;\nconst requiredStrings = ['file_name', 'ability_scores_raw', 'class_data_raw'];\nconst hasRequiredStrings = requiredStrings.every((key) => {\n  const value = basePayload[key];\n  return typeof value === 'string' ? value.trim().length > 0 : Boolean(value);\n});\nconst readyToSave = deveSalvar && hasCharacter && hasRequiredStrings;\n\nif (deveSalvar && !readyToSave) {\n  basePayload.validation_error = 'Faltam dados essenciais da ficha (nome, atributos, classe ou detalhes). Confirme todas as etapas antes de salvar.';\n}\n\nbasePayload.pronto_para_salvar = readyToSave;\n\nreturn chunks.map((chunk) => ({\n  json: {\n    ...basePayload,\n    text: chunk\n  }\n}));"
-      },
-      "type": "n8n-nodes-base.function",
-      "typeVersion": 1,
-      "position": [
-        976,
-        2640
-      ],
-      "name": "Dividir Mensagem1",
-      "id": "394dd247-ddee-4638-b0c3-fb3debef81b9"
     }
   ],
   "connections": {
@@ -460,6 +465,28 @@
         ]
       ]
     },
+    "Mistral Cloud Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "RPG Characters (INSERT)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dividir Mensagem1": {
+      "main": [
+        [
+          {
+            "node": "Telegram Resposta (Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "IF Deve Salvar?": {
       "main": [
         [
@@ -478,17 +505,6 @@
         ]
       ]
     },
-    "Mistral Cloud Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "RPG Characters (INSERT)",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Redis Chat Memory": {
       "ai_memory": [
         [
@@ -499,22 +515,11 @@
           }
         ]
       ]
-    },
-    "Dividir Mensagem1": {
-      "main": [
-        [
-          {
-            "node": "Telegram Resposta (Agent)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "pinData": {},
   "meta": {
-    "templateCredsSetupCompleted": true,
     "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
   }
 }
+

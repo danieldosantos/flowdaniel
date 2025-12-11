@@ -1,0 +1,784 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "*"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -512,
+        1844
+      ],
+      "name": "Telegram Trigger",
+      "webhookId": "dc373f2f-7543-45a4-55727264a116",
+      "id": "de986846-ef50-45a4-9036-70b5213f7532",
+      "credentials": {
+        "telegramApi": {
+          "id": "askTXtvLFG4zh9rq",
+          "name": "Telegram account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.document?.file_name || '' }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        -288,
+        1844
+      ],
+      "name": "IF Tem Arquivo?",
+      "id": "b50ed078-306d-4254-a130-18e070b5ac07"
+    },
+    {
+      "parameters": {
+        "functionCode": "return items.map(item => {\n  const file = item.binary?.data;\n\n  if (!file || !file.data) {\n    throw new Error('Nenhum arquivo recebido em item.binary.data');\n  }\n\n  const buffer = Buffer.from(file.data, file.encoding || 'base64');\n  let xmlText = buffer.toString('utf8');\n\n  xmlText = xmlText.replace(/^\ufeff/, '');\n  xmlText = xmlText.replace(/[\u0000-\b\u000b\f\u000e-\u001f\u007f]/g, '');\n  xmlText = xmlText.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\\d+;|#x[0-9a-fA-F]+;)/g, '&amp;');\n\n  const msg = item.json.message || {};\n\n  item.json = {\n    telegram_user_id: msg.from?.id,\n    telegram_username: msg.from?.username || '',\n    file_name: msg.document?.file_name || '',\n    xml_text: xmlText,\n    raw_xml: xmlText,\n    mensagem: '\u2705 Ficha importada com sucesso!'\n  };\n\n  return item;\n});"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        56,
+        1696
+      ],
+      "name": "Ler Arquivo XML do JSON",
+      "id": "b07249d6-bc11-45f4-9971-977f5cc58d17"
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "xml_text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        400,
+        1696
+      ],
+      "name": "XML -> JSON",
+      "id": "09087f87-7fc5-4766-81d6-c9dda3fc1c87"
+    },
+    {
+      "parameters": {
+        "functionCode": "const char = $json.character || {};\nconst meta = $node['Ler Arquivo XML do JSON'].json || {};\n\nreturn [{\n  json: {\n    telegram_user_id: meta.telegram_user_id || null,\n    telegram_username: meta.telegram_username || '',\n    file_name: meta.file_name || '',\n    current_health: Number(char.currentHealth || 0),\n    max_health: Number(char.maxHealth || 0),\n    current_temp_hp: Number(char.currentTempHP || 0),\n    armor_bonus: Number(char.armorBonus || 0),\n    shield_bonus: Number(char.shieldBonus || 0),\n    base_speed: Number(char.baseSpeed || 0),\n    ability_scores_raw: char.abilityScores || '',\n    class_data_raw: char.classData || '',\n    weapon_list_raw: char.weaponList || '',\n    note_list_raw: char.noteList || '',\n    character_json: char,\n    raw_xml: meta.raw_xml || '',\n    mensagem: '\u2705 Ficha importada e salva com sucesso!'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        624,
+        1696
+      ],
+      "name": "Montar Ficha para DB",
+      "id": "2cde1806-58e8-4c45-921b-4f123a92affd"
+    },
+    {
+      "parameters": {
+        "table": "rpg_characters",
+        "columns": "telegram_user_id,telegram_username,file_name,current_health,max_health,current_temp_hp,armor_bonus,shield_bonus,base_speed,ability_scores_raw,class_data_raw,weapon_list_raw,note_list_raw,character_json,raw_xml",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 1,
+      "position": [
+        848,
+        1696
+      ],
+      "name": "Salvar Ficha no PostgreSQL",
+      "id": "b23c3e4c-31f9-488b-a522-a4d3fc55567c",
+      "credentials": {
+        "postgres": {
+          "id": "fRNavSYNEr8rrgnR",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.' }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1072,
+        1696
+      ],
+      "name": "Telegram Resposta",
+      "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
+      "id": "3f8dee41-cdf7-4955-a1f0-8190cec70621",
+      "credentials": {
+        "telegramApi": {
+          "id": "askTXtvLFG4zh9rq",
+          "name": "Telegram account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message?.text || '' }}",
+        "options": {},
+        "toolDescription": "Salva uma ficha de personagem D&D 5e na tabela public.rpg_characters. Use apenas quando o jogador confirmar que quer salvar.",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rpg_characters",
+          "mode": "list",
+          "cachedResultName": "rpg_characters"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user_id": "{{ $node['Telegram Trigger'].json.message.from.id }}",
+            "telegram_username": "={{ $node['Telegram Trigger'].json.message.from.username || '' }}",
+            "file_name": "={{ $fromAI('file_name', ``, 'string') }}",
+            "current_health": "={{ $fromAI('current_health', `0`, 'number') }}",
+            "max_health": "={{ $fromAI('max_health', `0`, 'number') }}",
+            "current_temp_hp": "={{ $fromAI('current_temp_hp', `0`, 'number') }}",
+            "armor_bonus": "={{ $fromAI('armor_bonus', `0`, 'number') }}",
+            "shield_bonus": "={{ $fromAI('shield_bonus', `0`, 'number') }}",
+            "base_speed": "={{ $fromAI('base_speed', `30`, 'number') }}",
+            "ability_scores_raw": "={{ $fromAI('ability_scores_raw', ``, 'string') }}",
+            "class_data_raw": "={{ $fromAI('class_data_raw', ``, 'string') }}",
+            "weapon_list_raw": "={{ $fromAI('weapon_list_raw', ``, 'string') }}",
+            "note_list_raw": "={{ $fromAI('note_list_raw', ``, 'string') }}",
+            "character_json": "={{ $fromAI('character_json', ``, 'json') }}",
+            "raw_xml": "={{ $fromAI('raw_xml', ``, 'string') }}",
+            "id": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+            "created_at": "={{ $fromAI('created_at', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telegram_user_id",
+              "displayName": "telegram_user_id",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "telegram_username",
+              "displayName": "telegram_username",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "current_health",
+              "displayName": "current_health",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "max_health",
+              "displayName": "max_health",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "current_temp_hp",
+              "displayName": "current_temp_hp",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "armor_bonus",
+              "displayName": "armor_bonus",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "shield_bonus",
+              "displayName": "shield_bonus",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "base_speed",
+              "displayName": "base_speed",
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "ability_scores_raw",
+              "displayName": "ability_scores_raw",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "class_data_raw",
+              "displayName": "class_data_raw",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "weapon_list_raw",
+              "displayName": "weapon_list_raw",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "note_list_raw",
+              "displayName": "note_list_raw",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "character_json",
+              "displayName": "character_json",
+              "type": "object",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "raw_xml",
+              "displayName": "raw_xml",
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "display": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "type": "dateTime",
+              "canBeUsedToMatch": true,
+              "display": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -8,
+        1992
+      ],
+      "name": "AI Agent (Mestre Galhart)",
+      "id": "6587ce5f-658a-42d4-960b-9c7476fad39e"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $('AI Agent (Mestre Galhart)').item.json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        624,
+        1992
+      ],
+      "name": "Telegram Resposta (Agent)",
+      "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
+      "id": "898ad6dc-9cef-498a-abb4-600c357ba3f8",
+      "credentials": {
+        "telegramApi": {
+          "id": "askTXtvLFG4zh9rq",
+          "name": "Telegram account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionKey": "={{ ($json.message?.from?.id || $json.chat_id) + '-telegram' }}",
+        "sessionTTL": 600
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1,
+      "position": [
+        64,
+        2216
+      ],
+      "name": "Redis Chat Memory1",
+      "id": "7dee7c53-6aa8-4a39-b639-88c68a3719f",
+      "credentials": {
+        "redis": {
+          "id": "cvoLMMT8ZAPUYxld",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "codestral-2411-rc5",
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -64,
+        2216
+      ],
+      "name": "Mistral Cloud Chat Model",
+      "id": "85c68436-9a8e-48e7-b485-514c33fb0cea",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "gCxgoj2wgWPqDYqC",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "functionCode": "const full = $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.';\nconst MAX = 3500;\nconst text = String(full);\nconst chunks = [];\nfor (let i = 0; i < text.length; i += MAX) {\n  chunks.push(text.slice(i, i + MAX));\n}\nconst chatId = $node['Telegram Trigger'].json.message.chat.id;\n\nreturn chunks.map(chunk => ({\n  json: {\n    chat_id: chatId,\n    text: chunk,\n    deve_salvar: $json.deve_salvar || false,\n    file_name: $json.file_name || null,\n    current_health: $json.current_health || 0,\n    max_health: $json.max_health || 0,\n    current_temp_hp: $json.current_temp_hp || 0,\n    armor_bonus: $json.armor_bonus || 0,\n    shield_bonus: $json.shield_bonus || 0,\n    base_speed: $json.base_speed || 30,\n    ability_scores_raw: $json.ability_scores_raw || '',\n    class_data_raw: $json.class_data_raw || '',\n    weapon_list_raw: $json.weapon_list_raw || '',\n    note_list_raw: $json.note_list_raw || '',\n    character_json: $json.character_json || {},\n    raw_xml: $json.raw_xml || ''\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        400,
+        1992
+      ],
+      "name": "Dividir Mensagem",
+      "id": "e4a61de6-b6f7-4fbb-8b6d-0e96488a94b1"
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Salva todas as informa\u00e7\u00f5es da ficha validada na tabela public.rpg_characters. Use apenas quando o agente confirmar com deve_salvar=true.",
+        "schema": {
+          "__rl": true,
+          "mode": "list",
+          "value": "public"
+        },
+        "table": {
+          "__rl": true,
+          "value": "rpg_characters",
+          "mode": "list",
+          "cachedResultName": "rpg_characters"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "telegram_user_id": "={{ $node['Telegram Trigger'].json.message.from.id }}",
+            "telegram_username": "={{ $node['Telegram Trigger'].json.message.from.username || '' }}",
+            "file_name": "={{ $fromAI('file_name', ``, 'string') }}",
+            "current_health": "={{ $fromAI('current_health', `0`, 'number') }}",
+            "max_health": "={{ $fromAI('max_health', `0`, 'number') }}",
+            "current_temp_hp": "={{ $fromAI('current_temp_hp', `0`, 'number') }}",
+            "armor_bonus": "={{ $fromAI('armor_bonus', `0`, 'number') }}",
+            "shield_bonus": "={{ $fromAI('shield_bonus', `0`, 'number') }}",
+            "base_speed": "={{ $fromAI('base_speed', `30`, 'number') }}",
+            "ability_scores_raw": "={{ $fromAI('ability_scores_raw', ``, 'string') }}",
+            "class_data_raw": "={{ $fromAI('class_data_raw', ``, 'string') }}",
+            "weapon_list_raw": "={{ $fromAI('weapon_list_raw', ``, 'string') }}",
+            "note_list_raw": "={{ $fromAI('note_list_raw', ``, 'string') }}",
+            "character_json": "={{ $fromAI('character_json', ``, 'json') }}",
+            "raw_xml": "={{ $fromAI('raw_xml', ``, 'string') }}",
+            "id": "={{ $('Telegram Trigger').item.json.message.from.id }}",
+            "created_at": "={{ $fromAI('created_at', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telegram_user_id",
+              "displayName": "telegram_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "telegram_username",
+              "displayName": "telegram_username",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "current_health",
+              "displayName": "current_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "max_health",
+              "displayName": "max_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "current_temp_hp",
+              "displayName": "current_temp_hp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "armor_bonus",
+              "displayName": "armor_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "shield_bonus",
+              "displayName": "shield_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "base_speed",
+              "displayName": "base_speed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ability_scores_raw",
+              "displayName": "ability_scores_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "class_data_raw",
+              "displayName": "class_data_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "weapon_list_raw",
+              "displayName": "weapon_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "note_list_raw",
+              "displayName": "note_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "character_json",
+              "displayName": "character_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "object",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "raw_xml",
+              "displayName": "raw_xml",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        192,
+        2216
+      ],
+      "name": "RPG Characters (INSERT)",
+      "id": "20c8f2d1-4a37-4f3c-bcfa-9e27a68fa786",
+      "credentials": {
+        "postgres": {
+          "id": "fRNavSYNEr8rrgnR",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.deve_salvar === true }}",
+              "operation": "equal",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        520,
+        2060
+      ],
+      "name": "IF Deve Salvar?",
+      "id": "910a8f02-60a8-4f5b-b8a9-2fb2cfc79171"
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "IF Tem Arquivo?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Tem Arquivo?": {
+      "main": [
+        [
+          {
+            "node": "Ler Arquivo XML do JSON",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent (Mestre Galhart)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ler Arquivo XML do JSON": {
+      "main": [
+        [
+          {
+            "node": "XML -> JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML -> JSON": {
+      "main": [
+        [
+          {
+            "node": "Montar Ficha para DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Ficha para DB": {
+      "main": [
+        [
+          {
+            "node": "Salvar Ficha no PostgreSQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Salvar Ficha no PostgreSQL": {
+      "main": [
+        [
+          {
+            "node": "Telegram Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent (Mestre Galhart)": {
+      "main": [
+        [
+          {
+            "node": "Dividir Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ],
+      "ai_tool": [
+        [
+          {
+            "node": "RPG Characters (INSERT)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent (Mestre Galhart)",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent (Mestre Galhart)",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dividir Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Telegram Resposta (Agent)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF Deve Salvar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Deve Salvar?": {
+      "main": [
+        [
+          {
+            "node": "RPG Characters (INSERT)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "RPG Characters (INSERT)": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent (Mestre Galhart)",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
+  }
+}

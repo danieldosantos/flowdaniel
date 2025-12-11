@@ -13,7 +13,7 @@
       "typeVersion": 1.2,
       "position": [
         -512,
-        320
+        192
       ],
       "name": "Telegram Trigger",
       "webhookId": "dc373f2f-7543-45a4-55727264a116",
@@ -40,7 +40,7 @@
       "typeVersion": 1,
       "position": [
         -288,
-        320
+        192
       ],
       "name": "IF Tem Arquivo?",
       "id": "26637674-acab-40e3-80ec-814b1cf648bf"
@@ -79,7 +79,7 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        576,
+        512,
         0
       ],
       "name": "Montar Ficha para DB",
@@ -94,7 +94,7 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 1,
       "position": [
-        864,
+        736,
         0
       ],
       "name": "Salvar Ficha no PostgreSQL",
@@ -115,7 +115,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1088,
+        960,
         0
       ],
       "name": "Telegram Resposta",
@@ -140,7 +140,7 @@
       "typeVersion": 3,
       "position": [
         -64,
-        464
+        340
       ],
       "name": "AI Agent (Mestre Galhart)",
       "id": "3e61a755-15ca-46ea-bf9e-cb8ec335ab3b"
@@ -154,8 +154,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1088,
-        464
+        1184,
+        340
       ],
       "name": "Telegram Resposta (Agent)",
       "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
@@ -175,8 +175,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1,
       "position": [
-        80,
-        688
+        72,
+        564
       ],
       "name": "Redis Chat Memory1",
       "id": "49c6b5ba-3d8b-4283-991a-cfc8b4f30bfe",
@@ -197,8 +197,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
       "typeVersion": 1,
       "position": [
-        -64,
-        688
+        -56,
+        564
       ],
       "name": "Mistral Cloud Chat Model",
       "id": "b08d1d1f-c028-4ede-bffc-4cde204cc74c",
@@ -216,45 +216,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        864,
-        256
+        960,
+        244
       ],
       "name": "Dividir Mensagem",
       "id": "75756ef0-511f-485d-850b-df2780ccb952"
-    },
-    {
-      "parameters": {
-        "promptType": "={{ $json.output }}",
-        "text": "",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        512,
-        352
-      ],
-      "name": "RPG Characters (INSERT)",
-      "id": "e46c2a68-fc95-4b40-933f-9454761a8873"
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
-      "typeVersion": 1,
-      "position": [
-        528,
-        576
-      ],
-      "id": "f2b80724-2463-454c-b374-1bc556bec744",
-      "name": "Mistral Cloud Chat Model1",
-      "credentials": {
-        "mistralCloudApi": {
-          "id": "gCxgoj2wgWPqDYqC",
-          "name": "Mistral Cloud account"
-        }
-      }
     },
     {
       "parameters": {
@@ -265,8 +231,8 @@
       "type": "n8n-nodes-base.postgres",
       "typeVersion": 1,
       "position": [
-        864,
-        448
+        736,
+        244
       ],
       "name": "Salvar Ficha no PostgreSQL1",
       "id": "f63d35b7-2b5e-4be5-95e4-d0cfa6e56d75",
@@ -284,8 +250,8 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        848,
-        640
+        672,
+        448
       ],
       "name": "Dividir Mensagem1",
       "id": "998ba5b6-de08-4745-8150-305a8395e4c6"
@@ -305,30 +271,23 @@
       "typeVersion": 1,
       "position": [
         288,
-        464
+        340
       ],
       "name": "IF Deve Salvar?",
       "id": "ca766a2a-c4b7-4a63-9ecf-7b5152913ed0"
     },
     {
       "parameters": {
-        "sessionKey": "={{ ($json.message?.from?.id || $json.chat_id) + '-telegram' }}",
-        "sessionTTL": 600
+        "functionCode": "const char = $json.character || {};\nconst meta = $node['Ler Arquivo XML do JSON'].json || {};\n\nreturn [{\n  json: {\n    telegram_user_id: meta.telegram_user_id || null,\n    telegram_username: meta.telegram_username || '',\n    file_name: meta.file_name || '',\n    current_health: Number(char.currentHealth || 0),\n    max_health: Number(char.maxHealth || 0),\n    current_temp_hp: Number(char.currentTempHP || 0),\n    armor_bonus: Number(char.armorBonus || 0),\n    shield_bonus: Number(char.shieldBonus || 0),\n    base_speed: Number(char.baseSpeed || 0),\n    ability_scores_raw: char.abilityScores || '',\n    class_data_raw: char.classData || '',\n    weapon_list_raw: char.weaponList || '',\n    note_list_raw: char.noteList || '',\n    character_json: char,\n    raw_xml: meta.raw_xml || '',\n    mensagem: '✅ Ficha importada e salva com sucesso!'\n  }\n}];"
       },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        640,
-        736
+        512,
+        244
       ],
-      "name": "Redis Chat Memory",
-      "id": "4284efd8-bc42-486a-af8b-7109a225853f",
-      "credentials": {
-        "redis": {
-          "id": "cvoLMMT8ZAPUYxld",
-          "name": "Redis account"
-        }
-      }
+      "name": "Montar Ficha para DB1",
+      "id": "70c40744-392c-42b7-bf99-e593c6af4698"
     }
   ],
   "connections": {
@@ -449,28 +408,12 @@
         ]
       ]
     },
-    "RPG Characters (INSERT)": {
+    "Salvar Ficha no PostgreSQL1": {
       "main": [
         [
           {
-            "node": "Salvar Ficha no PostgreSQL1",
-            "type": "main",
-            "index": 0
-          },
-          {
             "node": "Dividir Mensagem",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Mistral Cloud Chat Model1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "RPG Characters (INSERT)",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -491,7 +434,7 @@
       "main": [
         [
           {
-            "node": "RPG Characters (INSERT)",
+            "node": "Montar Ficha para DB1",
             "type": "main",
             "index": 0
           }
@@ -505,12 +448,12 @@
         ]
       ]
     },
-    "Redis Chat Memory": {
-      "ai_memory": [
+    "Montar Ficha para DB1": {
+      "main": [
         [
           {
-            "node": "RPG Characters (INSERT)",
-            "type": "ai_memory",
+            "node": "Salvar Ficha no PostgreSQL1",
+            "type": "main",
             "index": 0
           }
         ]
@@ -522,4 +465,3 @@
     "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
   }
 }
-

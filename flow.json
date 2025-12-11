@@ -261,7 +261,7 @@
         "conditions": {
           "boolean": [
             {
-              "value1": "={{ $json.deve_salvar === true && Object.keys($json.character_json || $json.character || {}).length > 0 && String($json.file_name || \"\").trim().length > 0 && String($json.ability_scores_raw || \"\").trim().length > 0 && String($json.class_data_raw || \"\").trim().length > 0 }}",
+              "value1": "={{ ($json.pronto_para_salvar === true || $json.deve_salvar === true || $json.deve_salvar === 'true') && Object.keys(($json.character_json || $json.character || {})).length > 0 && String($json.file_name || \"\").trim().length > 0 && String($json.ability_scores_raw || \"\").trim().length > 0 && String($json.class_data_raw || \"\").trim().length > 0 }}",
               "value2": true
             }
           ]

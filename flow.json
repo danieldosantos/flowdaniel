@@ -148,7 +148,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
-        "text": "={{ $('AI Agent (Mestre Galhart)').item.json.output }}",
+        "text": "={{ $json.text || 'Desculpe, ocorreu um erro.' }}",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",

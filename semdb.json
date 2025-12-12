@@ -1,5 +1,4 @@
 {
-  "name": "Mestre Galhart",
   "nodes": [
     {
       "parameters": {
@@ -8,11 +7,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        7584,
-        3968
+        96,
+        432
       ],
       "name": "Montar Ficha para DB1",
-      "id": "448b94f0-e982-4043-8c0c-9a308410675e"
+      "id": "a6a4d98e-8141-47fb-b33d-112e602325dc"
     },
     {
       "parameters": {
@@ -21,32 +20,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        7808,
-        4160
+        320,
+        624
       ],
       "name": "Dividir Mensagem1",
-      "id": "640c8db2-3875-4f5f-ae56-59fad9f060c9"
-    },
-    {
-      "parameters": {
-        "table": "rpg_characters",
-        "columns": "telegram_user_id,telegram_username,file_name,current_health,max_health,current_temp_hp,armor_bonus,shield_bonus,base_speed,ability_scores_raw,class_data_raw,weapon_list_raw,note_list_raw,character_json,raw_xml",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 1,
-      "position": [
-        7808,
-        3968
-      ],
-      "name": "Salvar Ficha no PostgreSQL1",
-      "id": "0eda4c1a-0e23-4eea-b772-dd046e45725d",
-      "credentials": {
-        "postgres": {
-          "id": "fRNavSYNEr8rrgnR",
-          "name": "Postgres account"
-        }
-      }
+      "id": "8287cb23-0b3a-4508-b0fe-7b4e6b4bc7b0"
     },
     {
       "parameters": {
@@ -58,35 +36,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
       "typeVersion": 1,
       "position": [
-        7248,
-        4288
+        -240,
+        752
       ],
       "name": "Mistral Cloud Chat Model",
-      "id": "4bcb13b8-2a11-42f3-a549-402bf2cdd482",
+      "id": "054707b1-a110-4eee-829e-d09a9aa69c0e",
       "credentials": {
         "mistralCloudApi": {
-          "id": "gCxgoj2wgWPqDYqC",
+          "id": "Xrs5prThgii6rfG3",
           "name": "Mistral Cloud account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sessionKey": "={{ ($json.message?.from?.id || $json.chat_id) + '-telegram' }}",
-        "sessionTTL": 600
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1,
-      "position": [
-        7376,
-        4288
-      ],
-      "name": "Redis Chat Memory1",
-      "id": "a665c997-6375-4781-a760-2764148e18bb",
-      "credentials": {
-        "redis": {
-          "id": "cvoLMMT8ZAPUYxld",
-          "name": "Redis account"
         }
       }
     },
@@ -99,16 +57,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        8032,
-        4064
+        576,
+        640
       ],
       "name": "Telegram Resposta (Agent)",
       "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
-      "id": "c1c08561-d3f4-440f-b67b-89bc1b000203",
+      "id": "7c24500c-f224-4af2-8a90-77e21f724fe8",
       "credentials": {
         "telegramApi": {
-          "id": "PZk8kXuwCQvwPEKw",
-          "name": "Mestre_bot"
+          "id": "Fxk53Nq2xddhKsUZ",
+          "name": "Telegram account"
         }
       }
     },
@@ -123,11 +81,11 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        7232,
-        4064
+        -256,
+        528
       ],
       "name": "AI Agent (Mestre Galhart)",
-      "id": "3e042ff9-fb59-4a8a-9a42-0b2c4ec82f1a"
+      "id": "30743f75-564f-4bba-9c6d-74e869076a51"
     },
     {
       "parameters": {
@@ -138,37 +96,16 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        8256,
-        3712
+        768,
+        176
       ],
       "name": "Telegram Resposta",
       "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
-      "id": "bdbdb6a7-9fe5-429c-a2ff-048c75c7f1ce",
+      "id": "c775ae24-78f6-43f6-8efb-0fc5317d9a45",
       "credentials": {
         "telegramApi": {
-          "id": "PZk8kXuwCQvwPEKw",
-          "name": "Mestre_bot"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "table": "rpg_characters",
-        "columns": "telegram_user_id,telegram_username,file_name,current_health,max_health,current_temp_hp,armor_bonus,shield_bonus,base_speed,ability_scores_raw,class_data_raw,weapon_list_raw,note_list_raw,character_json,raw_xml",
-        "additionalFields": {}
-      },
-      "type": "n8n-nodes-base.postgres",
-      "typeVersion": 1,
-      "position": [
-        8032,
-        3712
-      ],
-      "name": "Salvar Ficha no PostgreSQL",
-      "id": "6670eec6-dfa4-4719-98f3-f15d72a39acd",
-      "credentials": {
-        "postgres": {
-          "id": "fRNavSYNEr8rrgnR",
-          "name": "Postgres account"
+          "id": "Fxk53Nq2xddhKsUZ",
+          "name": "Telegram account"
         }
       }
     },
@@ -179,11 +116,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        7808,
-        3712
+        320,
+        176
       ],
       "name": "Montar Ficha para DB",
-      "id": "27936ad6-eae9-4fb6-9ba6-0823aaf78d73"
+      "id": "1da6cf6a-dc9d-4483-bb79-77390391f932"
     },
     {
       "parameters": {
@@ -193,11 +130,11 @@
       "type": "n8n-nodes-base.xml",
       "typeVersion": 1,
       "position": [
-        7584,
-        3712
+        96,
+        176
       ],
       "name": "XML -> JSON",
-      "id": "846f4aee-0aff-4d00-b105-0ed641a971b5"
+      "id": "e2010d50-65ac-40b2-99bd-f4121b2d756f"
     },
     {
       "parameters": {
@@ -206,11 +143,11 @@
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [
-        7296,
-        3712
+        -192,
+        176
       ],
       "name": "Ler Arquivo XML do JSON",
-      "id": "6ce2f950-e3b9-47a0-b6bd-8ae1ee0603b1"
+      "id": "7dac35fe-1511-4396-bb5f-b48e094f04e1"
     },
     {
       "parameters": {
@@ -226,11 +163,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        7008,
-        3904
+        -480,
+        368
       ],
       "name": "IF Tem Arquivo?",
-      "id": "6fff62c8-99e6-4618-8ef7-20ac7a8cb2ff"
+      "id": "490db8bc-2100-4995-8973-04d9e9dc35c3"
     },
     {
       "parameters": {
@@ -244,27 +181,397 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        6784,
-        3904
+        -704,
+        368
       ],
       "name": "Telegram Trigger",
       "webhookId": "dc373f2f-7543-45a4-55727264a116",
-      "id": "52ded3c9-e7fe-478d-9ba9-9d18f00e147e",
+      "id": "2cfeca67-76b9-4544-b708-7ed9f3261fe5",
       "credentials": {
         "telegramApi": {
-          "id": "PZk8kXuwCQvwPEKw",
-          "name": "Mestre_bot"
+          "id": "Fxk53Nq2xddhKsUZ",
+          "name": "Telegram account"
         }
       }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 500
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -112,
+        768
+      ],
+      "id": "453212d5-9692-4439-8199-9bf2e18c3cc3",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "D5VBhunIZFXGHMg2",
+          "mode": "list",
+          "cachedResultName": "rpg_characters",
+          "cachedResultUrl": "/projects/RhwLFylDjSNucEoV/datatables/D5VBhunIZFXGHMg2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "telegram_user_id",
+              "displayName": "telegram_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "telegram_username",
+              "displayName": "telegram_username",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "current_health",
+              "displayName": "current_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "max_health",
+              "displayName": "max_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "current_temp_hp",
+              "displayName": "current_temp_hp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "armor_bonus",
+              "displayName": "armor_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "shield_bonus",
+              "displayName": "shield_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "base_speed",
+              "displayName": "base_speed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "ability_scores_raw",
+              "displayName": "ability_scores_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "class_data_raw",
+              "displayName": "class_data_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "weapon_list_raw",
+              "displayName": "weapon_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "note_list_raw",
+              "displayName": "note_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "character_json",
+              "displayName": "character_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        544,
+        160
+      ],
+      "id": "c1de4676-ca7a-4c7f-89c8-abe2d0d66ece",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "D5VBhunIZFXGHMg2",
+          "mode": "list",
+          "cachedResultName": "rpg_characters",
+          "cachedResultUrl": "/projects/RhwLFylDjSNucEoV/datatables/D5VBhunIZFXGHMg2"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "telegram_user_id",
+              "displayName": "telegram_user_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "telegram_username",
+              "displayName": "telegram_username",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "file_name",
+              "displayName": "file_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "current_health",
+              "displayName": "current_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "max_health",
+              "displayName": "max_health",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "current_temp_hp",
+              "displayName": "current_temp_hp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "armor_bonus",
+              "displayName": "armor_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "shield_bonus",
+              "displayName": "shield_bonus",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "base_speed",
+              "displayName": "base_speed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "ability_scores_raw",
+              "displayName": "ability_scores_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "class_data_raw",
+              "displayName": "class_data_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "weapon_list_raw",
+              "displayName": "weapon_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "note_list_raw",
+              "displayName": "note_list_raw",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "character_json",
+              "displayName": "character_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1,
+      "position": [
+        416,
+        416
+      ],
+      "id": "0df3bb20-f2d3-443f-8f2c-7c68c7de0c22",
+      "name": "Insert row1"
     }
   ],
-  "pinData": {},
   "connections": {
     "Montar Ficha para DB1": {
       "main": [
         [
           {
-            "node": "Salvar Ficha no PostgreSQL1",
+            "node": "Insert row1",
             "type": "main",
             "index": 0
           }
@@ -272,17 +579,6 @@
       ]
     },
     "Dividir Mensagem1": {
-      "main": [
-        [
-          {
-            "node": "Telegram Resposta (Agent)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Salvar Ficha no PostgreSQL1": {
       "main": [
         [
           {
@@ -304,17 +600,6 @@
         ]
       ]
     },
-    "Redis Chat Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Agent (Mestre Galhart)",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "AI Agent (Mestre Galhart)": {
       "main": [
         [
@@ -331,22 +616,11 @@
         ]
       ]
     },
-    "Salvar Ficha no PostgreSQL": {
-      "main": [
-        [
-          {
-            "node": "Telegram Resposta",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Montar Ficha para DB": {
       "main": [
         [
           {
-            "node": "Salvar Ficha no PostgreSQL",
+            "node": "Insert row",
             "type": "main",
             "index": 0
           }
@@ -403,17 +677,34 @@
           }
         ]
       ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent (Mestre Galhart)",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert row": {
+      "main": [
+        [
+          {
+            "node": "Telegram Resposta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "40dbf905-8110-47e2-9980-f01860831af1",
+  "pinData": {},
   "meta": {
+    "templateId": "ready-to-run-ai-workflow",
     "templateCredsSetupCompleted": true,
-    "instanceId": "82a0b6c2033eb2e531b802dac7072de9d7090a7397ee4c924dced66f92352e3f"
-  },
-  "id": "0CVtpwyoevHCOatI",
-  "tags": []
+    "instanceId": "4a3abcc0f553006815e001cd0a94bf05f303b92cb668d0df714e29d4eb4f210f"
+  }
 }

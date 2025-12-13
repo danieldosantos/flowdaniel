@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<character>
+<version>1</version>
+<initMiscMod>0</initMiscMod>
+<improvedInitiative>0</improvedInitiative>
+<currentHealth>16</currentHealth>
+<maxHealth>16</maxHealth>
+<currentTempHP>0</currentTempHP>
+<armorBonus>13</armorBonus>
+<shieldBonus>0</shieldBonus>
+<miscArmorBonus>0</miscArmorBonus>
+<maxDex>10</maxDex>
+<proficiencyBonus>2</proficiencyBonus>
+<miscSpellAttackBonus>0</miscSpellAttackBonus>
+<miscSpellDCBonus>0</miscSpellDCBonus>
+<castingStatCode>5</castingStatCode>
+<offenseAbilityDisplay>0</offenseAbilityDisplay>
+<deathSaveSuccesses>0</deathSaveSuccesses>
+<deathSaveFailures>0</deathSaveFailures>
+<showDeathSaves>true</showDeathSaves>
+<baseSpeed>30</baseSpeed>
+<speedMiscMod>0</speedMiscMod>
+<movementMode>Speed</movementMode>
+<raceCode>-1</raceCode>
+<subraceCode>-1</subraceCode>
+<backgroundCode>-1</backgroundCode>
+<pagePosition0>1</pagePosition0>
+<pagePosition1>2</pagePosition1>
+<pagePosition2>3</pagePosition2>
+<pagePosition3>4</pagePosition3>
+<pagePosition4>5</pagePosition4>
+<unarmoredDefense>0</unarmoredDefense>
+<featCode></featCode>
+<classData>Sorcerer⊡Draconic Bloodline⊡2⊡0⊡0⊟⊟Resource⊡Resource⊡0⊡0⊡0⊡2⊡0⊡0⊡-1⊡0⊠Sorcery Points⊡Sorcery Pts⊡2⊡2⊡0⊡2⊡0⊡0⊡303⊡0⊟⊟⊟⊟⊟Half-Elf⊟Half-Elf Variant⊟Guild Artisan⊟0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠⊟0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠⊟20⊠20⊠20⊠20⊠20⊠20⊠⊟0⊟2⊟1⊟1⊟1⊟0</classData>
+<multiclassFeatures></multiclassFeatures>
+<weaponList>2⊠Crossbow, light⊠80/320⊠2201⊠1⊠0⊠0⊠0⊠0⊠true⊠true⊠1⊠1⊠8⊠Dagger⊠20/60⊠1101⊠1⊠0⊠0⊠0⊠0⊠true⊠true⊠1⊠1⊠4</weaponList>
+<abilityScores>8⊠16⊠14⊠10⊠11⊠16⊠false⊠false⊠true⊠false⊠false⊠true⊠0⊠0⊠0⊠0⊠0⊠0⊠0</abilityScores>
+<skillInfo>false⊠false⊠false⊠false⊠true⊠false⊠false⊠false⊠false⊠false⊠true⊠false⊠false⊠false⊠false⊠true⊠false⊠true⊠false⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠0⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false⊠false</skillInfo>
+<spellList>v1.1⊠0⊡3⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡⊠false⊡false⊡false⊡false⊡false⊡false⊡false⊡false⊡false⊡false⊡⊠0⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡⊠0⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡0⊡⊠0⊠2⊠false⊠⊟</spellList>
+<noteList>
+Traços de Meio-Elfo:
+ * Visão no Escuro: A até 18 metros de você, trate luz fraca como luz plena e escuridão como luz fraca.
+ * Ancestralidade Feérica: Você é imune a sono mágico e tem vantagem em testes de resistência contra ser encantado.
+ * Proficiência com Armas Élficas: Você tem proficiência com espada longa, espada curta, arco curto e arco longo.
+Traço de Artesão de Guilda:
+ * Contatos Influentes: Enquanto estiver em boa situação com sua guilda, ela pode lhe garantir acesso a políticos poderosos.
+Traços de Feiticeiro:
+ * Arquétipo de Feiticeiro: Dracônico
+ * Línguas: Você conhece Dracônico e tem o dobro do seu bônus de proficiência em testes de Carisma ao interagir com dragões.
+ * Resistência Dracônica: Você ganha 1 ponto de vida extra por nível e desenvolve escamas com uma CA de 13 quando não está usando armadura.
+ * Pontos de Feitiçaria: Você tem um máximo de 2 pontos de feitiçaria que podem ser usados para alterar magias e recuperar espaços de magia.
+⊠⊠ * Adagas
+ * Dardos
+ * Fundas
+ * Bordões
+ * Bestas Leves
+ * Espada Longa
+ * Espada Curta
+ * Arco Curto
+ * Arco Longo
+
+⊠ferramentas de Alquimista 
+⊠ * Comum:  A língua mais falada em muitos mundos de D&D. Equivalente ao inglês em nosso mundo.
+ * Élfico: A língua dos elfos, conhecida por sua beleza e fluidez.
+ * Silvestre:  A língua das criaturas da floresta, como fadas e animais.
+ * Dracônico: A língua dos dragões, poderosa e antiga
+ celestial ⊠* Besta leve: Uma arma de longo alcance que dispara virotes.
+ * Adaga (2): Duas adagas, armas pequenas de perfuração.
+ * Virotes (20): Munição para a besta leve.
+ * Foco Arcano: Um item usado por conjuradores arcanos para canalizar magias.
+ * Pacote de Explorador de Masmorras: Um conjunto de equipamentos úteis para explorar masmorras, incluindo corda, tochas e rações.
+ * Conjunto de ferramentas de artesão à sua escolha: Ferramentas para um ofício específico, como ferramentas de ferreiro ou de carpinteiro.
+ * Carta de apresentação: Uma carta que pode ajudar a apresentar o personagem a pessoas importantes.
+ *qbaralho de cartas: Itens para jogos de azar ou adivinhação.
+ * Conjunto de roupas de viajante: Roupas adequadas para viagens longas.
+ * Bolsa de cinto: Uma pequena bolsa para guardar itens essenciais.⊠História de Trevor Galhart
+Desde o momento de seu nascimento, Trevor Galhart já era marcado por diferenças que o afastariam de sua própria sociedade. Nascido em um enclave aristocrático de elfos, ele era filho de uma elfa nobre e de um misterioso viajante humano com sangue dracônico em suas veias. Essa herança incomum fez com que Trevor nascesse com escamas brancas cobrindo partes de seu corpo, um traço que o destacava de todos ao seu redor. Os elfos, conhecidos por sua beleza e perfeição, viam suas escamas como uma anomalia, uma mancha em sua linhagem.
+
+Por isso, Trevor cresceu isolado, alvo de olhares de desprezo e comentários maldosos. No entanto, havia uma pessoa que nunca o olhou com julgamento: sua mãe. Ela era sua luz em meio à escuridão da rejeição, sempre o confortando com histórias sobre um lendário herói. Esse herói, um guerreiro de escamas douradas como uma armadura reluzente, era capaz de enfrentar hordas de dragões e proteger reinos inteiros. Segundo as histórias, suas escamas não eram motivo de vergonha, mas sim de força e orgulho. Sua mãe narrava essas histórias para acender em Trevor a chama da esperança e da coragem, fazendo-o acreditar que ele também poderia ser um grande herói.
+
+Embora o herói fosse apenas uma invenção para consolar o garoto, Trevor acreditava em cada palavra. Ele começou a treinar secretamente com armas e a experimentar os primeiros sinais de seu poder mágico, que parecia emanar de suas escamas e de sua conexão dracônica. Contudo, sua vida mudou drasticamente quando sua mãe adoeceu. Por mais que ele tentasse, nenhum médico ou cura mágica conseguiu salvá-la. No leito de morte, ela pediu que Trevor não desistisse de si mesmo e seguisse seu coração, buscando um propósito além da rejeição que enfrentava.
+
+Com a morte de sua mãe, Trevor decidiu partir. Ele não tinha mais nada que o prendesse àquela sociedade elitista e fria. Com seu coração cheio de tristeza, mas também com a determinação de honrar o legado que sua mãe havia criado em suas histórias, ele iniciou uma jornada. Trevor começou a viajar de vila em vila, oferecendo sua ajuda a quem precisasse. Ele derrotava criaturas sombrias que ameaçavam os mais fracos e usava seus poderes para curar e proteger os indefesos.
+
+Durante essas viagens, Trevor não apenas cresceu em força e habilidade, mas também começou a construir uma reputação. Embora muitos ainda o olhassem com estranheza por causa de suas escamas, havia aqueles que o reconheciam como um protetor. Sua jornada o levou a aprender sobre o mundo e sobre si mesmo, fortalecendo sua crença de que poderia ser tão grandioso quanto o herói das histórias de sua mãe.⊠Sorcerer 2⊠Variant⊠Guild Artisan⊠⊠⊠⊠⊠⊠Trevor Galhart ⊠Sorcerer 2⊠0⊠0⊠0⊠15⊠0⊠0</noteList>
+<hitDiceList>1⊠2⊠6⊠2</hitDiceList>
+<classResource>-1⊠-1⊠-1⊠-1⊠-1⊠-1⊠1⊠2⊠1000⊠3⊠4⊠5</classResource>
+</character>

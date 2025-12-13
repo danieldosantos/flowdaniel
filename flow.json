@@ -201,7 +201,7 @@
     },
     {
       "parameters": {
-        "functionCode": "return items.map(item => {\n  const file = item.binary?.data;\n\n  if (!file || !file.data) {\n    throw new Error('Nenhum arquivo recebido em item.binary.data');\n  }\n\n  const buffer = Buffer.from(file.data, file.encoding || 'base64');\n  let xmlText = buffer.toString('utf8');\n\n  xmlText = xmlText.replace(/^﻿/, '');\n  xmlText = xmlText.replace(/[\u0000-\b\u000b\f\u000e-\u001f]/g, '');\n  xmlText = xmlText.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\\d+;|#x[0-9a-fA-F]+;)/g, '&amp;');\n\n  const msg = item.json.message || {};\n\n  item.json = {\n    telegram_user_id: msg.from?.id,\n    telegram_username: msg.from?.username || '',\n    file_name: msg.document?.file_name || '',\n    xml_text: xmlText,\n    raw_xml: xmlText,\n    mensagem: '✅ Ficha importada com sucesso!'\n  };\n\n  return item;\n});"
+        "functionCode": "return items.map(item => {\n  const msg = item.json.message || {};\n  const file = item.binary?.data;\n\n  let xmlText = '';\n  let parsedFromText = null;\n\n  if (file && file.data) {\n    const buffer = Buffer.from(file.data, file.encoding || 'base64');\n    xmlText = buffer.toString('utf8');\n  } else {\n    const text = msg.text || '';\n    if (text) {\n      let candidate = text;\n      try {\n        parsedFromText = JSON.parse(text);\n        if (typeof parsedFromText === 'string') {\n          candidate = parsedFromText;\n        } else if (parsedFromText.xml) {\n          candidate = parsedFromText.xml;\n        } else if (parsedFromText.data) {\n          candidate = parsedFromText.data;\n        } else if (parsedFromText.character) {\n          candidate = parsedFromText.character;\n        }\n      } catch (error) {\n        // texto não era JSON; usa como veio\n      }\n      xmlText = String(candidate || '').trim();\n    }\n  }\n\n  if (!xmlText) {\n    throw new Error('Nenhum XML encontrado em arquivo ou mensagem de texto.');\n  }\n\n  xmlText = xmlText.replace(/^﻿/, '');\n  xmlText = xmlText.replace(/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]/g, '');\n  xmlText = xmlText.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\\d+;|#x[0-9a-fA-F]+;)/g, '&amp;');\n\n  const inlineFileName =\n    msg.document?.file_name ||\n    (parsedFromText && (parsedFromText.file_name || parsedFromText.name)) ||\n    (msg.text ? 'ficha_inline.xml' : '');\n\n  item.json = {\n    telegram_user_id: msg.from?.id,\n    telegram_username: msg.from?.username || '',\n    file_name: inlineFileName,\n    xml_text: xmlText,\n    raw_xml: xmlText,\n    mensagem: '✅ Ficha importada com sucesso!'\n  };\n\n  return item;\n});"
       },
       "type": "n8n-nodes-base.function",
       "typeVersion": 1,
@@ -219,9 +219,15 @@
             {
               "value1": "={{ $json.message.document?.file_name || '' }}",
               "operation": "isNotEmpty"
+            },
+            {
+              "value1": "={{ $json.message.text || '' }}",
+              "value2": "<character>",
+              "operation": "contains"
             }
           ]
-        }
+        },
+        "combineOperation": "any"
       },
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,

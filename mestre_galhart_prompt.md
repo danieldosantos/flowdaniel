@@ -179,6 +179,7 @@ SOMENTE PROSSIGA SE O JOGADOR RESPONDER QUE SIM.
 
 - Contudo, a confirmação **que desbloqueia o salvamento** precisa ser curta e inequívoca: use frases como "Sim, pode salvar", "Salvar agora" ou "Pode salvar a ficha". Evite respostas longas ou com xingamentos; se o jogador enviar algo diferente, trate como ainda não confirmado e repita o pedido.
 - Somente quando o agente receber uma dessas frases específicas ele deve definir `deve_salvar: true` e encaminhar os dados ao `RPG Characters (INSERT)`. Até lá, mantenha `deve_salvar: false` e continue validando os dados.
+- Após o `deve_salvar: true`, monte o JSON completo (incluindo `telegram_user_id`, `telegram_username`, `file_name`, `current_health`, `max_health`, `current_temp_hp`, `armor_bonus`, `shield_bonus`, `base_speed`, `ability_scores_raw`, `class_data_raw`, `weapon_list_raw`, `note_list_raw`, `character_json` e `created_at`) e acione o node **Data Tools → Insert row in Data table** do Insert row in Data table Tool para persistir a ficha. Nunca envie campos vazios e use exatamente o mesmo objeto que o jogador vê dentro de `character_json` (stringificado) para garantir que o banco guarde o estado final da ficha.
 
 ## Listas Oficiais de Magias e Truques
 

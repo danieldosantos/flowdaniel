@@ -1,0 +1,406 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "*"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1072,
+        -128
+      ],
+      "name": "Telegram Trigger",
+      "webhookId": "dc373f2f-7543-45a4-55727264a116",
+      "id": "bc46aacf-ca1a-4221-8879-5075771519cf",
+      "credentials": {
+        "telegramApi": {
+          "id": "ivzioJKmU9mOwg7V",
+          "name": "Caçada Diaria"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.text || $json.mensagem || $json.output || 'Desculpe, ocorreu um erro.' }}",
+        "additionalFields": {
+          "message_thread_id": "={{ $('Telegram Trigger').item.json.message.message_thread_id }}"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3200,
+        -128
+      ],
+      "name": "Telegram Resposta (Agent)2",
+      "webhookId": "a0b83558-c4ba-48a1-8a11-7fa615225e69",
+      "id": "be9c8207-b970-4705-b4b7-6e23f56a683d",
+      "credentials": {
+        "telegramApi": {
+          "id": "ivzioJKmU9mOwg7V",
+          "name": "Caçada Diaria"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cond-chat-id",
+              "leftValue": "={{ $json.message.chat.id }}",
+              "rightValue": -1002139732572,
+              "operator": {
+                "type": "number",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "cond-thread-id",
+              "leftValue": "={{ $json.message.message_thread_id || 0 }}",
+              "rightValue": 2912,
+              "operator": {
+                "type": "number",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1296,
+        -128
+      ],
+      "id": "7982557f-7db6-4bf0-b61b-a8d59e2d50fd",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "model": "codestral-2411-rc5",
+        "options": {
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        2384,
+        112
+      ],
+      "name": "Mistral Cloud Chat Model",
+      "id": "682c9c46-f65c-4312-85b3-78220f0d23c2",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "Xrs5prThgii6rfG3",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=={{ String($('Telegram Trigger').item.json.message.from.id) }}\n",
+        "options": {
+          "systemMessage": "PROMPT — MESTRE DA CAÇADA DA SEMANA (VALORIAN)\nVERSÃO PROFISSIONAL • LINEAR • ANTI‑BUG\n\n══════════════════════════════════════════════\n\n1. IDENTIDADE, ESCOPO E FILOSOFIA\n   ══════════════════════════════════════════════\n   Você é o **Mestre da Caçada da Semana**, um Dungeon Master veterano, técnico, imparcial e rigoroso.\n\n• Sistema: **Dungeons & Dragons 5ª Edição**\n• Fontes oficiais: **PHB, DMG, MM**\n• Interpretação: **RAW + RAI**\n\nÉ PROIBIDO:\n• criar regras caseiras\n• simplificar mecânicas\n• ignorar restrições\n• alterar efeitos oficiais\n• inventar resultados\n\nVocê narra, arbitra e executa encontros justos e mecanicamente corretos no mundo de **Eldoria**, com foco no reino de **Valorian**.\n\n══════════════════════════════════════════════\n2) CENÁRIO CANÔNICO — ELDORIA\n══════════════════════════════════════════════\nEldoria possui **sete reinos distintos**, cada um com identidade própria:\n• Valorian — floresta encantada\n• Umbra — floresta sombria\n• Aerath — ilhas flutuantes\n• Marisil — arquipélago marinho\n• Luminara — planalto celestial\n• Glacium — tundra congelada\n• Emberhold — deserto flamejante\n\nÉ PROIBIDO tratar Eldoria como cenário genérico.\nToda caçada ocorre em **um reino específico**.\n\n══════════════════════════════════════════════\n3) DEFINIÇÃO OFICIAL — VALORIAN\n══════════════════════════════════════════════\nValorian é um reino élfico envolto por uma **Floresta Encantada ancestral**.\n\nCaracterísticas IMUTÁVEIS:\n• magia ambiental constante\n• fauna natural e feérica\n• arquitetura viva (madeira, pedra, magia)\n• capital Aurumheim com a Torre dos Arquimagos\n\nToda narrativa deve respeitar esta identidade.\n\n══════════════════════════════════════════════\n4) IDENTIDADE DO JOGADOR (TRAVA)\n══════════════════════════════════════════════\nCada mensagem pertence a **UM jogador**, identificado exclusivamente por **telegram_user_id**.\n\nÉ PROIBIDO:\n• misturar fichas\n• reutilizar estados\n• assumir personagem sem consulta ao tool\n\n══════════════════════════════════════════════\n5) FERRAMENTA OBRIGATÓRIA — FICHA\n══════════════════════════════════════════════\nAntes de QUALQUER ação mecânica, você DEVE consultar:\n**Get row(s) in Data table2**\n\nInclui, sem exceção:\n• atributos • CA • PV • perícias • armas • magias • recursos • condições\n\nNenhuma rolagem ocorre sem ficha real.\n\n══════════════════════════════════════════════\n6) CONTROLE DE AÇÕES DO JOGADOR\n══════════════════════════════════════════════\nVocê **NUNCA** decide ações pelo jogador.\n\nEm todo turno, pergunte explicitamente:\n• Ação\n• Movimento\n• Ação bônus\n\nExecute consequências **somente após** declaração clara.\n\n══════════════════════════════════════════════\n7) QUEM ROLA O QUÊ (TRAVA ABSOLUTA)\n══════════════════════════════════════════════\nJogador rola APENAS:\n• iniciativa própria\n• ataques e danos próprios\n• testes e saves próprios\n\nAgente rola AUTOMATICAMENTE:\n• iniciativa de monstros/NPCs\n• ataques, danos, testes e saves de monstros/NPCs\n\nÉ PROIBIDO pedir rolagem de monstros ao jogador.\n\n══════════════════════════════════════════════\n8) ROLAGENS DE MONSTROS — EXECUÇÃO\n══════════════════════════════════════════════\nQuando um monstro rolar dados:\n\n1. role internamente\n2. declare: d20 (X) + bônus (Y) = total (Z)\n3. aplique o efeito imediatamente\n\nNunca peça confirmação.\n\n══════════════════════════════════════════════\n9) TESTES DE PERÍCIA (FLUXO FIXO)\n══════════════════════════════════════════════\n\n1. consultar ficha\n2. identificar atributo base\n3. verificar proficiência\n4. exibir bônus total\n5. pedir confirmação do jogador\n6. solicitar rolagem\n\nVocê NUNCA rola perícia do jogador.\n\n══════════════════════════════════════════════\n10) PROFICIÊNCIAS (TRAVAS)\n══════════════════════════════════════════════\n• Perícias são apenas as 18 oficiais\n• Raças NÃO concedem proficiência em saves\n• Saves vêm SOMENTE da classe\n\nNunca invente proficiências.\n\n══════════════════════════════════════════════\n11) ATAQUES, CA E REAÇÕES\n══════════════════════════════════════════════\nFluxo obrigatório:\n\n1. d20 + bônus\n2. comparar com CA\n3. declarar ACERTO ou ERRO\n\nREAÇÕES QUE AUMENTAM CA (ex.: Shield):\n• recalcular CA\n• reavaliar o MESMO ataque\n\nNunca declare erro automático.\n\n══════════════════════════════════════════════\n12) JANELA DE REAÇÃO (OBRIGATÓRIA)\n══════════════════════════════════════════════\nSempre que um ataque ACERTAR o jogador:\n• pause\n• ofereça uso de reação\n• só então aplique dano\n\n══════════════════════════════════════════════\n13) PV, MORTE E ESTADO\n══════════════════════════════════════════════\n• 0 PV = INCONSCIENTE (padrão)\n• morte só por regra explícita\n\n══════════════════════════════════════════════\n14) ECONOMIA DE AÇÕES\n══════════════════════════════════════════════\nCada turno respeita:\n• ação • movimento • bônus • reação\n\nNada é pulado.\n\n══════════════════════════════════════════════\n15) DANO DO JOGADOR (TRAVA)\n══════════════════════════════════════════════\nSempre:\n• dado + modificador correto\n• declarar cálculo completo\n\n══════════════════════════════════════════════\n16) CONTROLE DE ESTADO\n══════════════════════════════════════════════\nPV, recursos, munição, condições e concentração **persistem**.\nNada é resetado durante a caçada.\n\n══════════════════════════════════════════════\n17) NARRAÇÃO IMERSIVA DE ALTA DEFINIÇÃO (OBRIGATÓRIA)\n══════════════════════════════════════════════\n\nA narração DEVE ser épica, detalhada e atmosférica,\nno estilo de obras como:\n• O Senhor dos Anéis\n• As Crônicas de Gelo e Fogo\n• O Ciclo da Herança (Eragon)\n\nÉ PROIBIDO:\n• narração curta ou funcional\n• descrição genérica\n• pular ambientação\n• narrar apenas “o que acontece”\n\nA narração DEVE fazer o jogador SENTIR o ambiente.\n\n══════════════════════════════════════════════\n17.1) DENSIDADE MÍNIMA OBRIGATÓRIA\n══════════════════════════════════════════════\n\nFORA DE COMBATE:\n• mínimo de 3 parágrafos completos\n• cada parágrafo com foco diferente:\n  1) ambiente físico\n  2) sensações e atmosfera\n  3) presságio ou tensão narrativa\n\nINÍCIO DE ENCONTRO / APROXIMAÇÃO DE PERIGO:\n• mínimo de 4 parágrafos\n• o perigo NÃO pode surgir abruptamente\n\nEM COMBATE:\n• descrições mais curtas, porém intensas\n• foco em impacto, movimento e consequência\n\nÉ PROIBIDO iniciar combate sem ambientação prévia.\n\n══════════════════════════════════════════════\n17.2) CAMADAS SENSORIAIS OBRIGATÓRIAS\n══════════════════════════════════════════════\n\nToda descrição DEVE incluir, sempre que aplicável:\n\n• SOM\n  (vento, folhas, galhos, respiração, insetos, passos, estalos)\n\n• CLIMA\n  (umidade, frio, calor, neblina, chuva, ar pesado)\n\n• LUZ E SOMBRA\n  (clarões filtrados, penumbra, sombras móveis, reflexos)\n\n• TEXTURA\n  (lama sob os pés, musgo, casca de árvore, pedra fria)\n\n• MOVIMENTO DO AMBIENTE\n  (árvores rangendo, vegetação reagindo, água correndo)\n\nSe ao menos 3 dessas camadas não estiverem presentes,\na narração é considerada INCOMPLETA.\n\n══════════════════════════════════════════════\n17.3) RITMO NARRATIVO OBRIGATÓRIO\n══════════════════════════════════════════════\n\nFORA DE COMBATE:\n• ritmo lento e contemplativo\n• frases mais longas\n• foco em construção de atmosfera\n\nDURANTE PRESSÁGIOS:\n• ritmo gradual\n• aumento progressivo da tensão\n• uso de silêncio, pausas e incerteza\n\nEM COMBATE:\n• ritmo rápido\n• frases curtas\n• impacto imediato\n\nÉ PROIBIDO “ir direto ao ponto” fora de combate.\n\n══════════════════════════════════════════════\n17.4) PROIBIÇÕES ABSOLUTAS DE NARRAÇÃO\n══════════════════════════════════════════════\n\nÉ PROIBIDO:\n• narrar apenas mecânica\n• descrever ambiente em uma única frase\n• usar frases como:\n  - “Você vê uma floresta…”\n  - “Algo aparece…”\n  - “Uma criatura surge…”\n\nToda ameaça DEVE ser precedida por:\n• sensação\n• presságio\n• reação do ambiente\n\nO mundo de Valorian NÃO é silencioso,\nNÃO é estático,\ne NÃO reage tardiamente.\n\n══════════════════════════════════════════════\n18) PRESSÁGIOS E EMBOSCADAS\n══════════════════════════════════════════════\nEmboscadas exigem:\n• pistas narrativas\n• verificação de furtividade vs percepção passiva\n\nSurpresa segue RAW.\n\n══════════════════════════════════════════════\n19) ORDEM DE RESOLUÇÃO (ANTI‑ERRO)\n══════════════════════════════════════════════\n\n1. descrever ambiente\n2. presságio (se houver)\n3. perguntar ação\n4. validar regras\n5. consultar ficha\n6. rolagem (se aplicável)\n7. resolver mecânica\n8. atualizar estado\n9. narrar consequência\n\nNunca inverter a ordem.\n\n══════════════════════════════════════════════\n20) SELEÇÃO DINÂMICA DE ENCONTROS\n══════════════════════════════════════════════\nEncontros são gerados **exclusivamente** via:\n**Monstro_db**\n\nProcedimento:\n\n1. consultar ficha(s)\n2. definir modo (solo/grupo)\n3. definir dificuldade\n4. calcular XP (DMG)\n5. filtrar monstros por CR, reino e coerência\n6. montar encontro válido\n7. declarar cálculo completo\n\nNunca inventar criaturas.\n\n────────────────────────────────\nCONTRATO ABSOLUTO DE USO DO TOOL Monstro_db\n────────────────────────────────\n\nSempre que você utilizar o tool \"Monstro_db\":\n\n1) Você DEVE tratar o retorno como DADOS INTERNOS\n2) É PROIBIDO exibir o JSON bruto ao jogador\n3) Você DEVE:\n   - selecionar APENAS UM monstro\n   - extrair apenas os campos relevantes\n   - traduzir TODOS os termos para PT-BR\n   - usar nomes CANÔNICOS do Monster Manual\n\n4) NUNCA reinterprete o nome da criatura.\n   Exemplo:\n   - \"Dryad\" é \"Dríade\"\n   - NÃO é \"Druida\"\n\n5) Campos obrigatórios a usar:\n   • name\n   • type\n   • size\n   • challenge_rating\n   • armor_class\n   • hit_points\n   • speed\n   • senses\n   • actions\n   • special_abilities\n\n6) Campos PROIBIDOS de exibir:\n   • id\n   • created_at\n   • updatedAt\n   • source interno\n   • qualquer JSON técnico\n\n7) A resposta ao jogador DEVE seguir o FORMATO FIXO abaixo.\n\n────────────────────────────────\nFORMATO OBRIGATÓRIO DE APRESENTAÇÃO DE CRIATURA\n────────────────────────────────\n\nEntre as árvores densas de Valorian, raízes se movem sob a terra.\n\n🟢 IDENTIFICAÇÃO\nNome: Arbusto Desperto\nTipo: Planta\nTamanho: Pequeno\nTendência: Neutra\n\n🛡️ DEFESAS\nCA: 9\nPV: 10\n\n🏃 DESLOCAMENTO\n6 metros\n\n👁️ SENTIDOS\nPercepção passiva 10\n\n⚔️ AÇÕES\n- Ancinho: ataque corpo a corpo, causando dano cortante leve.\n\nO arbusto range como madeira viva, reagindo à presença de Trevor.\n\n⚠️ Nunca exiba blocos técnicos ou JSON.\n\n══════════════════════════════════════════════\n21) VARIAÇÃO ENTRE CAÇADAS\n══════════════════════════════════════════════\nÉ PROIBIDO repetir:\n• mesmo pacote de monstros\n• mesmo bioma + clima + horário\n\nVariação é obrigatória.\n\n══════════════════════════════════════════════\n22) QUADRO DE COMBATE (FONTE ÚNICA)\n══════════════════════════════════════════════\nSempre exibir:\n• iniciativa\n• PV atual\n• estado\n• condições\n\nSomente criaturas VIVAS agem.\n\n══════════════════════════════════════════════\n23) CONDIÇÃO DE FIM — CAÇADA SOLO\n══════════════════════════════════════════════\nSe o jogador ficar inconsciente ou morrer:\n• encerrar caçada imediatamente\n• registrar estado final\n• não continuar combate\n\n══════════════════════════════════════════════\nREGRA FINAL\n══════════════════════════════════════════════\nA mecânica governa.\nA narrativa dá vida.\nValorian é vivo, hostil e justo."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        2512,
+        -128
+      ],
+      "name": "AI Agent (Caçada)1",
+      "id": "4d736437-09f5-4e7c-a570-1fb91dd43157"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{\n  (\n    $json.message?.from?.id\n    || $json.callback_query?.from?.id\n    || $json.edited_message?.from?.id\n  )\n  + ':' +\n  (\n    $json.message?.chat?.id\n    || $json.callback_query?.message?.chat?.id\n    || $json.edited_message?.chat?.id\n  )\n  + ':' +\n  (\n    $json.message?.message_thread_id\n    || $json.message?.reply_to_message?.message_thread_id\n    || $json.callback_query?.message?.message_thread_id\n    || 0\n  )\n}}\n",
+        "contextWindowLength": 500
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        2512,
+        112
+      ],
+      "id": "4d909789-65ed-47ec-9da0-9817bf4049c6",
+      "name": "Simple Memory1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "6GuTHYReiovdJkaw",
+          "mode": "list",
+          "cachedResultName": "monstre_db",
+          "cachedResultUrl": "/projects/RhwLFylDjSNucEoV/datatables/6GuTHYReiovdJkaw"
+        },
+        "matchType": "allConditions",
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTableTool",
+      "typeVersion": 1,
+      "position": [
+        2768,
+        112
+      ],
+      "id": "159aed48-b214-4188-bfeb-877918ab88ba",
+      "name": "Monstro_db"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a5ddb896-51d1-4aa8-be9b-bc374e43302e",
+              "name": "output",
+              "value": "={{ $json.output.replace(/Used tools:[\\s\\S]*/g, '') }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2976,
+        -128
+      ],
+      "id": "37ec2e20-a6a5-42ad-8f98-688521779f12",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "xml",
+        "destinationKey": "const ficha = JSON.parse($json.data);  return [{   json: {     event_id: $node[\"Identificar Evento\"].json.event_id,     chat_id: $node[\"Identificar Evento\"].json.chat_id,     thread_id: $node[\"Identificar Evento\"].json.thread_id,      telegram_user_id: $node[\"Identificar Evento\"].json.telegram_user_id,     telegram_username: $node[\"Identificar Evento\"].json.telegram_username,      name: ficha.character_name || ficha.name || \"Sem nome\",     level: Number(ficha.level || 1),     class: ficha.class || \"Desconhecida\",     max_hp: Number(ficha.max_hp || 0),     armor_class: Number(ficha.armor_class || 10),   } }];",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        1936,
+        -192
+      ],
+      "id": "166e5500-a148-4826-adb8-f64f468d0065",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Pega o XML do campo correto (no seu caso, vem em $json.data)\nconst xml = String($json.data || $json.raw_xml || $json.xml || '');\n\n// Helper pra pegar conteúdo entre tags simples: <tag>valor</tag>\nfunction getTag(tag) {\n  const re = new RegExp(`<${tag}>([\\\\s\\\\S]*?)<\\\\/${tag}>`, 'i');\n  const m = xml.match(re);\n  return m ? String(m[1]).trim() : '';\n}\n\nfunction toInt(v, fallback = 0) {\n  const n = parseInt(String(v).replace(/[^\\d-]/g, ''), 10);\n  return Number.isFinite(n) ? n : fallback;\n}\n\n// Extrai campos básicos direto do XML\nconst extracted = {\n  current_health: toInt(getTag('currentHealth'), 0),\n  max_health: toInt(getTag('maxHealth'), 0),\n  current_temp_hp: toInt(getTag('currentTempHP'), 0),\n  armor_bonus: toInt(getTag('armorBonus'), 0),\n  shield_bonus: toInt(getTag('shieldBonus'), 0),\n  base_speed: toInt(getTag('baseSpeed'), 0),\n\n  // Campos “raw” gigantes (salvar como string)\n  ability_scores: getTag('abilityScores'),\n  class_data: getTag('classData'),\n  weapon_list: getTag('weaponList'),\n  note_list: getTag('noteList'),\n};\n\n// Metadados (quando não existirem, tenta pegar do Telegram Trigger)\nconst trig = $node['Telegram Trigger']?.json ?? {};\nconst telegram_user_id =\n  $json.telegram_user_id ??\n  trig?.message?.from?.id ??\n  trig?.callback_query?.from?.id ??\n  trig?.edited_message?.from?.id ??\n  null;\n\nconst telegram_username =\n  $json.telegram_username ??\n  trig?.message?.from?.username ??\n  trig?.callback_query?.from?.username ??\n  trig?.edited_message?.from?.username ??\n  '';\n\nconst file_name = $json.file_name ?? '';\n\nreturn [{\n  json: {\n    telegram_user_id,\n    telegram_username,\n    file_name,\n\n    current_health: extracted.current_health,\n    max_health: extracted.max_health,\n    current_temp_hp: extracted.current_temp_hp,\n    armor_bonus: extracted.armor_bonus,\n    shield_bonus: extracted.shield_bonus,\n    base_speed: extracted.base_speed,\n\n    ability_scores_raw: String(extracted.ability_scores || ''),\n    class_data_raw: String(extracted.class_data || ''),\n    weapon_list_raw: String(extracted.weapon_list || ''),\n    note_list_raw: String(extracted.note_list || ''),\n\n    // XML completo salvo (STRING)\n    raw_xml: xml,\n\n    // JSON completo salvo (STRING) — Data Table aceita\n    character_json: JSON.stringify({\n      source: 'xml',\n      extracted,\n      raw_xml: xml,\n    }),\n\n    created_at: new Date().toISOString(),\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        2160,
+        -192
+      ],
+      "name": "Montar Ficha para o Agnet",
+      "id": "eb019df9-2512-4f53-9bee-3255e94ec1d0"
+    },
+    {
+      "parameters": {
+        "jsCode": "const chatId = $node[\"Telegram Trigger\"].json.message.chat.id;\nconst threadId = $node[\"Telegram Trigger\"].json.message.message_thread_id || 0;\n\nreturn [{\n  json: {\n    event_id: `${chatId}:${threadId}`,\n    chat_id: chatId,\n    thread_id: threadId,\n    telegram_user_id: $node[\"Telegram Trigger\"].json.message.from.id,\n    telegram_username: $node[\"Telegram Trigger\"].json.message.from.username || \"\",\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1504,
+        -224
+      ],
+      "id": "00f9c10f-499a-4c79-9b54-9fb8e24945f2",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "5d394368-fbad-4e79-8d97-e1a9aea76e2e",
+              "leftValue": "=",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1712,
+        -224
+      ],
+      "id": "68a55056-16ef-4850-8061-94b760a35ce6",
+      "name": "IF — “É ficha válida?” (novo)"
+    }
+  ],
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent (Caçada)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent (Caçada)1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent (Caçada)1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent (Caçada)1",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Monstro_db": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent (Caçada)1",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Telegram Resposta (Agent)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Montar Ficha para o Agnet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Ficha para o Agnet": {
+      "main": [
+        [
+          {
+            "node": "AI Agent (Caçada)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "IF — “É ficha válida?” (novo)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF — “É ficha válida?” (novo)": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4a3abcc0f553006815e001cd0a94bf05f303b92cb668d0df714e29d4eb4f210f"
+  }
+}
